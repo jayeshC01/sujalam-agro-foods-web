@@ -2,8 +2,8 @@ import type { ProductImageKind } from "@/lib/products";
 
 function iconProps(size: "sm" | "lg") {
   return {
-    width: size === "lg" ? 88 : 44,
-    height: size === "lg" ? 112 : 56,
+    width: size === "lg" ? 88 : 64,
+    height: size === "lg" ? 112 : 82,
     viewBox: "0 0 48 64",
     fill: "none",
     stroke: "currentColor",
@@ -53,7 +53,9 @@ export function ProductImage({
   return (
     <div
       className={`flex items-center justify-center ${tone} ${
-        size === "lg" ? "h-72 rounded-2xl sm:h-80" : "h-36 rounded-t-2xl"
+        size === "lg"
+          ? "h-72 rounded-2xl sm:h-80"
+          : "aspect-square rounded-t-2xl"
       }`}
       aria-hidden
     >

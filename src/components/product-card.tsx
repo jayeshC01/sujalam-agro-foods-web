@@ -1,7 +1,6 @@
 import Link from "next/link";
-import type { Product } from "@/lib/products";
+import { formatPrice, type Product } from "@/lib/products";
 import { ProductImage } from "@/components/product-image";
-import { PackSizeGrid } from "@/components/pack-size-grid";
 
 const TONE_BY_CATEGORY: Record<string, string> = {
   "edible-oil": "bg-mustard/10 text-mustard-light",
@@ -12,6 +11,7 @@ const TONE_BY_CATEGORY: Record<string, string> = {
 
 export function ProductCard({ product }: { product: Product }) {
   const tone = TONE_BY_CATEGORY[product.category] ?? "bg-mustard/10 text-mustard-light";
+  const startingPrice = Math.min(...product.packSizes.map((pack) => pack.price));
 
   return (
     <Link
@@ -34,15 +34,20 @@ export function ProductCard({ product }: { product: Product }) {
 
         <p className="mt-2 text-sm text-ink/65">{product.description}</p>
 
-        <div className="mt-4">
-          <PackSizeGrid packSizes={product.packSizes} variant="compact" />
+        <div className="mt-4 flex items-baseline justify-between border-t border-mustard/10 pt-3">
+          <div>
+            <div className="text-[11px] font-semibold uppercase tracking-wide text-ink/45">
+              Starting from
+            </div>
+            <div className="font-serif text-lg font-semibold text-terracotta-dark">
+              {formatPrice(startingPrice)}
+            </div>
+          </div>
+          <span className="text-xs font-medium text-ink/50">
+            {product.packSizes.length}{" "}
+            {product.packSizes.length === 1 ? "size" : "sizes"}
+          </span>
         </div>
-
-        {!product.edible && (
-          <p className="mt-3 text-xs text-ink/50">
-            For external / industrial use only. Not for consumption.
-          </p>
-        )}
 
         <span className="mt-4 inline-flex items-center gap-1 text-sm font-semibold text-terracotta-dark opacity-0 transition-opacity group-hover:opacity-100">
           View details →
