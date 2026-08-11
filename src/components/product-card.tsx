@@ -1,5 +1,7 @@
-import { formatPrice, type Product } from "@/lib/products";
+import Link from "next/link";
+import type { Product } from "@/lib/products";
 import { ProductImage } from "@/components/product-image";
+import { PackSizeGrid } from "@/components/pack-size-grid";
 
 const TONE_BY_CATEGORY: Record<string, string> = {
   "edible-oil": "bg-mustard/10 text-mustard-light",
@@ -12,7 +14,10 @@ export function ProductCard({ product }: { product: Product }) {
   const tone = TONE_BY_CATEGORY[product.category] ?? "bg-mustard/10 text-mustard-light";
 
   return (
-    <div className="flex flex-col overflow-hidden rounded-2xl border border-mustard/15 bg-white/60 shadow-sm transition-all hover:-translate-y-1 hover:border-terracotta/30 hover:shadow-lg">
+    <Link
+      href={`/catalog/${product.slug}`}
+      className="group flex flex-col overflow-hidden rounded-2xl border border-mustard/15 bg-white/60 shadow-sm transition-all hover:-translate-y-1 hover:border-terracotta/30 hover:shadow-lg"
+    >
       <ProductImage kind={product.imageKind} tone={tone} />
 
       <div className="flex flex-1 flex-col p-5">
@@ -29,15 +34,8 @@ export function ProductCard({ product }: { product: Product }) {
 
         <p className="mt-2 text-sm text-ink/65">{product.description}</p>
 
-        <div className="mt-4 flex flex-wrap gap-2">
-          {product.packSizes.map((pack) => (
-            <span
-              key={pack.size}
-              className="rounded-full border border-mustard/20 bg-cream px-3 py-1 text-xs font-medium text-ink/80"
-            >
-              {pack.size} · {formatPrice(pack.price)}
-            </span>
-          ))}
+        <div className="mt-4">
+          <PackSizeGrid packSizes={product.packSizes} variant="compact" />
         </div>
 
         {!product.edible && (
@@ -45,7 +43,11 @@ export function ProductCard({ product }: { product: Product }) {
             For external / industrial use only. Not for consumption.
           </p>
         )}
+
+        <span className="mt-4 inline-flex items-center gap-1 text-sm font-semibold text-terracotta-dark opacity-0 transition-opacity group-hover:opacity-100">
+          View details →
+        </span>
       </div>
-    </div>
+    </Link>
   );
 }
