@@ -17,15 +17,15 @@ export function CategoryGrid() {
         </p>
       </div>
 
-      <div className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+      <div className="mx-auto mt-12 grid max-w-2xl grid-cols-1 gap-6 sm:grid-cols-2">
         {CATEGORIES.map((category) => (
           <Link
             key={category.slug}
             href={`/catalog?category=${category.slug}`}
-            className="group flex flex-col rounded-2xl border border-mustard/15 bg-white/60 p-6 shadow-sm transition-all hover:-translate-y-1 hover:border-terracotta/30 hover:shadow-lg"
+            className="group flex aspect-square flex-col items-center justify-center rounded-2xl border border-mustard/15 bg-white/60 p-6 text-center shadow-sm transition-all hover:-translate-y-1 hover:border-terracotta/30 hover:shadow-lg"
           >
             <span
-              className={`flex h-12 w-12 items-center justify-center rounded-xl ${category.accent}`}
+              className={`flex h-14 w-14 items-center justify-center rounded-xl ${category.accent}`}
             >
               {category.icon}
             </span>

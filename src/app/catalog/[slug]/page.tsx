@@ -10,8 +10,6 @@ import { PRODUCTS, getProductBySlug } from "@/lib/products";
 const TONE_BY_CATEGORY: Record<string, string> = {
   "edible-oil": "bg-mustard/10 text-mustard-light",
   "non-edible-oil": "bg-terracotta/10 text-terracotta",
-  masalas: "bg-leaf/10 text-leaf",
-  papad: "bg-mustard/10 text-mustard-light",
 };
 
 export function generateStaticParams() {
@@ -45,7 +43,7 @@ export default async function ProductDetailPage({
           </Link>
 
           <div className="mt-8 grid gap-10 md:grid-cols-2 md:items-start">
-            <ProductImage kind={product.imageKind} tone={tone} size="lg" />
+            <ProductImage tone={tone} size="lg" />
 
             <div>
               <div className="flex flex-wrap items-center gap-2">

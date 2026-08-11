@@ -2,24 +2,24 @@ import { SECTION_IDS } from "@/lib/site-config";
 
 const FEATURES = [
   {
-    title: "Cold-Pressed, Never Refined",
+    title: "Cold-Pressed & Wood-Pressed",
     description:
-      "Our oils are extracted the traditional ghani way — low heat, no chemical solvents, so the natural nutrients and aroma stay intact.",
+      "Our oils are extracted the traditional wooden ghani way — low heat, no chemical solvents, so the natural nutrients and aroma stay intact.",
   },
   {
-    title: "Small-Batch Masalas",
+    title: "Handpicked, High-Quality Seeds",
     description:
-      "Spices are sourced whole, roasted, and stone-ground in small batches so every packet reaches you full of flavour.",
+      "We purchase premium seeds before every pressing, so purity starts right at the raw material.",
   },
   {
-    title: "Handmade Papad",
+    title: "Zero Preservatives, Ever",
     description:
-      "Rolled and sun-dried by hand using recipes passed down through generations — no shortcuts, no additives.",
+      "No preservatives, no additives — just pure oil, exactly as nature intended.",
   },
   {
-    title: "Direct From Our Farms",
+    title: "No Middlemen, Just Quality",
     description:
-      "We work directly with growers, cutting out middlemen so quality stays high and prices stay fair.",
+      "From sourcing seeds to bottling oil, we manage the process ourselves — keeping quality high and pricing fair.",
   },
 ];
 
@@ -36,11 +36,11 @@ export function WhyChooseUs() {
               Rooted in tradition, trusted in every home
             </h2>
             <p className="mt-5 text-ink/70">
-              Sujalam Agro Foods started with a simple idea — food should be
-              made the way our grandparents made it. No shortcuts, no
-              artificial additives, just honest ingredients processed with
-              care. Today, that same philosophy goes into every bottle of
-              oil, every blend of masala, and every papad we roll.
+              At Sujalam Agro Foods, we bring the ancient tradition of
+              kacchi ghani straight to your home. By carefully selecting
+              high-quality seeds and wood-pressing them ourselves, we
+              retain maximum nutrients. Pure, cold-pressed, and always
+              preservative-free.
             </p>
           </div>
 

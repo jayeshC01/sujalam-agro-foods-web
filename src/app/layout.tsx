@@ -15,9 +15,9 @@ const bodyFont = Work_Sans({
 });
 
 export const metadata: Metadata = {
-  title: "Sujalam Agro Foods | Pure, Cold-Pressed Oils, Masalas & Papad",
+  title: "Sujalam Agro Foods | Pure, Cold-Pressed & Wood-Pressed Oils",
   description:
-    "Sujalam Agro Foods brings you traditionally crafted, cold-pressed edible & non-edible oils, authentic masalas, and handmade papad — straight from farm to home.",
+    "Sujalam Agro Foods brings you traditionally wood-pressed, cold-pressed edible & non-edible oils — made from handpicked, high-quality seeds with zero preservatives.",
 };
 
 export default function RootLayout({ children }: LayoutProps<"/">) {

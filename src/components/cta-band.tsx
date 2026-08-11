@@ -9,12 +9,12 @@ export function CtaBand() {
           className="pointer-events-none absolute -left-16 -top-16 h-64 w-64 rounded-full bg-mustard/20 blur-3xl"
         />
         <h2 className="font-serif text-3xl font-semibold tracking-tight sm:text-4xl">
-          Taste the difference of tradition
+          Experience the purity of tradition
         </h2>
         <p className="mx-auto mt-4 max-w-xl text-cream/85">
-          Explore our full catalog of edible &amp; non-edible oils, masalas,
-          and papad — or reach out and we&apos;ll help you find the right
-          product.
+          Explore our complete range of pure, wood-pressed edible and
+          non-edible oils. Not sure where to start? Reach out, and
+          we&apos;ll gladly help you find the perfect fit for your needs.
         </p>
         <div className="mt-8 flex flex-wrap items-center justify-center gap-4">
           <Link

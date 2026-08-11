@@ -5,8 +5,6 @@ import { ProductImage } from "@/components/product-image";
 const TONE_BY_CATEGORY: Record<string, string> = {
   "edible-oil": "bg-mustard/10 text-mustard-light",
   "non-edible-oil": "bg-terracotta/10 text-terracotta",
-  masalas: "bg-leaf/10 text-leaf",
-  papad: "bg-mustard/10 text-mustard-light",
 };
 
 export function ProductCard({ product }: { product: Product }) {
@@ -18,7 +16,7 @@ export function ProductCard({ product }: { product: Product }) {
       href={`/catalog/${product.slug}`}
       className="group flex flex-col overflow-hidden rounded-2xl border border-mustard/15 bg-white/60 shadow-sm transition-all hover:-translate-y-1 hover:border-terracotta/30 hover:shadow-lg"
     >
-      <ProductImage kind={product.imageKind} tone={tone} />
+      <ProductImage tone={tone} />
 
       <div className="flex flex-1 flex-col p-5">
         <div className="flex items-start justify-between gap-2">

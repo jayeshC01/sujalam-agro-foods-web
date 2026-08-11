@@ -1,5 +1,3 @@
-export type ProductImageKind = "bottle" | "pouch" | "disc";
-
 export type PackSize = {
   size: string;
   price: number;
@@ -10,10 +8,9 @@ export type Product = {
   name: string;
   category: string;
   edible: boolean;
-  imageKind: ProductImageKind;
   description: string;
   packSizes: PackSize[];
-  /** 5-6 punchy, commonly-cited benefits. Oils only — omitted for papad/masala. */
+  /** 5-6 punchy, commonly-cited benefits. */
   benefits?: string[];
   shelfLifeMonths: number;
 };
@@ -28,9 +25,8 @@ export const PRODUCTS: Product[] = [
     name: "Mustard Oil",
     category: "edible-oil",
     edible: true,
-    imageKind: "bottle",
     description:
-      "Cold-pressed for a sharp, pungent aroma — perfect for pickles and everyday tadka.",
+      "Cold-pressed & wood-pressed (kacchi ghani) for a sharp, pungent aroma — perfect for pickles and everyday tadka.",
     packSizes: [
       { size: "500 ml", price: 165 },
       { size: "1 L", price: 300 },
@@ -41,7 +37,7 @@ export const PRODUCTS: Product[] = [
       "Stimulates digestive enzymes, easing bloating and indigestion",
       "Warming Ayurvedic properties that aid circulation",
       "Nourishes the scalp and strengthens hair follicles, reducing hair fall & dandruff",
-      "Cold-pressed without heat, so natural nutrients and aroma stay intact",
+      "Cold-pressed using a traditional wooden ghani, so natural nutrients and aroma stay intact",
     ],
     shelfLifeMonths: DEFAULT_SHELF_LIFE_MONTHS,
   },
@@ -50,9 +46,8 @@ export const PRODUCTS: Product[] = [
     name: "Coconut Oil",
     category: "edible-oil",
     edible: true,
-    imageKind: "bottle",
     description:
-      "Wood-pressed coconut oil with a naturally sweet aroma, ideal for cooking and hair care.",
+      "Cold-pressed & wood-pressed (kacchi ghani) coconut oil with a naturally sweet aroma, ideal for cooking and hair care.",
     packSizes: [
       { size: "500 ml", price: 270 },
       { size: "1 L", price: 500 },
@@ -63,7 +58,7 @@ export const PRODUCTS: Product[] = [
       "Moisturizes skin and supports collagen and wound healing",
       "Lauric acid content nourishes hair from root to tip",
       "Antimicrobial and anti-inflammatory — soothes skin and digestion",
-      "Cold/wood-pressed to retain natural flavour and nutrition",
+      "Cold-pressed using a traditional wooden ghani to retain natural flavour and nutrition",
     ],
     shelfLifeMonths: DEFAULT_SHELF_LIFE_MONTHS,
   },
@@ -72,9 +67,8 @@ export const PRODUCTS: Product[] = [
     name: "Sesame Oil",
     category: "edible-oil",
     edible: true,
-    imageKind: "bottle",
     description:
-      "Stone-pressed til oil with a rich, nutty flavour — a South Indian kitchen staple.",
+      "Cold-pressed & wood-pressed (kacchi ghani) til oil with a rich, nutty flavour — a South Indian kitchen staple.",
     packSizes: [
       { size: "70 ml", price: 50 },
       { size: "100 ml", price: 65 },
@@ -97,9 +91,8 @@ export const PRODUCTS: Product[] = [
     name: "Kardai Oil",
     category: "edible-oil",
     edible: true,
-    imageKind: "bottle",
     description:
-      "Cold-pressed safflower (kardai) oil, light on the palate and easy to digest.",
+      "Cold-pressed & wood-pressed (kacchi ghani) safflower (kardai) oil, light on the palate and easy to digest.",
     packSizes: [
       { size: "500 ml", price: 270 },
       { size: "1 L", price: 500 },
@@ -119,9 +112,8 @@ export const PRODUCTS: Product[] = [
     name: "Almond Oil",
     category: "edible-oil",
     edible: true,
-    imageKind: "bottle",
     description:
-      "Pure cold-pressed almond oil, prized for cooking and skincare alike.",
+      "Pure cold-pressed & wood-pressed (kacchi ghani) almond oil, prized for cooking and skincare alike.",
     packSizes: [
       { size: "70 ml", price: 95 },
       { size: "100 ml", price: 130 },
@@ -144,7 +136,6 @@ export const PRODUCTS: Product[] = [
     name: "Erand Oil (Castor)",
     category: "non-edible-oil",
     edible: false,
-    imageKind: "bottle",
     description:
       "Cold-pressed castor oil for external and industrial use — not for consumption.",
     packSizes: [
@@ -166,7 +157,6 @@ export const PRODUCTS: Product[] = [
     name: "Mohata Oil",
     category: "non-edible-oil",
     edible: false,
-    imageKind: "bottle",
     description:
       "Traditionally extracted mahua (mohata) oil for external application.",
     packSizes: [
@@ -189,7 +179,6 @@ export const PRODUCTS: Product[] = [
     name: "Diva Oil",
     category: "non-edible-oil",
     edible: false,
-    imageKind: "bottle",
     description:
       "Pure lamp oil for diyas — clean-burning and traditionally made.",
     packSizes: [
@@ -204,50 +193,6 @@ export const PRODUCTS: Product[] = [
       "Made for daily pooja and festive lighting",
       "For lamp and ritual use only — not for consumption",
     ],
-    shelfLifeMonths: DEFAULT_SHELF_LIFE_MONTHS,
-  },
-  {
-    slug: "nagli-papad",
-    name: "Nagli Papad",
-    category: "papad",
-    edible: true,
-    imageKind: "disc",
-    description:
-      "Sun-dried finger-millet (nagli) papad, rolled fresh using a traditional recipe.",
-    packSizes: [{ size: "200 g", price: 120 }],
-    shelfLifeMonths: DEFAULT_SHELF_LIFE_MONTHS,
-  },
-  {
-    slug: "urad-papad",
-    name: "Urad Papad",
-    category: "papad",
-    edible: true,
-    imageKind: "disc",
-    description:
-      "Crisp urad dal papad, hand-rolled and sun-dried the traditional way.",
-    packSizes: [{ size: "200 g", price: 150 }],
-    shelfLifeMonths: DEFAULT_SHELF_LIFE_MONTHS,
-  },
-  {
-    slug: "garam-masala",
-    name: "Garam Masala",
-    category: "masalas",
-    edible: true,
-    imageKind: "pouch",
-    description:
-      "Stone-ground blend of whole spices for that authentic home-style aroma.",
-    packSizes: [{ size: "100 g", price: 90 }],
-    shelfLifeMonths: DEFAULT_SHELF_LIFE_MONTHS,
-  },
-  {
-    slug: "kitchen-king-masala",
-    name: "Kitchen King Masala",
-    category: "masalas",
-    edible: true,
-    imageKind: "pouch",
-    description:
-      "An all-purpose spice blend that elevates everyday sabzis and curries.",
-    packSizes: [{ size: "100 g", price: 85 }],
     shelfLifeMonths: DEFAULT_SHELF_LIFE_MONTHS,
   },
 ];

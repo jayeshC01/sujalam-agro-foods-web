@@ -23,7 +23,8 @@ export const CATEGORIES: Category[] = [
   {
     slug: "edible-oil",
     name: "Edible Oils",
-    description: "Cold-pressed groundnut, mustard & sesame oils for daily cooking.",
+    description:
+      "Cold-pressed, wood-pressed mustard, coconut, sesame, kardai & almond oils for daily cooking.",
     accent: "bg-mustard/15 text-mustard-light",
     icon: (
       <svg {...iconProps}>
@@ -35,36 +36,13 @@ export const CATEGORIES: Category[] = [
   {
     slug: "non-edible-oil",
     name: "Non-Edible Oils",
-    description: "Pure massage & wellness oils, cold-pressed for skin and body care.",
+    description:
+      "Cold-pressed castor & mahua oils for external use, plus traditional diya oil for pooja.",
     accent: "bg-terracotta/15 text-terracotta",
     icon: (
       <svg {...iconProps}>
         <path d="M12 2.5 8 8a5.5 5.5 0 1 0 8 0l-4-5.5Z" />
         <path d="M9.5 14a2.5 2.5 0 0 0 2.5 2.5" />
-      </svg>
-    ),
-  },
-  {
-    slug: "masalas",
-    name: "Masalas",
-    description: "Stone-ground spice blends made in small batches for full flavour.",
-    accent: "bg-leaf/15 text-leaf",
-    icon: (
-      <svg {...iconProps}>
-        <path d="M4 10a8 8 0 0 1 16 0v6a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2v-6Z" />
-        <path d="M8 10h8M9 14h6" />
-      </svg>
-    ),
-  },
-  {
-    slug: "papad",
-    name: "Papad",
-    description: "Sun-dried, handmade papad rolled fresh using traditional recipes.",
-    accent: "bg-mustard/15 text-mustard-light",
-    icon: (
-      <svg {...iconProps}>
-        <circle cx="12" cy="12" r="8.5" />
-        <path d="M12 3.5v17M4.6 7.5l14.8 9M4.6 16.5l14.8-9" />
       </svg>
     ),
   },

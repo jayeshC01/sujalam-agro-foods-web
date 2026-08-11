@@ -11,8 +11,10 @@ export function SiteFooter() {
             Sujalam Agro Foods
           </span>
           <p className="mt-3 text-sm text-cream/60">
-            Pure, cold-pressed oils, hand-blended masalas, and handmade
-            papad — crafted the traditional way.
+            Sujalam Agro Foods brings you premium wood-pressed oils—both
+            edible and non-edible. We source the finest seeds and extract
+            them in-house using a traditional kacchi ghani, ensuring pure,
+            cold-pressed goodness with absolutely no preservatives.
           </p>
         </div>
 

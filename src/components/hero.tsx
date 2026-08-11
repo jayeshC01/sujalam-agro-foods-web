@@ -2,9 +2,9 @@ import Link from "next/link";
 import { CATEGORIES } from "@/lib/categories";
 
 const STATS = [
-  { value: `${CATEGORIES.length}`, label: "Product Ranges" },
-  { value: "0%", label: "Artificial Additives" },
-  { value: "100%", label: "Traditional Process" },
+  { value: `${CATEGORIES.length}`, label: "Oil Ranges" },
+  { value: "0", label: "Preservatives Added" },
+  { value: "100%", label: "Cold & Wood-Pressed" },
 ];
 
 export function Hero() {
@@ -23,19 +23,20 @@ export function Hero() {
       <div className="relative mx-auto grid max-w-6xl gap-12 px-6 py-20 md:grid-cols-2 md:items-center md:py-28">
         <div>
           <span className="inline-flex items-center gap-2 rounded-full bg-cream/10 px-4 py-1.5 text-xs font-semibold uppercase tracking-[0.2em] text-mustard-light ring-1 ring-cream/20">
-            Farm to Home, Since Generations
+            Nature&rsquo;s Finest, Wood-Pressed the Traditional Way
           </span>
 
           <h1 className="mt-6 font-serif text-4xl font-semibold leading-[1.1] tracking-tight sm:text-5xl lg:text-6xl">
-            Pure oils, real spices,
-            <br className="hidden sm:block" /> made the traditional way
+            Pure oils, pressed
+            <br className="hidden sm:block" /> the traditional way
           </h1>
 
           <p className="mt-6 max-w-lg text-lg text-cream/80">
-            Sujalam Agro Foods brings you cold-pressed edible &amp;
-            non-edible oils, hand-blended masalas, and sun-dried papad —
-            crafted using methods passed down through generations, with
-            nothing artificial added.
+            At Sujalam Agro Foods, we bring the ancient tradition of kacchi
+            ghani straight to your home. By carefully selecting
+            high-quality seeds and wood-pressing them ourselves, we retain
+            maximum nutrients. Pure, cold-pressed, and always
+            preservative-free.
           </p>
 
           <div className="mt-9 flex flex-wrap items-center gap-4">
