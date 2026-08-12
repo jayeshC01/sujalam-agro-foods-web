@@ -4,6 +4,7 @@ import { SiteFooter } from "@/components/site-footer";
 import { SiteHeader } from "@/components/site-header";
 import { ProductGallery } from "@/components/product-gallery";
 import { PackSizeGrid } from "@/components/pack-size-grid";
+import { TrustBadges } from "@/components/trust-badges";
 import { CATEGORIES } from "@/lib/categories";
 import { PRODUCTS, getProductBySlug } from "@/lib/products";
 
@@ -122,7 +123,7 @@ export default async function ProductDetailPage({
                 Available Packing &amp; Pricing
               </h2>
               <div className="mt-3">
-                <PackSizeGrid packSizes={product.packSizes} variant="detailed" />
+                <PackSizeGrid packSizes={product.packSizes} />
               </div>
 
               <Link
@@ -131,6 +132,8 @@ export default async function ProductDetailPage({
               >
                 Enquire About This Product
               </Link>
+
+              <TrustBadges />
 
               <div className="mt-8 rounded-2xl border border-mustard/20 bg-cream-dark/40 p-6">
                 <h2 className="text-sm font-semibold uppercase tracking-wide text-ink/50">

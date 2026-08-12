@@ -1,16 +1,17 @@
 @import "tailwindcss";
 
 :root {
-  /* Sujalam Agro Foods brand palette — earthy, natural, harvest-inspired */
-  --color-cream: #fbf6ec;
-  --color-cream-dark: #f2e9d8;
-  --color-mustard: #c8891e;
-  --color-mustard-light: #e0a83f;
-  --color-terracotta: #b8562e;
-  --color-terracotta-dark: #9a4423;
-  --color-leaf: #38553a;
-  --color-leaf-dark: #263c28;
-  --color-ink: #2b2117;
+  /* Sujalam Agro Foods brand palette — earthy, natural, harvest-inspired,
+     tuned for richer saturation so the site reads as vibrant, not muted. */
+  --color-cream: #fdf8ec;
+  --color-cream-dark: #f6e7c9;
+  --color-mustard: #d68a0a;
+  --color-mustard-light: #f0ab28;
+  --color-terracotta: #c8481b;
+  --color-terracotta-dark: #9c3712;
+  --color-leaf: #1f7a42;
+  --color-leaf-dark: #123a20;
+  --color-ink: #241608;
 }
 
 @theme inline {

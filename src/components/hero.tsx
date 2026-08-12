@@ -9,15 +9,15 @@ const STATS = [
 
 export function Hero() {
   return (
-    <section className="relative overflow-hidden bg-leaf text-cream">
-      {/* Decorative organic blobs instead of stock photography */}
+    <section className="relative overflow-hidden bg-leaf-dark text-cream">
+      {/* Decorative organic blobs instead of stock photography — matches footer's treatment */}
       <div
         aria-hidden
-        className="pointer-events-none absolute -right-32 -top-32 h-96 w-96 rounded-full bg-mustard/25 blur-3xl"
+        className="pointer-events-none absolute -left-24 -top-24 h-72 w-72 rounded-full bg-mustard/10 blur-3xl"
       />
       <div
         aria-hidden
-        className="pointer-events-none absolute -bottom-40 -left-24 h-96 w-96 rounded-full bg-terracotta/25 blur-3xl"
+        className="pointer-events-none absolute -bottom-24 -right-24 h-72 w-72 rounded-full bg-terracotta/10 blur-3xl"
       />
 
       <div className="relative mx-auto grid max-w-6xl gap-12 px-6 py-20 md:grid-cols-2 md:items-center md:py-28">

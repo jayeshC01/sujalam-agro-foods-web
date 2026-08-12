@@ -12,7 +12,7 @@ const NAV_LINKS = [
 
 export function SiteHeader() {
   return (
-    <header className="sticky top-0 z-50 border-b border-mustard/20 bg-cream/90 backdrop-blur">
+    <header className="sticky top-0 z-50 border-b border-mustard/25 bg-cream-dark shadow-sm">
       <div className="mx-auto flex max-w-6xl items-center justify-between px-6 py-4">
         <Link href="/" className="flex items-center gap-3">
           <span className="flex h-10 w-10 items-center justify-center rounded-full bg-leaf text-cream">

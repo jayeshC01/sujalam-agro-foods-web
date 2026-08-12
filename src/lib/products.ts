@@ -50,10 +50,9 @@ export const PRODUCTS: Product[] = [
     description:
       "Extracted using the traditional kacchi ghani method, our pure Mustard Oil delivers a bold, pungent aroma and rich flavor. Unrefined and nutrient-dense, it is the authentic choice for pickles, curries, and your everyday tadka.",
     packSizes: [
-      { size: "500 ml", price: 165 },
-      { size: "1 L", price: 300 },
-      { size: "5 L", price: 1450 },
-      { size: "15 L", price: 4050 },
+      { size: "500 ml", price: 180 },
+      { size: "1 L", price: 350 },
+      { size: "5 L", price: 1700 },
     ],
     benefits: [
       "Heart-Healthy: Rich in monounsaturated fats that help maintain healthy cholesterol levels.",
@@ -96,6 +95,61 @@ export const PRODUCTS: Product[] = [
     ],
   },
   {
+    slug: "groundnut-oil",
+    name: "Groundnut Oil",
+    category: "edible-oil",
+    edible: true,
+    description:
+      "Extracted using the traditional kacchi ghani method, our pure Groundnut Oil delivers a rich, naturally nutty aroma and hearty flavor. Unrefined and packed with natural plant sterols, it is the ultimate versatile oil for authentic Indian cooking, offering the perfect balance of taste and nutrition.",
+    packSizes: [
+      { size: "500 ml", price: 180 },
+      { size: "1 L", price: 350 },
+      { size: "5 L", price: 1700 },
+    ],
+    benefits: [
+      "Cholesterol Control: Packed with natural phytosterols (plant sterols) that actively help block the absorption of cholesterol in the digestive tract.",
+      "Unique Antioxidants: One of the rare oils to contain Resveratrol (the same heart-healthy antioxidant found in grapes), which helps combat cellular stress.",
+      "Stable & Versatile: Naturally stable under moderate heat, making it perfect for tempering (tadka) and sautéing without destroying its nutrients.",
+      "Sustained Energy: Abundant in oleic acid (Omega-9), providing a clean, sustained energy source that supports a healthy metabolism.",
+      "Skin Nourishment: Rich in natural Vitamin E and emollients; when applied topically, it helps lock in moisture and soothe dry, irritated skin.",
+      "Uncompromised Purity: Wood-pressed extraction ensures the oil retains its deep, roasted aroma and full nutritional profile.",
+    ],
+    shelfLifeMonths: DEFAULT_SHELF_LIFE_MONTHS,
+    extractionMethod: "Traditional Wood-Pressed (Kacchi Ghani)",
+    usage: "Everyday Cooking, Sautéing, and Traditional Indian Dishes.",
+    preservativesNote: "100% Natural – None Added",
+    storageNote: "Store in a cool, dry place, away from direct sunlight.",
+    badges: [
+      "100% Wood-Pressed (Kacchi Ghani)",
+      "Zero Preservatives",
+      "Pure, Cold Extraction",
+    ],
+    kicker: "Nature’s Finest Groundnuts, Pressed the Traditional Way",
+    modernUses: [
+      "Macro-Friendly Meal Prep: The go-to healthy fat for high-protein meal prep, offering a deliciously nutty base for chicken, tofu, and stir-fries.",
+      "Nutty Salad Dressings: Whisk into vinaigrettes for a rich, peanut-forward flavor in Thai-style or Asian-fusion salads.",
+      "Post-Workout Massage: Traditionally warmed and massaged into tired joints and muscles to help soothe soreness after heavy training.",
+      "Skin Barrier Support: Massage a few drops directly onto dry skin patches to lock in moisture and utilize its natural Vitamin E content.",
+    ],
+    nutritionalSnapshot: [
+      {
+        label: "Primary Fats",
+        value:
+          "~50% MUFA (Oleic Acid / Omega-9) & ~30% PUFA (Linoleic Acid).",
+      },
+      {
+        label: "Key Superpower",
+        value:
+          "Exceptionally high in Phytosterols (plant cholesterols) that competitively inhibit the absorption of bad cholesterol in the gut.",
+      },
+      {
+        label: "Fitness Note",
+        value:
+          "Contains Resveratrol, a unique antioxidant known to support cardiovascular health and healthy blood flow during exercise.",
+      },
+    ],
+  },
+  {
     slug: "coconut-oil",
     name: "Coconut Oil",
     category: "edible-oil",
@@ -103,10 +157,9 @@ export const PRODUCTS: Product[] = [
     description:
       "Extracted using the traditional kacchi ghani method, our pure Coconut Oil boasts a naturally sweet aroma and delicate flavor. Unrefined and deeply nourishing, it is the perfect multipurpose oil for wholesome cooking, baking, and natural skin and hair care.",
     packSizes: [
-      { size: "500 ml", price: 270 },
-      { size: "1 L", price: 500 },
-      { size: "5 L", price: 2400 },
-      { size: "15 L", price: 6900 },
+      { size: "500 ml", price: 355 },
+      { size: "1 L", price: 700 },
+      { size: "5 L", price: 3450 },
     ],
     benefits: [
       "Quick Natural Energy: Rich in Medium-Chain Triglycerides (MCTs) that the body easily converts into clean, usable energy.",
@@ -160,13 +213,12 @@ export const PRODUCTS: Product[] = [
     description:
       "Extracted using the traditional kacchi ghani method, our pure Sesame (Til) Oil delivers a rich, naturally nutty flavor. Unrefined and packed with antioxidants, it is an essential staple for authentic South Indian cooking, Ayurvedic rituals, and everyday wellness.",
     packSizes: [
-      { size: "70 ml", price: 50 },
-      { size: "100 ml", price: 65 },
-      { size: "200 ml", price: 120 },
-      { size: "500 ml", price: 270 },
-      { size: "1 L", price: 500 },
-      { size: "5 L", price: 2400 },
-      { size: "15 L", price: 6900 },
+      { size: "70 ml", price: 46 },
+      { size: "100 ml", price: 66 },
+      { size: "200 ml", price: 132 },
+      { size: "500 ml", price: 330 },
+      { size: "1 L", price: 650 },
+      { size: "5 L", price: 3200 },
     ],
     benefits: [
       "Nutrient-Dense: Rich in Vitamin E, Vitamin K, and essential Omega-3 & Omega-6 fatty acids for overall wellness.",
@@ -219,10 +271,9 @@ export const PRODUCTS: Product[] = [
     description:
       "Extracted using the traditional kacchi ghani method, our pure Safflower (Kardai) Oil is exceptionally light and easy to digest. With its mild, neutral flavor, it is the perfect everyday cooking oil for wholesome, heart-healthy meals that won't overpower your dishes.",
     packSizes: [
-      { size: "500 ml", price: 270 },
-      { size: "1 L", price: 500 },
-      { size: "5 L", price: 2400 },
-      { size: "15 L", price: 6900 },
+      { size: "500 ml", price: 230 },
+      { size: "1 L", price: 450 },
+      { size: "5 L", price: 2200 },
     ],
     benefits: [
       "Heart-Healthy Fats: High in linoleic acid to help lower LDL (bad) cholesterol and promote cardiovascular health.",
@@ -273,11 +324,11 @@ export const PRODUCTS: Product[] = [
     description:
       "Extracted using the traditional kacchi ghani method, our pure Almond Oil is a luxurious, multi-purpose elixir. Prized for its delicate, nutty flavor in culinary dishes, it is equally celebrated as a deeply nourishing treatment for radiant skin and healthy hair.",
     packSizes: [
-      { size: "70 ml", price: 95 },
-      { size: "100 ml", price: 130 },
-      { size: "200 ml", price: 230 },
-      { size: "500 ml", price: 540 },
-      { size: "1 L", price: 1000 },
+      { size: "70 ml", price: 210 },
+      { size: "100 ml", price: 300 },
+      { size: "200 ml", price: 600 },
+      { size: "500 ml", price: 1500 },
+      { size: "1 L", price: 2990 },
     ],
     benefits: [
       "Youthful Glow: Rich in natural Vitamin E, which helps repair collagen and visibly reduce fine lines.",
@@ -328,10 +379,9 @@ export const PRODUCTS: Product[] = [
     description:
       "Extracted using the traditional kacchi ghani method, our pure Sunflower Oil is incredibly light, versatile, and packed with natural goodness. With its mild flavor and high heat tolerance, it is the ideal everyday cooking oil for frying, baking, and sautéing—ensuring your food’s natural flavors take center stage.",
     packSizes: [
-      { size: "500 ml", price: 140 },
-      { size: "1 L", price: 260 },
-      { size: "5 L", price: 1250 },
-      { size: "15 L", price: 3600 },
+      { size: "500 ml", price: 218 },
+      { size: "1 L", price: 425 },
+      { size: "5 L", price: 2075 },
     ],
     benefits: [
       "Light & Versatile: Features a smooth, neutral flavor profile that makes it perfect for a wide variety of traditional Indian and global dishes.",
@@ -382,10 +432,11 @@ export const PRODUCTS: Product[] = [
     description:
       "Extracted through a pure, cold-pressing method, our Castor (Erand) Oil is a thick, deeply nourishing oil designed for topical and wellness applications. Rich in beneficial fatty acids, it is the ultimate natural remedy for hair vitality, skin hydration, and traditional massage. (Strictly not for consumption).",
     packSizes: [
+      { size: "100 ml", price: 26 },
+      { size: "200 ml", price: 52 },
       { size: "500 ml", price: 140 },
       { size: "1 L", price: 250 },
       { size: "5 L", price: 1200 },
-      { size: "15 L", price: 3450 },
     ],
     benefits: [
       "Intense Hydration: Deeply moisturizes severely dry, cracked skin and effectively locks in moisture.",
@@ -415,11 +466,10 @@ export const PRODUCTS: Product[] = [
     description:
       "Extracted through a pure, cold-pressing method, our Mohata (Mahua) Oil is a time-honored botanical oil revered for its therapeutic properties. Rich in natural emollients, it is an exceptional choice for traditional body massage, skin nourishment, and artisanal soap making. (Strictly not for consumption).",
     packSizes: [
-      { size: "200 ml", price: 75 },
-      { size: "500 ml", price: 165 },
-      { size: "1 L", price: 300 },
-      { size: "5 L", price: 1450 },
-      { size: "15 L", price: 4050 },
+      { size: "100 ml", price: 150 },
+      { size: "200 ml", price: 300 },
+      { size: "500 ml", price: 750 },
+      { size: "1 L", price: 1490 },
     ],
     benefits: [
       "Deeply Emollient: Rich in natural emollients that deeply penetrate to soften, smooth, and hydrate rough skin.",
@@ -451,8 +501,6 @@ export const PRODUCTS: Product[] = [
     packSizes: [
       { size: "500 ml", price: 110 },
       { size: "1 L", price: 200 },
-      { size: "5 L", price: 950 },
-      { size: "15 L", price: 2700 },
     ],
     benefits: [
       "Clean & Steady Flame: Burns bright and steady with minimal soot, helping keep your pooja space and silver/brass diyas pristine.",

@@ -3,10 +3,14 @@ import Link from "next/link";
 export function CtaBand() {
   return (
     <section className="mx-auto max-w-6xl px-6 py-16">
-      <div className="relative overflow-hidden rounded-3xl bg-terracotta px-8 py-14 text-center text-cream sm:px-16">
+      <div className="relative overflow-hidden rounded-3xl bg-gradient-to-br from-terracotta to-terracotta-dark px-8 py-14 text-center text-cream sm:px-16">
         <div
           aria-hidden
-          className="pointer-events-none absolute -left-16 -top-16 h-64 w-64 rounded-full bg-mustard/20 blur-3xl"
+          className="pointer-events-none absolute -left-16 -top-16 h-64 w-64 rounded-full bg-mustard/30 blur-3xl"
+        />
+        <div
+          aria-hidden
+          className="pointer-events-none absolute -bottom-20 -right-16 h-64 w-64 rounded-full bg-mustard-light/20 blur-3xl"
         />
         <h2 className="font-serif text-3xl font-semibold tracking-tight sm:text-4xl">
           Experience the purity of tradition

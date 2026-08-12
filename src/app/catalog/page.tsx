@@ -28,8 +28,7 @@ export default async function CatalogPage({ searchParams }: CatalogPageProps) {
             {selected ? selected.name : "Our full catalog"}
           </h1>
           <p className="mt-4 text-ink/70">
-            Pricing shown below is indicative and subject to change — reach
-            out and we&apos;ll confirm current rates for your order.
+            Pure, wood-pressed oils — crafted the traditional way.
           </p>
         </section>
 
