@@ -24,7 +24,12 @@ export function CartPageClient() {
   const lineItems = items
     .map((item) => {
       const product = getProductBySlug(item.slug);
-      return product ? { ...item, name: product.name } : null;
+      const pack = product?.packSizes.find((p) => p.size === item.packSize);
+      // Always trust the catalog price, never the value stored in the cart —
+      // the cart lives in localStorage and can be edited by the user.
+      return product && pack
+        ? { ...item, name: product.name, price: pack.price }
+        : null;
     })
     .filter((item): item is NonNullable<typeof item> => item !== null);
 
