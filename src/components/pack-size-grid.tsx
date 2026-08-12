@@ -24,7 +24,7 @@ export function PackSizeGrid({ packSizes }: { packSizes: PackSize[] }) {
                 {pack.size}
               </div>
             </div>
-            <div className="bg-white/80 px-4 py-3 text-center">
+            <div className="bg-white px-4 py-3 text-center">
               <div className="font-serif text-xl font-semibold text-terracotta-dark">
                 {formatPrice(pack.price)}
               </div>

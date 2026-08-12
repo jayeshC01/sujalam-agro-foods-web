@@ -25,7 +25,7 @@ const FEATURES = [
 
 export function WhyChooseUs() {
   return (
-    <section id={SECTION_IDS.ourStory} className="bg-cream-dark/60">
+    <section id={SECTION_IDS.ourStory} className="bg-cream-dark">
       <div className="mx-auto max-w-6xl px-6 py-20">
         <div className="grid gap-12 md:grid-cols-2 md:items-center">
           <div>

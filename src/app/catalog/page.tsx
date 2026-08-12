@@ -20,7 +20,7 @@ export default async function CatalogPage({ searchParams }: CatalogPageProps) {
     <>
       <SiteHeader />
       <main className="flex-1">
-        <section className="mx-auto max-w-3xl px-6 pb-10 pt-24 text-center">
+        <section className="mx-auto max-w-3xl px-6 pb-10 pt-12 text-center">
           <span className="text-xs font-semibold uppercase tracking-[0.25em] text-terracotta-dark">
             Catalog
           </span>
@@ -38,7 +38,7 @@ export default async function CatalogPage({ searchParams }: CatalogPageProps) {
             className={`rounded-full px-4 py-2 text-sm font-semibold transition-colors ${
               !selected
                 ? "bg-terracotta text-cream"
-                : "bg-white/60 text-ink/70 hover:bg-white"
+                : "border border-mustard/15 bg-white text-ink/70 hover:border-terracotta/30"
             }`}
           >
             All Products
@@ -50,7 +50,7 @@ export default async function CatalogPage({ searchParams }: CatalogPageProps) {
               className={`rounded-full px-4 py-2 text-sm font-semibold transition-colors ${
                 selected?.slug === item.slug
                   ? "bg-terracotta text-cream"
-                  : "bg-white/60 text-ink/70 hover:bg-white"
+                  : "border border-mustard/15 bg-white text-ink/70 hover:border-terracotta/30"
               }`}
             >
               {item.name}

@@ -22,7 +22,7 @@ export function CategoryGrid() {
           <Link
             key={category.slug}
             href={`/catalog?category=${category.slug}`}
-            className="group flex aspect-square flex-col items-center justify-center rounded-2xl border border-mustard/15 bg-white/60 p-6 text-center shadow-sm transition-all hover:-translate-y-1 hover:border-terracotta/30 hover:shadow-lg"
+            className="group flex aspect-square flex-col items-center justify-center rounded-2xl border border-mustard/15 bg-white p-6 text-center shadow-sm transition-all hover:-translate-y-1 hover:border-terracotta/30 hover:shadow-lg"
           >
             <span
               className={`flex h-14 w-14 items-center justify-center rounded-xl ${category.accent}`}

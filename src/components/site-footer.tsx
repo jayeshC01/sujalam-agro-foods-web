@@ -27,8 +27,8 @@ export function SiteFooter() {
         className="pointer-events-none absolute -bottom-24 -right-24 h-72 w-72 rounded-full bg-terracotta/10 blur-3xl"
       />
 
-      <div className="relative mx-auto grid max-w-6xl gap-8 px-6 py-10 sm:grid-cols-2 md:grid-cols-4">
-        <div>
+      <div className="relative mx-auto flex max-w-6xl flex-col gap-y-8 px-6 py-10 sm:grid sm:grid-cols-2 sm:gap-x-6 lg:flex lg:flex-row lg:flex-wrap lg:justify-between lg:gap-x-8">
+        <div className="lg:w-56">
           <div className="flex items-center gap-3">
             <span className="flex h-9 w-9 items-center justify-center rounded-full bg-mustard text-ink">
               <svg
@@ -53,31 +53,9 @@ export function SiteFooter() {
             Bringing the ancient tradition of kacchi ghani straight to your
             home. 100% pure, wood-pressed oils with zero preservatives.
           </p>
-          <a
-            href={SOCIALS.instagram}
-            target="_blank"
-            rel="noopener noreferrer"
-            aria-label="Sujalam Agro Foods on Instagram"
-            className="mt-3 inline-flex h-8 w-8 items-center justify-center rounded-full border border-cream/20 text-cream/70 transition-colors hover:border-mustard-light hover:text-mustard-light"
-          >
-            <svg
-              width="17"
-              height="17"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              strokeWidth="1.8"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-            >
-              <rect x="3" y="3" width="18" height="18" rx="5" />
-              <circle cx="12" cy="12" r="4" />
-              <path d="M17.5 6.5h.01" />
-            </svg>
-          </a>
         </div>
 
-        <div>
+        <div className="lg:w-32">
           <h3 className="text-sm font-semibold uppercase tracking-wide text-mustard-light">
             Catalog
           </h3>
@@ -95,7 +73,7 @@ export function SiteFooter() {
           </ul>
         </div>
 
-        <div>
+        <div className="lg:w-40">
           <h3 className="text-sm font-semibold uppercase tracking-wide text-mustard-light">
             Company
           </h3>
@@ -135,7 +113,30 @@ export function SiteFooter() {
           </ul>
         </div>
 
-        <div>
+        <div className="lg:w-48">
+          <h3 className="text-sm font-semibold uppercase tracking-wide text-mustard-light">
+            Licensing &amp; Certification
+          </h3>
+          <ul className="mt-4 space-y-3 text-sm">
+            {CERTIFICATIONS.map((cert) => (
+              <li key={cert.name} className="flex items-start gap-2.5">
+                <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-cream shadow-sm">
+                  <span className="text-[8px] font-bold tracking-wide text-leaf-dark">
+                    {cert.wordmark}
+                  </span>
+                </span>
+                <span>
+                  <span className="block text-cream/80">{cert.name}</span>
+                  <span className="block text-[11px] leading-tight text-cream/45">
+                    {cert.detail}
+                  </span>
+                </span>
+              </li>
+            ))}
+          </ul>
+        </div>
+
+        <div className="lg:w-64">
           <h3 className="text-sm font-semibold uppercase tracking-wide text-mustard-light">
             Get in Touch
           </h3>
@@ -157,6 +158,21 @@ export function SiteFooter() {
                 <path d="M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2C10.5 21 3 13.5 3 6a2 2 0 0 1 2-2Z" />
               </svg>
               {CONTACT.phone}
+            </li>
+            <li className="flex items-center gap-2.5">
+              <svg {...contactIconProps} className="shrink-0 text-mustard-light">
+                <rect x="3" y="3" width="18" height="18" rx="5" />
+                <circle cx="12" cy="12" r="4" />
+                <path d="M17.5 6.5h.01" />
+              </svg>
+              <a
+                href={SOCIALS.instagram}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="transition-colors hover:text-mustard-light"
+              >
+                {SOCIALS.instagramHandle}
+              </a>
             </li>
             <li className="flex items-center gap-2.5">
               <svg {...contactIconProps} className="shrink-0 text-mustard-light">
@@ -189,34 +205,6 @@ export function SiteFooter() {
             </svg>
             Place Order via WhatsApp
           </a>
-        </div>
-      </div>
-
-      <div
-        aria-hidden
-        className="relative mx-auto h-[3px] max-w-6xl bg-gradient-to-r from-transparent via-mustard/50 to-transparent"
-      />
-
-      <div className="relative px-6 py-7">
-        <div className="mx-auto flex max-w-5xl flex-wrap items-start justify-center gap-x-8 gap-y-5">
-          {CERTIFICATIONS.map((cert) => (
-            <div
-              key={cert.name}
-              className="flex w-20 flex-col items-center gap-1.5 text-center"
-            >
-              <span className="flex h-12 w-12 items-center justify-center rounded-full bg-cream shadow-md ring-1 ring-mustard/30">
-                <span className="text-[10px] font-bold tracking-wide text-leaf-dark">
-                  {cert.wordmark}
-                </span>
-              </span>
-              <span className="text-[11px] font-semibold uppercase tracking-wide text-cream">
-                {cert.name}
-              </span>
-              <span className="text-[10px] leading-tight text-cream/45">
-                {cert.detail}
-              </span>
-            </div>
-          ))}
         </div>
       </div>
 

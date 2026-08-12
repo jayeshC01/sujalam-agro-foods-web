@@ -2,9 +2,11 @@
 
 :root {
   /* Sujalam Agro Foods brand palette — earthy, natural, harvest-inspired,
-     tuned for richer saturation so the site reads as vibrant, not muted. */
-  --color-cream: #fdf8ec;
-  --color-cream-dark: #f6e7c9;
+     tuned for richer saturation so the site reads as vibrant, not muted.
+     Base surfaces lean bright/near-white for a premium, airy feel rather
+     than a dim, shaded one. */
+  --color-cream: #fffdf9;
+  --color-cream-dark: #f7f2e6;
   --color-mustard: #d68a0a;
   --color-mustard-light: #f0ab28;
   --color-terracotta: #c8481b;

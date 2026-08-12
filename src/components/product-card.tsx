@@ -14,7 +14,7 @@ export function ProductCard({ product }: { product: Product }) {
   return (
     <Link
       href={`/catalog/${product.slug}`}
-      className="group flex flex-col overflow-hidden rounded-2xl border border-mustard/15 bg-white/60 shadow-sm transition-all hover:-translate-y-1 hover:border-terracotta/30 hover:shadow-lg"
+      className="group flex flex-col overflow-hidden rounded-2xl border border-mustard/15 bg-white shadow-sm transition-all hover:-translate-y-1 hover:border-terracotta/30 hover:shadow-lg"
     >
       <ProductImage tone={tone} />
 

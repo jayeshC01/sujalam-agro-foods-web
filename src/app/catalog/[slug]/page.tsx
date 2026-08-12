@@ -87,7 +87,7 @@ export default async function ProductDetailPage({
                 {badges.map((badge) => (
                   <span
                     key={badge}
-                    className="rounded-full border border-mustard/20 bg-white/70 px-3 py-1.5 text-xs font-semibold text-ink/70"
+                    className="rounded-full border border-mustard/20 bg-white px-3 py-1.5 text-xs font-semibold text-ink/70"
                   >
                     {badge}
                   </span>
@@ -135,7 +135,7 @@ export default async function ProductDetailPage({
 
               <TrustBadges />
 
-              <div className="mt-8 rounded-2xl border border-mustard/20 bg-cream-dark/40 p-6">
+              <div className="mt-8 rounded-2xl border border-mustard/20 bg-cream-dark p-6">
                 <h2 className="text-sm font-semibold uppercase tracking-wide text-ink/50">
                   Specifications
                 </h2>
@@ -177,7 +177,7 @@ export default async function ProductDetailPage({
                   return (
                     <li
                       key={benefit}
-                      className="flex items-start gap-3 rounded-xl border border-mustard/15 bg-white/60 p-4 text-sm text-ink/75"
+                      className="flex items-start gap-3 rounded-xl border border-mustard/15 bg-white p-4 text-sm text-ink/75"
                     >
                       <span
                         aria-hidden
@@ -251,7 +251,7 @@ export default async function ProductDetailPage({
               <div className="mt-6 overflow-hidden rounded-2xl border border-mustard/20">
                 <table className="w-full border-collapse text-left text-sm">
                   <thead>
-                    <tr className="bg-cream-dark/60">
+                    <tr className="bg-cream-dark">
                       <th className="px-4 py-3 font-semibold text-ink/70">
                         Nutrient Profile
                       </th>
@@ -262,7 +262,7 @@ export default async function ProductDetailPage({
                   </thead>
                   <tbody className="divide-y divide-mustard/15">
                     {product.nutritionalSnapshot.map((row) => (
-                      <tr key={row.label} className="bg-white/60">
+                      <tr key={row.label} className="bg-white">
                         <td className="w-1/3 px-4 py-3 align-top font-semibold text-ink">
                           {row.label}
                         </td>

@@ -14,6 +14,7 @@ export const CONTACT = {
 export const SOCIALS = {
   // TODO: replace with the real Instagram handle before launch.
   instagram: "https://instagram.com/sujalamagrofoods",
+  instagramHandle: "@sujalamagrofoods",
 };
 
 export const CERTIFICATIONS = [
