@@ -37,7 +37,7 @@ export type Product = {
   nutritionalSnapshot?: NutritionRow[];
 };
 
-// NOTE: All prices below are placeholder/dummy pricing until final rate cards are confirmed.
+// NOTE: Prices below are final as confirmed by the business — update here to change pricing.
 // Shelf life is a common placeholder (6 months from manufacturing) until per-product dates are provided.
 const DEFAULT_SHELF_LIFE_MONTHS = 6;
 
