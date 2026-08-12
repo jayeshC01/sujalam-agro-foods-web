@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import { QuantityStepper } from "@/components/quantity-stepper";
 import { useCart } from "@/lib/cart-context";
 import { formatPrice, type Product } from "@/lib/products";
 
@@ -46,27 +47,11 @@ export function AddToCartPanel({ product }: { product: Product }) {
       </div>
 
       <div className="mt-5 flex flex-wrap items-center gap-4">
-        <div className="flex items-center rounded-full border border-mustard/25">
-          <button
-            type="button"
-            onClick={() => setQuantity((q) => Math.max(1, q - 1))}
-            aria-label="Decrease quantity"
-            className="px-3 py-2 text-ink/70 transition-colors hover:text-terracotta-dark"
-          >
-            −
-          </button>
-          <span className="w-8 text-center text-sm font-semibold text-ink">
-            {quantity}
-          </span>
-          <button
-            type="button"
-            onClick={() => setQuantity((q) => q + 1)}
-            aria-label="Increase quantity"
-            className="px-3 py-2 text-ink/70 transition-colors hover:text-terracotta-dark"
-          >
-            +
-          </button>
-        </div>
+        <QuantityStepper
+          quantity={quantity}
+          onDecrease={() => setQuantity((q) => Math.max(1, q - 1))}
+          onIncrease={() => setQuantity((q) => q + 1)}
+        />
         <span className="text-sm text-ink/50">
           Subtotal:{" "}
           <span className="font-semibold text-terracotta-dark">
