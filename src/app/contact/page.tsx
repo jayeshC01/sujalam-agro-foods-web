@@ -1,7 +1,14 @@
+import type { Metadata } from "next";
 import { ContactForm } from "@/components/contact-form";
 import { SiteFooter } from "@/components/site-footer";
 import { SiteHeader } from "@/components/site-header";
 import { CONTACT } from "@/lib/site-config";
+
+export const metadata: Metadata = {
+  title: "Contact Us",
+  description:
+    "Send Sujalam Agro Foods an enquiry via WhatsApp, or reach us by phone, email, or in person in Nashik, Maharashtra.",
+};
 
 export default async function ContactPage({
   searchParams,

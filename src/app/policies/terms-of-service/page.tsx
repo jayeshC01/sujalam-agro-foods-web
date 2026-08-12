@@ -1,7 +1,13 @@
+import type { Metadata } from "next";
 import Link from "next/link";
 import { SiteFooter } from "@/components/site-footer";
 import { SiteHeader } from "@/components/site-header";
 import { CONTACT } from "@/lib/site-config";
+
+export const metadata: Metadata = {
+  title: "Terms of Service",
+  description: "The terms and conditions for using the Sujalam Agro Foods website and placing orders with us.",
+};
 
 export default function TermsOfServicePage() {
   return (

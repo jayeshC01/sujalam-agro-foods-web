@@ -2,6 +2,9 @@ export const SECTION_IDS = {
   ourStory: "our-story",
 } as const;
 
+// TODO: replace with the real production domain once it's live.
+export const SITE_URL = "https://sujalamagrofoods.com";
+
 export const CONTACT = {
   email: "hello@sujalamagrofoods.com",
   // TODO: temporary business WhatsApp number — replace with the permanent one before launch.

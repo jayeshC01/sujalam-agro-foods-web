@@ -1,9 +1,16 @@
+import type { Metadata } from "next";
 import Link from "next/link";
 import { SiteFooter } from "@/components/site-footer";
 import { SiteHeader } from "@/components/site-header";
 import { ProductCard } from "@/components/product-card";
 import { CATEGORIES } from "@/lib/categories";
 import { PRODUCTS } from "@/lib/products";
+
+export const metadata: Metadata = {
+  title: "Catalog",
+  description:
+    "Browse Sujalam Agro Foods' full range of pure, wood-pressed edible and non-edible oils — crafted the traditional kacchi ghani way.",
+};
 
 type CatalogPageProps = {
   searchParams: Promise<{ category?: string }>;

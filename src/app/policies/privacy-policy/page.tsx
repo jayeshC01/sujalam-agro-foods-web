@@ -1,7 +1,13 @@
+import type { Metadata } from "next";
 import Link from "next/link";
 import { SiteFooter } from "@/components/site-footer";
 import { SiteHeader } from "@/components/site-header";
 import { CONTACT } from "@/lib/site-config";
+
+export const metadata: Metadata = {
+  title: "Privacy Policy",
+  description: "How Sujalam Agro Foods collects, uses, and protects your personal information.",
+};
 
 export default function PrivacyPolicyPage() {
   return (
@@ -16,7 +22,7 @@ export default function PrivacyPolicyPage() {
             Privacy Policy
           </h1>
           <p className="mt-4 text-sm text-ink/50">
-            Last updated: {new Date().toLocaleDateString("en-IN", { year: "numeric", month: "long", day: "numeric" })}
+            Last updated: August 12, 2026
           </p>
 
           <div className="mt-10 space-y-8 text-ink/75">
@@ -38,9 +44,15 @@ export default function PrivacyPolicyPage() {
               </h2>
               <p className="mt-3">
                 This website does not use cookies, analytics, or tracking
-                scripts, and it does not have any sign-up or contact forms.
-                Simply browsing our catalog does not send us any personal
-                information about you.
+                scripts. Simply browsing our catalog does not send us any
+                personal information about you.
+              </p>
+              <p className="mt-3">
+                Our cart remembers the items you&rsquo;ve added using your
+                browser&rsquo;s local storage, so it&rsquo;s still there if
+                you come back later. This stays on your device — it is
+                never transmitted to us or anyone else, and it is cleared
+                automatically once you complete an order.
               </p>
             </div>
 
@@ -49,15 +61,20 @@ export default function PrivacyPolicyPage() {
                 Information We Collect
               </h2>
               <p className="mt-3">
-                We only collect personal information once you place an
-                order with us — currently by reaching out directly via
-                phone, WhatsApp, or email. At that point, we collect:
+                We collect personal information only when you choose to
+                place an order or send us an enquiry using the forms on
+                this website. Filling in a form does not send us anything
+                by itself — it prepares a WhatsApp message on your device
+                that you then choose to send us yourself. We only receive
+                your information once you press send in WhatsApp. Depending
+                on the form, this may include:
               </p>
               <ul className="mt-3 list-disc space-y-1.5 pl-5">
                 <li>Your name</li>
                 <li>Your phone number</li>
-                <li>Your email address</li>
+                <li>Your email address (optional)</li>
                 <li>Your shipping address (for orders that require delivery)</li>
+                <li>The message or order details you enter</li>
               </ul>
             </div>
 

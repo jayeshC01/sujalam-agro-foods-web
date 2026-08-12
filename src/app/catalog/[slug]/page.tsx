@@ -1,3 +1,4 @@
+import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { SiteFooter } from "@/components/site-footer";
@@ -25,6 +26,26 @@ function splitLabel(text: string) {
 
 export function generateStaticParams() {
   return PRODUCTS.map((product) => ({ slug: product.slug }));
+}
+
+export async function generateMetadata({
+  params,
+}: PageProps<"/catalog/[slug]">): Promise<Metadata> {
+  const { slug } = await params;
+  const product = getProductBySlug(slug);
+
+  if (!product) {
+    return {};
+  }
+
+  return {
+    title: product.name,
+    description: product.description,
+    openGraph: {
+      title: product.name,
+      description: product.description,
+    },
+  };
 }
 
 export default async function ProductDetailPage({
