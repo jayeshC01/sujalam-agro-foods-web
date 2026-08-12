@@ -4,8 +4,8 @@ export const SECTION_IDS = {
 
 export const CONTACT = {
   email: "hello@sujalamagrofoods.com",
-  // TODO: replace with the real business number before launch.
-  phone: "+91 00000 00000",
+  // TODO: temporary business WhatsApp number — replace with the permanent one before launch.
+  phone: "+91 75583 23559",
   location: "Maharashtra, India",
   address:
     "Survey No. 129/13, Near Krushna Garden, NH-3, Viholi, Nashik-422009, India",
