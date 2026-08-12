@@ -130,7 +130,7 @@ export default async function ProductDetailPage({
               <AddToCartPanel product={product} />
 
               <Link
-                href="/contact"
+                href={{ pathname: "/contact", query: { product: product.name } }}
                 className="mt-4 inline-block rounded-full border border-mustard/30 px-7 py-3.5 text-sm font-semibold text-terracotta-dark transition-colors hover:bg-mustard/10"
               >
                 Enquire About This Product

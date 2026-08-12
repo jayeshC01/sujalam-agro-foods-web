@@ -1,25 +1,33 @@
-import Link from "next/link";
+import { ContactForm } from "@/components/contact-form";
 import { SiteFooter } from "@/components/site-footer";
 import { SiteHeader } from "@/components/site-header";
 import { CONTACT } from "@/lib/site-config";
 
-export default function ContactPage() {
+export default async function ContactPage({
+  searchParams,
+}: PageProps<"/contact">) {
+  const { product } = await searchParams;
+  const productName = Array.isArray(product) ? product[0] : product;
+  const initialMessage = productName
+    ? `I'm interested in ${productName}.`
+    : "";
+
   return (
     <>
       <SiteHeader />
       <main className="flex-1">
-        <section className="mx-auto max-w-3xl px-6 py-24 text-center">
+        <section className="mx-auto max-w-2xl px-6 py-24 text-center">
           <span className="text-xs font-semibold uppercase tracking-[0.25em] text-terracotta-dark">
             Contact Us
           </span>
           <h1 className="mt-3 font-serif text-3xl font-semibold tracking-tight text-ink sm:text-4xl">
-            A dedicated contact form is on its way
+            We&apos;d Love to Hear From You
           </h1>
           <p className="mt-4 text-ink/70">
-            In the meantime, reach us directly and we&apos;ll get back to
-            you.
+            Send us an enquiry via WhatsApp, or reach us directly using the
+            details below.
           </p>
-          <dl className="mt-8 space-y-2 text-ink/80">
+          <dl className="mt-6 space-y-2 text-ink/80">
             <div>
               <dt className="sr-only">Email</dt>
               <dd>
@@ -40,12 +48,8 @@ export default function ContactPage() {
               <dd>{CONTACT.location}</dd>
             </div>
           </dl>
-          <Link
-            href="/"
-            className="mt-8 inline-block rounded-full border border-terracotta/30 px-7 py-3.5 text-sm font-semibold text-terracotta-dark transition-colors hover:bg-terracotta/10"
-          >
-            Back to Home
-          </Link>
+
+          <ContactForm initialMessage={initialMessage} />
         </section>
       </main>
       <SiteFooter />
