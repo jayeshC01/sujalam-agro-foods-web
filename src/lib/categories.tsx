@@ -24,7 +24,7 @@ export const CATEGORIES: Category[] = [
     slug: "edible-oil",
     name: "Edible Oils",
     description:
-      "Cold-pressed, wood-pressed mustard, coconut, sesame, kardai & almond oils for daily cooking.",
+      "Cold-pressed, wood-pressed mustard, coconut, sesame, kardai, almond & sunflower oils for daily cooking.",
     accent: "bg-mustard/15 text-mustard-light",
     icon: (
       <svg {...iconProps}>

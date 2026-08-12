@@ -1,7 +1,7 @@
 function bottleIcon(size: "sm" | "lg") {
   const props = {
-    width: size === "lg" ? 88 : 64,
-    height: size === "lg" ? 112 : 82,
+    width: size === "lg" ? 148 : 64,
+    height: size === "lg" ? 189 : 82,
     viewBox: "0 0 48 64",
     fill: "none",
     stroke: "currentColor",
@@ -28,10 +28,8 @@ export function ProductImage({
 }) {
   return (
     <div
-      className={`flex items-center justify-center ${tone} ${
-        size === "lg"
-          ? "h-72 rounded-2xl sm:h-80"
-          : "aspect-square rounded-t-2xl"
+      className={`flex aspect-square items-center justify-center ${tone} ${
+        size === "lg" ? "w-full rounded-3xl" : "rounded-t-2xl"
       }`}
       aria-hidden
     >
