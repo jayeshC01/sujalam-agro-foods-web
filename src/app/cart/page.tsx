@@ -65,6 +65,7 @@ export default function CartPage() {
     const message = buildWhatsAppMessage();
     const url = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(message)}`;
     window.open(url, "_blank", "noopener,noreferrer");
+    clearCart();
   }
 
   return (
