@@ -2,9 +2,9 @@ import Link from "next/link";
 import { CATEGORIES } from "@/lib/categories";
 
 const STATS = [
-  { value: `${CATEGORIES.length}`, label: "Oil Ranges" },
-  { value: "0", label: "Preservatives Added" },
-  { value: "100%", label: "Cold & Wood-Pressed" },
+  { value: `${CATEGORIES.length}`, label: "Premium Ranges" },
+  { value: "0%", label: "Preservatives Added" },
+  { value: "100%", label: "Wood-Pressed (Kacchi Ghani)" },
 ];
 
 export function Hero() {
@@ -27,16 +27,14 @@ export function Hero() {
           </span>
 
           <h1 className="mt-6 font-serif text-4xl font-semibold leading-[1.1] tracking-tight sm:text-5xl lg:text-6xl">
-            Pure oils, pressed
-            <br className="hidden sm:block" /> the traditional way
+            Pure Oils, Pressed
+            <br className="hidden sm:block" /> the Traditional Way
           </h1>
 
           <p className="mt-6 max-w-lg text-lg text-cream/80">
-            At Sujalam Agro Foods, we bring the ancient tradition of kacchi
-            ghani straight to your home. By carefully selecting
-            high-quality seeds and wood-pressing them ourselves, we retain
-            maximum nutrients. Pure, cold-pressed, and always
-            preservative-free.
+            Experience the authentic taste and health benefits of 100%
+            natural, in-house extracted kacchi ghani oils. Unrefined,
+            nutrient-dense, and always preservative-free.
           </p>
 
           <div className="mt-9 flex flex-wrap items-center gap-4">

@@ -3,6 +3,11 @@ export type PackSize = {
   price: number;
 };
 
+export type NutritionRow = {
+  label: string;
+  value: string;
+};
+
 export type Product = {
   slug: string;
   name: string;
@@ -24,6 +29,12 @@ export type Product = {
   badges?: string[];
   /** Overrides the small kicker line above the product title. */
   kicker?: string;
+  /** Number of gallery images/thumbnails on the detail page. Defaults to 3. */
+  imageCount?: number;
+  /** Bulleted "Modern Uses & Wellness" list shown below Key Benefits. */
+  modernUses?: string[];
+  /** "Nutritional Snapshot (Per 1 Tbsp / 14g)" table rows shown below Modern Uses. */
+  nutritionalSnapshot?: NutritionRow[];
 };
 
 // NOTE: All prices below are placeholder/dummy pricing until final rate cards are confirmed.
@@ -62,6 +73,27 @@ export const PRODUCTS: Product[] = [
       "Zero Preservatives",
       "Pure, Cold Extraction",
     ],
+    modernUses: [
+      "Spicy Tadka & Dressings: Drizzle hot over lentil (dal) protein bowls or use as a base for punchy, fiery marinades.",
+      "Thermogenic Cooking: Its natural heat makes it a favorite for winter bulk-cooking and spicy Indian meal prep.",
+      "Deep Tissue Relief: Traditionally warmed and rubbed into sore calves and joints for instant, warming relief after intense cardio.",
+    ],
+    nutritionalSnapshot: [
+      {
+        label: "Primary Fats",
+        value:
+          "~60% MUFA (Erucic & Oleic acids) with an optimal Omega-3 to Omega-6 ratio.",
+      },
+      {
+        label: "Vitamins & Minerals",
+        value: "Contains natural antibacterial compounds (Glucosinolates).",
+      },
+      {
+        label: "Fitness Note",
+        value:
+          "Often celebrated in fitness circles for its warming properties that naturally stimulate circulation and digestion.",
+      },
+    ],
   },
   {
     slug: "coconut-oil",
@@ -96,6 +128,29 @@ export const PRODUCTS: Product[] = [
       "Pure, Cold Extraction",
     ],
     kicker: "Nature’s Finest Coconuts, Pressed the Traditional Way",
+    modernUses: [
+      "Pre-Workout Fuel: Blend into black coffee (bulletproof coffee) for a quick, clean energy source before hitting the gym.",
+      "Morning Detox (Oil Pulling): Swish a tablespoon in your mouth for 10 minutes every morning for trending oral hygiene and teeth whitening.",
+      "Vegan & Keto Baking: The ultimate clean-eating substitute for butter in protein brownies and keto-friendly desserts.",
+      "Post-Workout Smoothies: Drop a spoonful into your protein shake for added healthy fats that keep you full longer.",
+    ],
+    nutritionalSnapshot: [
+      {
+        label: "Primary Fats",
+        value:
+          "~85% Saturated Fat (Rich in Medium-Chain Triglycerides / MCTs)",
+      },
+      {
+        label: "Key Superpower",
+        value:
+          "Contains ~50% Lauric Acid, known for its antimicrobial properties.",
+      },
+      {
+        label: "Fitness Note",
+        value:
+          "Unlike long-chain fats, MCTs are rapidly broken down and absorbed by the liver, converting almost instantly into usable energy rather than being stored as fat.",
+      },
+    ],
   },
   {
     slug: "sesame-oil",
@@ -132,14 +187,37 @@ export const PRODUCTS: Product[] = [
       "Pure, Cold Extraction",
     ],
     kicker: "Nature’s Finest Sesame, Pressed the Traditional Way",
+    modernUses: [
+      "Macro-Friendly Meal Prep: The perfect high-heat wok oil for tossing your meal-prep chicken, tofu, and broccoli bowls.",
+      "Gourmet Salad Dressings: Whisk with soy sauce, ginger, and lime for a low-calorie, high-flavor Asian dressing.",
+      "Ayurvedic Oil Pulling: The traditional alternative to coconut oil for morning jaw relaxation and gum health.",
+      "Muscle Recovery: Used externally as a warm massage oil post-leg-day to soothe tired joints and muscles.",
+    ],
+    nutritionalSnapshot: [
+      {
+        label: "Primary Fats",
+        value:
+          "Perfectly balanced: ~40% MUFA (Monounsaturated) & ~40% PUFA (Polyunsaturated).",
+      },
+      {
+        label: "Vitamins & Minerals",
+        value:
+          "Contains naturally occurring Vitamin K (supports bone metabolism).",
+      },
+      {
+        label: "Fitness Note",
+        value:
+          "Packed with Sesamin and Sesamol—powerful antioxidants that help combat oxidative stress caused by intense training.",
+      },
+    ],
   },
   {
-    slug: "kardai-oil",
-    name: "Kardai Oil",
+    slug: "safflower-oil",
+    name: "Safflower Oil",
     category: "edible-oil",
     edible: true,
     description:
-      "Extracted using the traditional kacchi ghani method, our pure Kardai (Safflower) Oil is exceptionally light and easy to digest. With its mild, neutral flavor, it is the perfect everyday cooking oil for wholesome, heart-healthy meals that won't overpower your dishes.",
+      "Extracted using the traditional kacchi ghani method, our pure Safflower (Kardai) Oil is exceptionally light and easy to digest. With its mild, neutral flavor, it is the perfect everyday cooking oil for wholesome, heart-healthy meals that won't overpower your dishes.",
     packSizes: [
       { size: "500 ml", price: 270 },
       { size: "1 L", price: 500 },
@@ -164,7 +242,28 @@ export const PRODUCTS: Product[] = [
       "Zero Preservatives",
       "Pure, Cold Extraction",
     ],
-    kicker: "Nature’s Finest Kardai, Pressed the Traditional Way",
+    kicker: "Nature’s Finest Safflower, Pressed the Traditional Way",
+    modernUses: [
+      "High-Heat Searing: Perfect for getting that aesthetic crust on your steaks or salmon without burning the oil.",
+      "Lean Marinades: Mixes seamlessly with herbs and spices for overnight protein marinades.",
+      "Gut-Friendly Cooking: Exceptionally light on the stomach, making it ideal for the easily digestible meals you eat before a heavy training session.",
+    ],
+    nutritionalSnapshot: [
+      {
+        label: "Primary Fats",
+        value:
+          "~75% PUFA (Linoleic Acid), making it one of the richest sources of Omega-6.",
+      },
+      {
+        label: "Vitamins & Minerals",
+        value: "Contains trace amounts of Vitamin E and K.",
+      },
+      {
+        label: "Fitness Note",
+        value:
+          "High linoleic acid content is heavily researched for its potential to help improve lean muscle mass to fat ratios and regulate blood sugar spikes when combined with a balanced diet.",
+      },
+    ],
   },
   {
     slug: "almond-oil",
@@ -199,6 +298,27 @@ export const PRODUCTS: Product[] = [
       "Pure, Cold Extraction",
     ],
     kicker: "Nature’s Finest Almonds, Pressed the Traditional Way",
+    modernUses: [
+      "Aesthetic Breakfasts: Drizzle over protein oatmeal, acai bowls, or Greek yogurt for a nutty, aesthetic finish.",
+      "Clean Salad Vinaigrettes: Mix with apple cider vinegar for a light, heart-healthy dressing that won't ruin your macro count.",
+      "The \"Glow-Up\" Routine: Use as a natural, non-comedogenic base for evening Gua Sha facial massages or to lock in skin moisture post-shower.",
+    ],
+    nutritionalSnapshot: [
+      {
+        label: "Primary Fats",
+        value:
+          "~70% MUFA (Oleic Acid - Omega 9), excellent for heart health.",
+      },
+      {
+        label: "Vitamins & Minerals",
+        value: "Provides roughly 35% of your Daily RDA of Vitamin E.",
+      },
+      {
+        label: "Fitness Note",
+        value:
+          "Vitamin E is a fat-soluble antioxidant essential for repairing cellular damage and keeping your skin glowing while you sweat.",
+      },
+    ],
   },
   {
     slug: "sunflower-oil",
@@ -232,14 +352,35 @@ export const PRODUCTS: Product[] = [
       "Pure, Cold Extraction",
     ],
     kicker: "Nature’s Finest Sunflowers, Pressed the Traditional Way",
+    modernUses: [
+      "Air-Fryer Friendly: Toss your sweet potato fries or chickpeas in a light coat before air-frying for a guilt-free crunch.",
+      "Guilt-Free Sautéing: A completely neutral flavor profile, meaning it won't overpower your carefully seasoned meal-prep proteins.",
+      "Clean Baking: The perfect light moisture-binder for homemade protein bars and energy bites.",
+    ],
+    nutritionalSnapshot: [
+      {
+        label: "Primary Fats",
+        value:
+          "High in MUFA and PUFA (specifically Linoleic Acid - Omega 6).",
+      },
+      {
+        label: "Vitamins & Minerals",
+        value: "Provides roughly 30% to 40% of your Daily RDA of Vitamin E.",
+      },
+      {
+        label: "Fitness Note",
+        value:
+          "Because it is cold-pressed and unrefined, this oil retains its natural Vitamin E, which is often completely destroyed in commercial refined oils.",
+      },
+    ],
   },
   {
-    slug: "erand-oil",
-    name: "Erand Oil (Castor)",
+    slug: "castor-oil",
+    name: "Castor Oil",
     category: "non-edible-oil",
     edible: false,
     description:
-      "Extracted through a pure, cold-pressing method, our Erand (Castor) Oil is a thick, deeply nourishing oil designed for topical and wellness applications. Rich in beneficial fatty acids, it is the ultimate natural remedy for hair vitality, skin hydration, and traditional massage. (Strictly not for consumption).",
+      "Extracted through a pure, cold-pressing method, our Castor (Erand) Oil is a thick, deeply nourishing oil designed for topical and wellness applications. Rich in beneficial fatty acids, it is the ultimate natural remedy for hair vitality, skin hydration, and traditional massage. (Strictly not for consumption).",
     packSizes: [
       { size: "500 ml", price: 140 },
       { size: "1 L", price: 250 },
@@ -332,6 +473,7 @@ export const PRODUCTS: Product[] = [
       "Clean & Steady Flame",
     ],
     kicker: "Nature’s Finest, Crafted for Rituals",
+    imageCount: 2,
   },
 ];
 

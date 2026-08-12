@@ -2,24 +2,24 @@ import { SECTION_IDS } from "@/lib/site-config";
 
 const FEATURES = [
   {
-    title: "Cold-Pressed & Wood-Pressed",
+    title: "Authentic Wood-Pressed (Kacchi Ghani)",
     description:
-      "Our oils are extracted the traditional wooden ghani way — low heat, no chemical solvents, so the natural nutrients and aroma stay intact.",
+      "We extract our oils using traditional wooden blocks at low speeds and zero heat. No chemical solvents, no industrial refining—just pure, nutrient-dense oil.",
   },
   {
-    title: "Handpicked, High-Quality Seeds",
+    title: "Hand-Selected Premium Seeds",
     description:
-      "We purchase premium seeds before every pressing, so purity starts right at the raw material.",
+      "Great oil begins with great ingredients. We meticulously source only the highest-quality, farm-fresh seeds to ensure purity starts right at the raw material.",
   },
   {
-    title: "Zero Preservatives, Ever",
+    title: "100% Pure & Preservative-Free",
     description:
-      "No preservatives, no additives — just pure oil, exactly as nature intended.",
+      "Nothing added, nothing taken away. We never use artificial additives or preservatives—just raw, unrefined goodness exactly as nature intended.",
   },
   {
-    title: "No Middlemen, Just Quality",
+    title: "From Our Mill to Your Home",
     description:
-      "From sourcing seeds to bottling oil, we manage the process ourselves — keeping quality high and pricing fair.",
+      "By managing the entire process in-house—from seed selection to final bottling—we eliminate middlemen. This allows us to guarantee uncompromised quality at an honest, transparent price.",
   },
 ];
 
@@ -33,14 +33,15 @@ export function WhyChooseUs() {
               Our Story
             </span>
             <h2 className="mt-3 font-serif text-3xl font-semibold tracking-tight text-ink sm:text-4xl">
-              Rooted in tradition, trusted in every home
+              Rooted in tradition. Poured with purity.
             </h2>
             <p className="mt-5 text-ink/70">
-              At Sujalam Agro Foods, we bring the ancient tradition of
-              kacchi ghani straight to your home. By carefully selecting
-              high-quality seeds and wood-pressing them ourselves, we
-              retain maximum nutrients. Pure, cold-pressed, and always
-              preservative-free.
+              At Sujalam Agro Foods, we believe the best things in life are
+              kept simple. We bring the ancient tradition of kacchi ghani
+              straight to your home. By carefully sourcing the finest
+              seeds and wood-pressing them in-house, we ensure every drop
+              retains its natural nutrients, authentic flavor, and rich
+              aroma. Pure, unrefined, and always preservative-free.
             </p>
           </div>
 

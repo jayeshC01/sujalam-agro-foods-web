@@ -24,7 +24,7 @@ export const CATEGORIES: Category[] = [
     slug: "edible-oil",
     name: "Edible Oils",
     description:
-      "Cold-pressed, wood-pressed mustard, coconut, sesame, kardai, almond & sunflower oils for daily cooking.",
+      "Pure, wood-pressed mustard, coconut, sesame, safflower, almond, and sunflower oils crafted for wholesome daily cooking.",
     accent: "bg-mustard/15 text-mustard-light",
     icon: (
       <svg {...iconProps}>
@@ -37,7 +37,7 @@ export const CATEGORIES: Category[] = [
     slug: "non-edible-oil",
     name: "Non-Edible Oils",
     description:
-      "Cold-pressed castor & mahua oils for external use, plus traditional diya oil for pooja.",
+      "Pure castor and mahua oils for natural wellness and skincare, alongside our traditional diya blend for auspicious pooja.",
     accent: "bg-terracotta/15 text-terracotta",
     icon: (
       <svg {...iconProps}>

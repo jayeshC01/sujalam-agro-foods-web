@@ -2,7 +2,7 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { SiteFooter } from "@/components/site-footer";
 import { SiteHeader } from "@/components/site-header";
-import { ProductImage } from "@/components/product-image";
+import { ProductGallery } from "@/components/product-gallery";
 import { PackSizeGrid } from "@/components/pack-size-grid";
 import { CATEGORIES } from "@/lib/categories";
 import { PRODUCTS, getProductBySlug } from "@/lib/products";
@@ -11,6 +11,15 @@ const TONE_BY_CATEGORY: Record<string, string> = {
   "edible-oil": "bg-mustard/10 text-mustard-light",
   "non-edible-oil": "bg-terracotta/10 text-terracotta",
 };
+
+function splitLabel(text: string) {
+  const separatorIndex = text.indexOf(": ");
+  return {
+    label: separatorIndex !== -1 ? text.slice(0, separatorIndex) : null,
+    rest:
+      separatorIndex !== -1 ? text.slice(separatorIndex + 2) : text,
+  };
+}
 
 export function generateStaticParams() {
   return PRODUCTS.map((product) => ({ slug: product.slug }));
@@ -72,7 +81,7 @@ export default async function ProductDetailPage({
 
           <div className="mt-8 grid gap-12 md:grid-cols-2 md:items-start">
             <div className="md:sticky md:top-24">
-              <ProductImage tone={tone} size="lg" />
+              <ProductGallery tone={tone} imageCount={product.imageCount ?? 3} />
               <div className="mt-5 flex flex-wrap justify-center gap-2">
                 {badges.map((badge) => (
                   <span
@@ -160,15 +169,7 @@ export default async function ProductDetailPage({
               </h2>
               <ul className="mt-6 grid gap-4 sm:grid-cols-2">
                 {product.benefits.map((benefit) => {
-                  const separatorIndex = benefit.indexOf(": ");
-                  const label =
-                    separatorIndex !== -1
-                      ? benefit.slice(0, separatorIndex)
-                      : null;
-                  const rest =
-                    separatorIndex !== -1
-                      ? benefit.slice(separatorIndex + 2)
-                      : benefit;
+                  const { label, rest } = splitLabel(benefit);
 
                   return (
                     <li
@@ -196,6 +197,86 @@ export default async function ProductDetailPage({
               <p className="mt-4 text-xs text-ink/45">
                 Benefits are based on traditional use and general nutrition
                 information, not medical advice.
+              </p>
+            </div>
+          )}
+
+          {product.modernUses && (
+            <div className="mt-16">
+              <span className="text-xs font-semibold uppercase tracking-[0.25em] text-terracotta-dark">
+                Beyond the Kitchen
+              </span>
+              <h2 className="mt-3 font-serif text-2xl font-semibold text-ink">
+                Modern Uses &amp; Wellness
+              </h2>
+              <ul className="mt-6 space-y-3">
+                {product.modernUses.map((use) => {
+                  const { label, rest } = splitLabel(use);
+
+                  return (
+                    <li
+                      key={use}
+                      className="flex items-start gap-3 text-sm text-ink/75"
+                    >
+                      <span
+                        aria-hidden
+                        className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-terracotta"
+                      />
+                      <span>
+                        {label && (
+                          <strong className="font-semibold text-ink">
+                            {label}:{" "}
+                          </strong>
+                        )}
+                        {rest}
+                      </span>
+                    </li>
+                  );
+                })}
+              </ul>
+            </div>
+          )}
+
+          {product.nutritionalSnapshot && (
+            <div className="mt-16">
+              <span className="text-xs font-semibold uppercase tracking-[0.25em] text-terracotta-dark">
+                At a Glance
+              </span>
+              <h2 className="mt-3 font-serif text-2xl font-semibold text-ink">
+                Nutritional Snapshot (Per 1 Tbsp / 14g)
+              </h2>
+              <div className="mt-6 overflow-hidden rounded-2xl border border-mustard/20">
+                <table className="w-full border-collapse text-left text-sm">
+                  <thead>
+                    <tr className="bg-cream-dark/60">
+                      <th className="px-4 py-3 font-semibold text-ink/70">
+                        Nutrient Profile
+                      </th>
+                      <th className="px-4 py-3 font-semibold text-ink/70">
+                        Details
+                      </th>
+                    </tr>
+                  </thead>
+                  <tbody className="divide-y divide-mustard/15">
+                    {product.nutritionalSnapshot.map((row) => (
+                      <tr key={row.label} className="bg-white/60">
+                        <td className="w-1/3 px-4 py-3 align-top font-semibold text-ink">
+                          {row.label}
+                        </td>
+                        <td className="px-4 py-3 text-ink/75">
+                          {row.value}
+                        </td>
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
+              </div>
+              <p className="mt-4 text-xs italic text-ink/45">
+                Nutritional values are approximate and based on standard 1
+                Tbsp (14g) servings. Benefits are based on general
+                nutrition information and are not intended as medical
+                advice. Always fit oils into your daily macro and caloric
+                goals.
               </p>
             </div>
           )}

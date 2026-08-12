@@ -6,14 +6,14 @@ export function CategoryGrid() {
     <section className="mx-auto max-w-6xl px-6 py-20">
       <div className="mx-auto max-w-2xl text-center">
         <span className="text-xs font-semibold uppercase tracking-[0.25em] text-terracotta-dark">
-          Our Range
+          Our Collections
         </span>
         <h2 className="mt-3 font-serif text-3xl font-semibold tracking-tight text-ink sm:text-4xl">
-          {CATEGORIES.length} categories, one standard of purity
+          Every Drop, One Standard of Purity
         </h2>
         <p className="mt-4 text-ink/70">
-          Every product is filtered by what matters — browse the full
-          catalog by category and find exactly what your kitchen needs.
+          Browse our carefully curated catalog of pure, traditional oils
+          for your culinary, wellness, and ritual needs.
         </p>
       </div>
 
