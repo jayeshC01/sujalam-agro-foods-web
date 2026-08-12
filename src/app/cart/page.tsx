@@ -9,6 +9,7 @@ import { formatPrice, getProductBySlug } from "@/lib/products";
 import { CONTACT } from "@/lib/site-config";
 
 const whatsappNumber = CONTACT.phone.replace(/[^\d]/g, "");
+const EMAIL_PATTERN = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
 export default function CartPage() {
   const { items, removeItem, updateQuantity, clearCart } = useCart();
@@ -31,8 +32,14 @@ export default function CartPage() {
     0,
   );
 
+  const emailValid =
+    form.email.trim() === "" || EMAIL_PATTERN.test(form.email.trim());
+
   const canCheckout =
-    lineItems.length > 0 && form.name.trim() !== "" && form.phone.trim() !== "";
+    lineItems.length > 0 &&
+    form.name.trim() !== "" &&
+    form.phone.trim() !== "" &&
+    emailValid;
 
   function buildWhatsAppMessage() {
     const lines = [
@@ -236,8 +243,15 @@ export default function CartPage() {
                         setForm((f) => ({ ...f, email: e.target.value }))
                       }
                       placeholder="you@example.com"
-                      className="mt-1 w-full rounded-xl border border-mustard/25 bg-cream px-4 py-2.5 text-sm text-ink outline-none transition-colors focus:border-terracotta/50"
+                      className={`mt-1 w-full rounded-xl border bg-cream px-4 py-2.5 text-sm text-ink outline-none transition-colors focus:border-terracotta/50 ${
+                        emailValid ? "border-mustard/25" : "border-terracotta"
+                      }`}
                     />
+                    {!emailValid && (
+                      <p className="mt-1 text-xs text-terracotta-dark">
+                        Enter a valid email address, or leave it blank.
+                      </p>
+                    )}
                   </div>
                   <div>
                     <label className="text-xs font-semibold text-ink/60">
