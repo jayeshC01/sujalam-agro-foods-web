@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Fraunces, Work_Sans } from "next/font/google";
+import { CartProvider } from "@/lib/cart-context";
 import "./globals.css";
 
 const headingFont = Fraunces({
@@ -27,7 +28,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
       className={`${headingFont.variable} ${bodyFont.variable} h-full antialiased`}
     >
       <body className="min-h-full flex flex-col bg-cream text-ink font-sans">
-        {children}
+        <CartProvider>{children}</CartProvider>
       </body>
     </html>
   );

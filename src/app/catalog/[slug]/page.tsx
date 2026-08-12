@@ -4,6 +4,7 @@ import { SiteFooter } from "@/components/site-footer";
 import { SiteHeader } from "@/components/site-header";
 import { ProductGallery } from "@/components/product-gallery";
 import { PackSizeGrid } from "@/components/pack-size-grid";
+import { AddToCartPanel } from "@/components/add-to-cart-panel";
 import { TrustBadges } from "@/components/trust-badges";
 import { CATEGORIES } from "@/lib/categories";
 import { PRODUCTS, getProductBySlug } from "@/lib/products";
@@ -126,9 +127,11 @@ export default async function ProductDetailPage({
                 <PackSizeGrid packSizes={product.packSizes} />
               </div>
 
+              <AddToCartPanel product={product} />
+
               <Link
                 href="/contact"
-                className="mt-6 inline-block rounded-full bg-mustard px-7 py-3.5 text-sm font-semibold text-ink shadow-lg shadow-mustard/20 transition-transform hover:-translate-y-0.5 hover:bg-mustard-light"
+                className="mt-4 inline-block rounded-full border border-mustard/30 px-7 py-3.5 text-sm font-semibold text-terracotta-dark transition-colors hover:bg-mustard/10"
               >
                 Enquire About This Product
               </Link>
