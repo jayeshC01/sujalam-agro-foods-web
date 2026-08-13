@@ -3,7 +3,7 @@ import { CATEGORIES } from "@/lib/categories";
 
 export function CategoryGrid() {
   return (
-    <section className="mx-auto max-w-6xl px-6 py-20">
+    <section className="mx-auto max-w-6xl px-6 pb-20 pt-10">
       <div className="mx-auto max-w-2xl text-center">
         <span className="text-xs font-semibold uppercase tracking-[0.25em] text-terracotta-dark">
           Our Collections
