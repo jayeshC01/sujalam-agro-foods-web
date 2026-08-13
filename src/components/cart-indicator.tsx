@@ -1,16 +1,32 @@
 "use client";
 
 import Link from "next/link";
+import { useEffect, useRef, useState } from "react";
 import { useCart } from "@/lib/cart-context";
 
 export function CartIndicator() {
   const { itemCount } = useCart();
+  const previousCount = useRef(itemCount);
+  const [bump, setBump] = useState(false);
+
+  useEffect(() => {
+    if (itemCount > previousCount.current) {
+      setBump(true);
+      const timeout = setTimeout(() => setBump(false), 350);
+      previousCount.current = itemCount;
+      return () => clearTimeout(timeout);
+    }
+    previousCount.current = itemCount;
+  }, [itemCount]);
 
   return (
     <Link
+      id="cart-indicator"
       href="/cart"
       aria-label="View cart"
-      className="relative inline-flex h-10 w-10 shrink-0 items-center justify-center rounded-full border border-mustard/20 text-ink/70 transition-colors hover:border-terracotta/40 hover:text-terracotta-dark"
+      className={`relative inline-flex h-10 w-10 shrink-0 items-center justify-center rounded-full border border-mustard/20 text-ink/70 transition-colors hover:border-terracotta/40 hover:text-terracotta-dark ${
+        bump ? "animate-cart-bump" : ""
+      }`}
     >
       <svg
         width="19"
