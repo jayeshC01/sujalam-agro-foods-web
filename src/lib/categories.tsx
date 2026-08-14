@@ -6,6 +6,7 @@ export type Category = {
   description: string;
   icon: ReactNode;
   accent: string;
+  image?: string;
 };
 
 const iconProps = {
@@ -26,6 +27,7 @@ export const CATEGORIES: Category[] = [
     description:
       "Pure, wood-pressed mustard, groundnut, coconut, sesame, safflower, almond, and sunflower oils crafted for wholesome daily cooking.",
     accent: "bg-mustard/15 text-mustard-light",
+    image: "/images/categories/edible-oil.png",
     icon: (
       <svg {...iconProps}>
         <path d="M12 3c2 2.5 5 6.2 5 9.5A5 5 0 0 1 7 12.5C7 9.2 10 5.5 12 3Z" />
@@ -39,6 +41,7 @@ export const CATEGORIES: Category[] = [
     description:
       "Pure castor and mahua oils for natural wellness and skincare, alongside our traditional diya blend for auspicious pooja.",
     accent: "bg-terracotta/15 text-terracotta",
+    image: "/images/categories/non-edible-oil.png",
     icon: (
       <svg {...iconProps}>
         <path d="M12 2.5 8 8a5.5 5.5 0 1 0 8 0l-4-5.5Z" />

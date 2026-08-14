@@ -4,25 +4,16 @@ import { CATEGORIES } from "@/lib/categories";
 
 const STATS = [
   {
-    value: `${CATEGORIES.length}`,
-    label: "Premium Ranges",
-    icon: (
-      <>
-        <path d="m12 2 10 5-10 5L2 7z" />
-        <path d="m2 12 10 5 10-5" />
-        <path d="m2 17 10 5 10-5" />
-      </>
-    ),
+    label: `${CATEGORIES.length} Premium Ranges`,
+    image: "/images/badges/badge-premium-ranges.png",
   },
   {
-    value: "0%",
-    label: "Preservatives Added",
-    icon: <><circle cx="12" cy="12" r="9" /><path d="m5.5 5.5 13 13" /></>,
+    label: "Zero Preservatives Added",
+    image: "/images/badges/badge-zero-preservatives.png",
   },
   {
-    value: "100%",
-    label: "Wood-Pressed",
-    icon: <path d="M12 3s7 7.4 7 12a7 7 0 0 1-14 0c0-4.6 7-12 7-12Z" />,
+    label: "100% Wood-Pressed the Traditional Way",
+    image: "/images/badges/badge-wood-pressed.png",
   },
 ];
 
@@ -94,32 +85,16 @@ export function Hero() {
             </Link>
           </div>
 
-          <div className="mt-8 flex flex-wrap items-center justify-center gap-5 sm:flex-nowrap sm:justify-start">
+          <div className="mt-8 flex flex-nowrap items-center justify-center gap-4 sm:justify-start sm:gap-6">
             {STATS.map((stat) => (
-              <div key={stat.label} className="flex items-center gap-2">
-                <span className="flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-leaf/10 text-leaf-dark">
-                  <svg
-                    width="13"
-                    height="13"
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    stroke="currentColor"
-                    strokeWidth="1.8"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                  >
-                    {stat.icon}
-                  </svg>
-                </span>
-                <p className="whitespace-nowrap leading-none">
-                  <span className="font-serif text-sm font-bold text-terracotta-dark">
-                    {stat.value}
-                  </span>{" "}
-                  <span className="text-[10px] font-semibold uppercase tracking-wide text-ink/60">
-                    {stat.label}
-                  </span>
-                </p>
-              </div>
+              <Image
+                key={stat.label}
+                src={stat.image}
+                alt={stat.label}
+                width={210}
+                height={210}
+                className="h-20 w-20 shrink-0 rounded-full object-cover sm:h-28 sm:w-28"
+              />
             ))}
           </div>
         </div>

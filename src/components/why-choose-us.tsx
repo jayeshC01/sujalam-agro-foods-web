@@ -31,7 +31,7 @@ const FEATURES = [
 export function WhyChooseUs() {
   return (
     <section id={SECTION_IDS.ourStory} className="bg-cream-dark">
-      <div className="mx-auto max-w-6xl px-6 py-20">
+      <div className="mx-auto max-w-6xl px-6 pb-10 pt-10">
         <div className="mx-auto max-w-2xl text-center">
           <span className="text-xs font-semibold uppercase tracking-[0.25em] text-terracotta-dark">
             Our Story
