@@ -24,27 +24,32 @@ export const CERTIFICATIONS = [
   {
     name: "FSSAI",
     wordmark: "FSSAI",
+    logo: "/certifications/fssai.png",
     // TODO: replace with the real FSSAI license number before launch.
     detail: "Lic No: XXXXXXXXXXXXXXX",
   },
   {
     name: "Maharashtra FDA",
     wordmark: "FDA",
+    logo: "/certifications/fda.png",
     detail: "State Food & Drug Licensed",
   },
   {
     name: "GMP Certified",
     wordmark: "GMP",
+    logo: "/certifications/gmp.png",
     detail: "GMP/S103/36",
   },
   {
     name: "ISO 22000:2005",
     wordmark: "ISO",
+    logo: "/certifications/iso.png",
     detail: "FSMS/S107/39",
   },
   {
     name: "Udyam Registered",
     wordmark: "UDYAM",
+    logo: "/certifications/udyam.png",
     detail: "MH23A0015731",
   },
 ];

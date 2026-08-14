@@ -1,3 +1,4 @@
+import Image from "next/image";
 import Link from "next/link";
 import { WhatsAppIcon } from "@/components/whatsapp-icon";
 import { CATEGORIES } from "@/lib/categories";
@@ -120,10 +121,20 @@ export function SiteFooter() {
           <ul className="mt-4 space-y-3 text-sm">
             {CERTIFICATIONS.map((cert) => (
               <li key={cert.name} className="flex items-start gap-2.5">
-                <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-cream shadow-sm">
-                  <span className="text-[8px] font-bold tracking-wide text-leaf-dark">
-                    {cert.wordmark}
-                  </span>
+                <span className="flex h-11 w-11 shrink-0 items-center justify-center overflow-hidden rounded-full bg-cream p-1.5 shadow-sm">
+                  {cert.logo ? (
+                    <Image
+                      src={cert.logo}
+                      alt={cert.name}
+                      width={44}
+                      height={44}
+                      className="h-full w-full object-contain"
+                    />
+                  ) : (
+                    <span className="text-[8px] font-bold tracking-wide text-leaf-dark">
+                      {cert.wordmark}
+                    </span>
+                  )}
                 </span>
                 <span>
                   <span className="block text-[#A6BBAA]">{cert.name}</span>
