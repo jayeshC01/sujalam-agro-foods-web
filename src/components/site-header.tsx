@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { CartIndicator } from "@/components/cart-indicator";
 import { CatalogCtaLink } from "@/components/catalog-cta-link";
+import { CatalogIndicator } from "@/components/catalog-indicator";
 import { MobileNav } from "@/components/mobile-nav";
 import { SECTION_IDS } from "@/lib/site-config";
 
@@ -52,6 +53,7 @@ export function SiteHeader() {
         </nav>
 
         <div className="flex items-center gap-3">
+          <CatalogIndicator className="md:hidden" />
           <CartIndicator />
           <CatalogCtaLink className="hidden md:inline-block" />
           <MobileNav links={NAV_LINKS} />
