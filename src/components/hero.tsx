@@ -35,12 +35,20 @@ export function Hero() {
         }}
       >
         <Image
+          src="/images/hero-oil-pressing-mobile.jpg"
+          alt="Wood-pressed mustard oil being poured from a lakdi ghana press into a glass bottle"
+          fill
+          preload
+          sizes="100vw"
+          className="block object-cover object-center sm:hidden"
+        />
+        <Image
           src="/images/hero-oil-pressing.jpg"
           alt="Wood-pressed mustard oil being poured from a lakdi ghana press into a glass bottle"
           fill
           preload
           sizes="(min-width: 1050px) 1050px, 100vw"
-          className="object-cover object-center"
+          className="hidden object-cover object-center sm:block"
         />
       </div>
       <div
@@ -54,7 +62,7 @@ export function Hero() {
 
       <div className="relative mx-auto flex h-full max-w-6xl items-center px-6 py-12 md:py-16">
         <div className="w-full min-w-0 max-w-[640px] text-center sm:text-left">
-          <span className="inline-flex items-center gap-2 rounded-full bg-leaf/10 px-3 py-1 text-[11px] font-semibold uppercase tracking-[0.15em] text-leaf-dark ring-1 ring-leaf/20">
+          <span className="inline-flex items-center gap-2 rounded-full bg-cream/65 px-3 py-1 text-[11px] font-semibold uppercase tracking-[0.15em] text-[#143524] ring-1 ring-leaf/25 backdrop-blur-sm sm:bg-leaf/10 sm:text-leaf-dark sm:ring-leaf/20 sm:backdrop-blur-none">
             Nature&rsquo;s Finest, Wood-Pressed the Traditional Way
           </span>
 
@@ -64,7 +72,7 @@ export function Hero() {
             Traditional Way.
           </h1>
 
-          <p className="mx-auto mt-4 max-w-md text-sm text-ink sm:mx-0 sm:text-ink/65">
+          <p className="mx-auto mt-4 max-w-md text-sm font-medium text-ink [text-shadow:0_0_2px_rgba(253,250,243,0.95),0_0_6px_rgba(253,250,243,0.9),0_0_14px_rgba(253,250,243,0.8)] sm:mx-0 sm:font-normal sm:text-ink/65 sm:[text-shadow:none]">
             Experience the authentic taste and health benefits of 100%
             natural, in-house extracted kacchi ghani oils. Unrefined,
             nutrient-dense, and always preservative-free.
