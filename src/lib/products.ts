@@ -31,6 +31,8 @@ export type Product = {
   kicker?: string;
   /** Number of gallery images/thumbnails on the detail page. Defaults to 3. */
   imageCount?: number;
+  /** Real product photos. When set, shown instead of the placeholder bottle illustration; the first is used as the card thumbnail, and the detail-page gallery lets you switch between all of them. */
+  images?: string[];
   /** Bulleted "Modern Uses & Wellness" list shown below Key Benefits. */
   modernUses?: string[];
   /** "Nutritional Snapshot (Per 1 Tbsp / 14g)" table rows shown below Modern Uses. */
@@ -61,6 +63,10 @@ export const PRODUCTS: Product[] = [
       "Ayurvedic Warming: Features natural warming properties known to stimulate healthy blood circulation.",
       "Hair & Scalp Care: Deeply nourishes the scalp, strengthens hair follicles, and helps reduce dandruff.",
       "Uncompromised Purity: Wood-pressed extraction ensures maximum retention of natural nutrients, aroma, and flavor.",
+    ],
+    images: [
+      "/images/catalog/mustard-oil.jpg",
+      "/images/catalog/mustard-oil-comparison.jpg",
     ],
     shelfLifeMonths: DEFAULT_SHELF_LIFE_MONTHS,
     extractionMethod: "Traditional Wood-Pressed (Kacchi Ghani)",
@@ -113,6 +119,10 @@ export const PRODUCTS: Product[] = [
       "Sustained Energy: Abundant in oleic acid (Omega-9), providing a clean, sustained energy source that supports a healthy metabolism.",
       "Skin Nourishment: Rich in natural Vitamin E and emollients; when applied topically, it helps lock in moisture and soothe dry, irritated skin.",
       "Uncompromised Purity: Wood-pressed extraction ensures the oil retains its deep, roasted aroma and full nutritional profile.",
+    ],
+    images: [
+      "/images/catalog/groundnut-oil.jpg",
+      "/images/catalog/groundnut-oil-comparison.jpg",
     ],
     shelfLifeMonths: DEFAULT_SHELF_LIFE_MONTHS,
     extractionMethod: "Traditional Wood-Pressed (Kacchi Ghani)",
@@ -168,6 +178,10 @@ export const PRODUCTS: Product[] = [
       "Intense Hair Nourishment: Packed with Lauric Acid to deeply penetrate the hair shaft, nourishing from root to tip.",
       "Soothing Properties: Features natural antimicrobial and anti-inflammatory benefits to calm the skin and support gentle digestion.",
       "Uncompromised Purity: Wood-pressed extraction ensures maximum retention of the coconut's natural sweetness, aroma, and vital nutrients.",
+    ],
+    images: [
+      "/images/catalog/coconut-oil.jpg",
+      "/images/catalog/coconut-oil-comparison.jpg",
     ],
     shelfLifeMonths: DEFAULT_SHELF_LIFE_MONTHS,
     extractionMethod: "Traditional Wood-Pressed (Kacchi Ghani)",
@@ -228,6 +242,10 @@ export const PRODUCTS: Product[] = [
       "Hair & Scalp Vitality: Boosts natural scalp circulation, promoting stronger, healthier hair growth.",
       "Skin Soothing: Deeply moisturizes the body and calms dry or irritated skin, leaving a healthy, natural glow.",
     ],
+    images: [
+      "/images/catalog/sesame-oil.jpg",
+      "/images/catalog/sesame-oil-comparison.jpg",
+    ],
     shelfLifeMonths: DEFAULT_SHELF_LIFE_MONTHS,
     extractionMethod: "Traditional Wood-Pressed (Kacchi Ghani)",
     usage: "South Indian Cooking, Ayurvedic Massage, and Skincare.",
@@ -282,6 +300,10 @@ export const PRODUCTS: Product[] = [
       "Cognitive Support: Packed with essential healthy fats known to support optimal brain health and cognitive function.",
       "Women's Wellness: Traditionally used in natural remedies to help ease menstrual cramps and discomfort.",
       "Radiant Skin: Features deeply hydrating properties that help nourish the skin and reduce the appearance of fine lines for a youthful glow.",
+    ],
+    images: [
+      "/images/catalog/safflower-oil.jpg",
+      "/images/catalog/safflower-oil-comparison.jpg",
     ],
     shelfLifeMonths: DEFAULT_SHELF_LIFE_MONTHS,
     extractionMethod: "Traditional Wood-Pressed (Kacchi Ghani)",
@@ -338,6 +360,10 @@ export const PRODUCTS: Product[] = [
       "Heart-Healthy: Abundant in monounsaturated fats that help maintain healthy cholesterol levels as part of a balanced diet.",
       "Brightening Care: Regular topical application may naturally help soothe the delicate under-eye area and reduce the appearance of dark circles.",
     ],
+    images: [
+      "/images/catalog/almond-oil.jpg",
+      "/images/catalog/almond-oil-comparison.jpg",
+    ],
     shelfLifeMonths: DEFAULT_SHELF_LIFE_MONTHS,
     extractionMethod: "Traditional Wood-Pressed (Kacchi Ghani)",
     usage: "Gourmet Cooking, Baking, Skincare, and Hair Nourishment.",
@@ -390,6 +416,10 @@ export const PRODUCTS: Product[] = [
       "Antioxidant Powerhouse: Naturally loaded with Vitamin E, a vital antioxidant that helps protect the body's cells from free-radical damage.",
       "Radiant Skin: The natural vitamins and fatty acids help nourish the skin from the inside out, promoting a healthy, youthful glow.",
       "Uncompromised Purity: Wood-pressed extraction ensures the oil retains its maximum natural nutrients, completely free from chemical refining.",
+    ],
+    images: [
+      "/images/catalog/sunflower-oil.jpg",
+      "/images/catalog/sunflower-oil-comparison.jpg",
     ],
     shelfLifeMonths: DEFAULT_SHELF_LIFE_MONTHS,
     extractionMethod: "Traditional Wood-Pressed (Kacchi Ghani)",
@@ -446,6 +476,7 @@ export const PRODUCTS: Product[] = [
       "Ayurvedic Massage: Revered in Ayurveda (Eranda Taila) as a warming massage oil to comfort joints and muscles.",
       "Strictly External: 100% pure, safely processed for external, cosmetic, and ritual applications only—not for consumption.",
     ],
+    images: ["/images/catalog/castor-oil.jpg"],
     shelfLifeMonths: DEFAULT_SHELF_LIFE_MONTHS,
     extractionMethod: "100% Cold-Pressed",
     usage: "Skincare, Hair Care, and Ayurvedic Massage (External Use Only).",
@@ -479,6 +510,7 @@ export const PRODUCTS: Product[] = [
       "Artisanal Crafter’s Choice: A highly valued, traditional base ingredient for crafting natural, handmade soaps and body-care products.",
       "Strictly External: 100% pure, safely processed for skincare, massage, and ritual applications only—not for consumption.",
     ],
+    images: ["/images/catalog/mohata-oil.jpg"],
     shelfLifeMonths: DEFAULT_SHELF_LIFE_MONTHS,
     extractionMethod: "100% Cold-Pressed",
     usage: "Skincare, Therapeutic Massage, and Soap Making (External Use Only).",
@@ -510,6 +542,7 @@ export const PRODUCTS: Product[] = [
       "Festive & Daily Use: The ideal, reliable choice for both your everyday morning pooja and grand festive lighting like Diwali.",
       "Strictly for Rituals: Crafted safely for lamp lighting and spiritual use only—strictly not for consumption or cosmetic use.",
     ],
+    images: ["/images/catalog/diva-oil.jpg"],
     shelfLifeMonths: DEFAULT_SHELF_LIFE_MONTHS,
     extractionMethod: "Traditional Cold-Pressed Blend",
     usage: "Pooja, Diya Lighting, and Festive Rituals (Not for Consumption).",

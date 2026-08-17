@@ -4,7 +4,7 @@ import Link from "next/link";
 import { useEffect, useRef, useState } from "react";
 import { createPortal } from "react-dom";
 import { formatPrice, type Product } from "@/lib/products";
-import { ProductImage } from "@/components/product-image";
+import { ProductCardGallery } from "@/components/product-card-gallery";
 import { useCart } from "@/lib/cart-context";
 import { flyToCart } from "@/lib/fly-to-cart";
 
@@ -69,9 +69,12 @@ export function ProductCard({ product }: { product: Product }) {
       className="group flex flex-col overflow-hidden rounded-2xl border border-mustard/15 bg-white shadow-sm transition-all hover:-translate-y-1 hover:border-terracotta/30 hover:shadow-lg"
     >
       <div className="relative">
-        <Link href={`/catalog/${product.slug}`} className="block">
-          <ProductImage tone={tone} />
-        </Link>
+        <ProductCardGallery
+          images={product.images}
+          tone={tone}
+          alt={product.name}
+          href={`/catalog/${product.slug}`}
+        />
 
         <button
           type="button"
@@ -89,7 +92,10 @@ export function ProductCard({ product }: { product: Product }) {
         </button>
       </div>
 
-      <Link href={`/catalog/${product.slug}`} className="block px-5 pb-5 pt-8">
+      <Link
+        href={`/catalog/${product.slug}`}
+        className="flex flex-1 flex-col px-5 pb-5 pt-8"
+      >
         <div className="flex items-start justify-between gap-2">
           <h3 className="font-serif text-lg font-semibold text-ink">
             {product.name}
@@ -103,7 +109,7 @@ export function ProductCard({ product }: { product: Product }) {
 
         <p className="mt-2 text-sm text-ink/65">{product.description}</p>
 
-        <div className="mt-4 flex items-baseline justify-between border-t border-mustard/10 pt-3">
+        <div className="mt-auto flex items-baseline justify-between border-t border-mustard/10 pt-3">
           <div>
             <div className="text-[11px] font-semibold uppercase tracking-wide text-ink/45">
               Starting from

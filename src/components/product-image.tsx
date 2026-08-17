@@ -1,3 +1,5 @@
+import Image from "next/image";
+
 export type GalleryVariant = "front" | "label" | "pour";
 
 const BOTTLE_PATHS = (
@@ -55,10 +57,14 @@ export function ProductImage({
   tone,
   size = "sm",
   variant = "front",
+  image,
+  alt = "",
 }: {
   tone: string;
   size?: "sm" | "lg" | "thumb";
   variant?: GalleryVariant;
+  image?: string;
+  alt?: string;
 }) {
   const roundedClass =
     size === "lg"
@@ -66,6 +72,23 @@ export function ProductImage({
       : size === "thumb"
         ? "w-full rounded-xl"
         : "rounded-t-2xl";
+
+  if (image) {
+    return (
+      <div
+        className={`relative aspect-square overflow-hidden ${tone} ${roundedClass}`}
+      >
+        <Image
+          src={image}
+          alt={alt}
+          fill
+          priority={size === "lg"}
+          sizes={size === "lg" ? "(min-width: 768px) 480px, 90vw" : "300px"}
+          className="object-cover"
+        />
+      </div>
+    );
+  }
 
   return (
     <div

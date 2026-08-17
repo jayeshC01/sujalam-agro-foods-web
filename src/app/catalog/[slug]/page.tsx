@@ -104,7 +104,12 @@ export default async function ProductDetailPage({
 
           <div className="mt-8 grid gap-12 md:grid-cols-2 md:items-start">
             <div className="md:sticky md:top-24">
-              <ProductGallery tone={tone} imageCount={product.imageCount ?? 3} />
+              <ProductGallery
+                tone={tone}
+                imageCount={product.imageCount ?? 3}
+                images={product.images}
+                alt={product.name}
+              />
               <div className="mt-5 flex flex-wrap justify-center gap-2">
                 {badges.map((badge) => (
                   <span
