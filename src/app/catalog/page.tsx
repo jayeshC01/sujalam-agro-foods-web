@@ -116,7 +116,8 @@ export default async function CatalogPage({ searchParams }: CatalogPageProps) {
           </div>
         </section>
 
-        <div className="mx-auto max-w-6xl px-6 pt-6">
+        <div className="sticky top-[73px] z-40 border-b border-mustard/10 bg-cream/95 py-4 backdrop-blur-sm">
+        <div className="mx-auto max-w-6xl px-6">
           {/* Mobile: three separate rounded-rectangle filter buttons (icon
               + label side by side) — All Products full-width on top,
               Edible/Non-Edible Oils side by side below it. */}
@@ -193,6 +194,7 @@ export default async function CatalogPage({ searchParams }: CatalogPageProps) {
               ))}
             </div>
           </div>
+        </div>
         </div>
 
         <section className="mx-auto max-w-6xl px-6 py-12">
