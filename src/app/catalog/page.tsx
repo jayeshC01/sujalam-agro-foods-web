@@ -117,57 +117,17 @@ export default async function CatalogPage({ searchParams }: CatalogPageProps) {
         </section>
 
         <div className="sticky top-[73px] z-40 border-b border-mustard/10 bg-cream/95 py-4 backdrop-blur-sm">
-        <div className="mx-auto max-w-6xl px-6">
-          {/* Mobile: three separate rounded-rectangle filter buttons (icon
-              + label side by side) — All Products full-width on top,
-              Edible/Non-Edible Oils side by side below it. */}
-          <div className="flex flex-col gap-3 sm:hidden">
-            <Link
-              href="/catalog"
-              className={`flex items-center justify-center gap-2 rounded-2xl border px-4 py-3 text-sm font-semibold shadow-sm transition-colors ${
-                !selected
-                  ? "border-leaf-dark bg-leaf-dark text-cream"
-                  : "border-mustard/15 bg-white text-ink/70"
-              }`}
-            >
-              {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img
-                src="/images/icons/all-products-icon.png"
-                alt=""
-                className="h-6 w-6 object-contain"
-              />
-              All Products
-            </Link>
-            <div className="flex items-stretch justify-center gap-2">
-              {CATEGORIES.map((item) => {
-                const isActive = selected?.slug === item.slug;
-                return (
-                  <Link
-                    key={item.slug}
-                    href={`/catalog?category=${item.slug}`}
-                    className={`flex items-center justify-center gap-1.5 whitespace-nowrap rounded-2xl border px-3 py-3 text-sm font-semibold shadow-sm transition-colors ${
-                      isActive
-                        ? "border-leaf-dark bg-leaf-dark text-cream"
-                        : "border-mustard/15 bg-white text-ink/70"
-                    }`}
-                  >
-                    <span className="h-5 w-5 shrink-0">{item.icon}</span>
-                    {item.name}
-                  </Link>
-                );
-              })}
-            </div>
-          </div>
-
-          {/* Tablet and up: single connected pill row. */}
-          <div className="hidden justify-center sm:flex">
-            <div className="inline-flex flex-wrap items-center gap-1 rounded-full border border-mustard/15 bg-white p-1.5 shadow-sm">
+          <div className="mx-auto max-w-6xl px-6">
+            {/* Mobile: three separate rounded-rectangle filter buttons (icon
+                + label side by side) — All Products full-width on top,
+                Edible/Non-Edible Oils side by side below it. */}
+            <div className="flex flex-col gap-3 sm:hidden">
               <Link
                 href="/catalog"
-                className={`inline-flex items-center gap-2 rounded-full px-4 py-2 text-sm font-semibold transition-colors ${
+                className={`flex items-center justify-center gap-2 rounded-2xl border px-4 py-3 text-sm font-semibold shadow-sm transition-colors ${
                   !selected
-                    ? "bg-leaf-dark text-cream"
-                    : "text-ink/70 hover:bg-mustard/10"
+                    ? "border-leaf-dark bg-leaf-dark text-cream"
+                    : "border-mustard/15 bg-white text-ink/70"
                 }`}
               >
                 {/* eslint-disable-next-line @next/next/no-img-element */}
@@ -178,23 +138,63 @@ export default async function CatalogPage({ searchParams }: CatalogPageProps) {
                 />
                 All Products
               </Link>
-              {CATEGORIES.map((item) => (
+              <div className="flex items-stretch justify-center gap-2">
+                {CATEGORIES.map((item) => {
+                  const isActive = selected?.slug === item.slug;
+                  return (
+                    <Link
+                      key={item.slug}
+                      href={`/catalog?category=${item.slug}`}
+                      className={`flex items-center justify-center gap-1.5 whitespace-nowrap rounded-2xl border px-3 py-3 text-sm font-semibold shadow-sm transition-colors ${
+                        isActive
+                          ? "border-leaf-dark bg-leaf-dark text-cream"
+                          : "border-mustard/15 bg-white text-ink/70"
+                      }`}
+                    >
+                      <span className="h-5 w-5 shrink-0">{item.icon}</span>
+                      {item.name}
+                    </Link>
+                  );
+                })}
+              </div>
+            </div>
+
+            {/* Tablet and up: single connected pill row. */}
+            <div className="hidden justify-center sm:flex">
+              <div className="inline-flex flex-wrap items-center gap-1 rounded-full border border-mustard/15 bg-white p-1.5 shadow-sm">
                 <Link
-                  key={item.slug}
-                  href={`/catalog?category=${item.slug}`}
+                  href="/catalog"
                   className={`inline-flex items-center gap-2 rounded-full px-4 py-2 text-sm font-semibold transition-colors ${
-                    selected?.slug === item.slug
+                    !selected
                       ? "bg-leaf-dark text-cream"
                       : "text-ink/70 hover:bg-mustard/10"
                   }`}
                 >
-                  <span className="h-6 w-6">{item.icon}</span>
-                  {item.name}
+                  {/* eslint-disable-next-line @next/next/no-img-element */}
+                  <img
+                    src="/images/icons/all-products-icon.png"
+                    alt=""
+                    className="h-6 w-6 object-contain"
+                  />
+                  All Products
                 </Link>
-              ))}
+                {CATEGORIES.map((item) => (
+                  <Link
+                    key={item.slug}
+                    href={`/catalog?category=${item.slug}`}
+                    className={`inline-flex items-center gap-2 rounded-full px-4 py-2 text-sm font-semibold transition-colors ${
+                      selected?.slug === item.slug
+                        ? "bg-leaf-dark text-cream"
+                        : "text-ink/70 hover:bg-mustard/10"
+                    }`}
+                  >
+                    <span className="h-6 w-6">{item.icon}</span>
+                    {item.name}
+                  </Link>
+                ))}
+              </div>
             </div>
           </div>
-        </div>
         </div>
 
         <section className="mx-auto max-w-6xl px-6 py-12">

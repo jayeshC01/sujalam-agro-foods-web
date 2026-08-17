@@ -2,9 +2,9 @@
 
 import Link from "next/link";
 import { useEffect, useRef, useState } from "react";
-import { createPortal } from "react-dom";
-import { formatPrice, type Product } from "@/lib/products";
+import { formatPrice, getProductTagline, type Product } from "@/lib/products";
 import { ProductCardGallery } from "@/components/product-card-gallery";
+import { ProductHighlightIcon } from "@/components/product-highlight-icon";
 import { useCart } from "@/lib/cart-context";
 import { flyToCart } from "@/lib/fly-to-cart";
 
@@ -13,193 +13,185 @@ const TONE_BY_CATEGORY: Record<string, string> = {
   "non-edible-oil": "bg-terracotta/10 text-terracotta",
 };
 
+const VISIBLE_SIZE_COUNT = 3;
+const TOAST_DURATION_MS = 1000;
+
 export function ProductCard({ product }: { product: Product }) {
   const { addItem } = useCart();
   const tone = TONE_BY_CATEGORY[product.category] ?? "bg-mustard/10 text-mustard-light";
-  const startingPrice = Math.min(...product.packSizes.map((pack) => pack.price));
+  const detailHref = `/catalog/${product.slug}`;
 
-  const cardRef = useRef<HTMLDivElement>(null);
-  const [sizeModalOpen, setSizeModalOpen] = useState(false);
-  const [justAddedSize, setJustAddedSize] = useState<string | null>(null);
-  const [cardBounds, setCardBounds] = useState<{
-    top: number;
-    left: number;
-    width: number;
-    height: number;
-  } | null>(null);
+  const [activeSizeIndex, setActiveSizeIndex] = useState(0);
+  const [showAllSizes, setShowAllSizes] = useState(false);
+  const [showAddedToast, setShowAddedToast] = useState(false);
+  const toastTimeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null);
 
-  function openSizeModal() {
-    const rect = cardRef.current?.getBoundingClientRect();
-    if (rect) {
-      setCardBounds({
-        top: rect.top + window.scrollY,
-        left: rect.left + window.scrollX,
-        width: rect.width,
-        height: rect.height,
-      });
-    }
-    setSizeModalOpen(true);
-  }
+  const selectedPack = product.packSizes[activeSizeIndex];
 
-  function handleAddSize(
-    pack: { size: string; price: number },
-    event: React.MouseEvent<HTMLButtonElement>,
-  ) {
-    addItem({ slug: product.slug, packSize: pack.size, price: pack.price }, 1);
+  const needsMoreButton = product.packSizes.length > VISIBLE_SIZE_COUNT;
+  const visibleSizes = showAllSizes
+    ? product.packSizes
+    : product.packSizes.slice(
+        0,
+        needsMoreButton ? VISIBLE_SIZE_COUNT - 1 : VISIBLE_SIZE_COUNT,
+      );
+  const hiddenSizeCount = product.packSizes.length - visibleSizes.length;
+
+  function handleAddToCart(event: React.MouseEvent<HTMLButtonElement>) {
+    addItem(
+      { slug: product.slug, packSize: selectedPack.size, price: selectedPack.price },
+      1,
+    );
     flyToCart(event.currentTarget);
-    setJustAddedSize(pack.size);
-    setTimeout(() => setSizeModalOpen(false), 500);
+    if (toastTimeoutRef.current) clearTimeout(toastTimeoutRef.current);
+    setShowAddedToast(true);
+    toastTimeoutRef.current = setTimeout(() => {
+      setShowAddedToast(false);
+    }, TOAST_DURATION_MS);
   }
 
   useEffect(() => {
-    if (!sizeModalOpen) {
-      setJustAddedSize(null);
-      return;
-    }
-    function handleKeyDown(event: KeyboardEvent) {
-      if (event.key === "Escape") setSizeModalOpen(false);
-    }
-    window.addEventListener("keydown", handleKeyDown);
-    return () => window.removeEventListener("keydown", handleKeyDown);
-  }, [sizeModalOpen]);
+    return () => {
+      if (toastTimeoutRef.current) clearTimeout(toastTimeoutRef.current);
+    };
+  }, []);
 
   return (
-    <div
-      ref={cardRef}
-      className="group flex flex-col overflow-hidden rounded-2xl border border-mustard/15 bg-white shadow-sm transition-all hover:-translate-y-1 hover:border-terracotta/30 hover:shadow-lg"
-    >
-      <div className="relative">
-        <ProductCardGallery
-          images={product.images}
-          tone={tone}
-          alt={product.name}
-          href={`/catalog/${product.slug}`}
-        />
+    <div className="group relative flex flex-col overflow-hidden rounded-2xl border border-mustard/15 bg-white shadow-sm transition-all hover:-translate-y-1 hover:border-terracotta/30 hover:shadow-lg">
+      {showAddedToast && (
+        <div className="pointer-events-none absolute inset-x-0 top-3 z-20 flex justify-center">
+          <span className="flex items-center gap-1.5 rounded-full bg-leaf-dark px-3 py-1.5 text-xs font-semibold text-cream shadow-lg">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round">
+              <path d="M5 12l4 4 10-10" />
+            </svg>
+            Added to cart
+          </span>
+        </div>
+      )}
 
-        <button
-          type="button"
-          onClick={openSizeModal}
-          aria-label={`Add ${product.name} to cart`}
-          className="absolute bottom-0 right-4 z-10 flex h-14 w-14 translate-y-1/2 items-center justify-center rounded-full border-4 border-white bg-leaf-dark text-cream shadow-lg transition-all hover:scale-105 hover:bg-leaf active:scale-95"
-        >
-          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
-            <path d="M6 6h15l-1.5 9h-12z" />
-            <path d="M6 6 5 3H2" />
-            <circle cx="9.5" cy="20" r="1.3" />
-            <circle cx="17.5" cy="20" r="1.3" />
-            <path d="M12 9v4M10 11h4" />
-          </svg>
-        </button>
-      </div>
+      <ProductCardGallery
+        images={product.images}
+        tone={tone}
+        alt={product.name}
+        href={detailHref}
+      />
 
-      <Link
-        href={`/catalog/${product.slug}`}
-        className="flex flex-1 flex-col px-5 pb-5 pt-8"
-      >
+      <div className="flex flex-1 flex-col px-4 pb-4 pt-2.5">
         <div className="flex items-start justify-between gap-2">
-          <h3 className="font-serif text-lg font-semibold text-ink">
-            {product.name}
-          </h3>
+          <Link href={detailHref} className="block">
+            <h3 className="font-serif text-lg font-bold text-ink">
+              {product.name}
+            </h3>
+          </Link>
           {!product.edible && (
-            <span className="shrink-0 rounded-full bg-terracotta/15 px-2.5 py-1 text-[10px] font-semibold uppercase tracking-wide text-terracotta-dark">
+            <span className="mt-0.5 shrink-0 rounded-full bg-terracotta/15 px-2 py-0.5 text-[9px] font-semibold uppercase tracking-wide text-terracotta-dark">
               Non-Edible
             </span>
           )}
         </div>
+        <p className="text-xs text-ink/55">{getProductTagline(product)}</p>
 
-        <p className="mt-2 text-sm text-ink/65">{product.description}</p>
-
-        <div className="mt-auto flex items-baseline justify-between border-t border-mustard/10 pt-3">
-          <div>
-            <div className="text-[11px] font-semibold uppercase tracking-wide text-ink/45">
-              Starting from
-            </div>
-            <div className="font-serif text-lg font-semibold text-terracotta-dark">
-              {formatPrice(startingPrice)}
-            </div>
-          </div>
-          <span className="text-sm font-semibold text-ink/70">
-            {product.packSizes.length}{" "}
-            {product.packSizes.length === 1 ? "size" : "sizes"}
-          </span>
-        </div>
-      </Link>
-
-      {sizeModalOpen && cardBounds && createPortal(
-        <>
-          <div
-            className="fixed inset-0 z-40"
-            onClick={() => setSizeModalOpen(false)}
-          />
-          <div
-            style={{
-              top: cardBounds.top,
-              left: cardBounds.left,
-              width: cardBounds.width,
-              height: cardBounds.height,
-            }}
-            className="absolute z-50 flex items-center justify-center overflow-hidden rounded-2xl bg-ink/40 p-3"
-            onClick={() => setSizeModalOpen(false)}
-          >
-            <div
-              role="dialog"
-              aria-modal="true"
-              aria-label={`Sizes for ${product.name}`}
-              onClick={(event) => event.stopPropagation()}
-              className="flex max-h-full w-full max-w-sm flex-col overflow-y-auto rounded-2xl bg-white p-5 shadow-xl"
-            >
-              <div className="flex items-start justify-between gap-2">
-                <h3 className="font-serif text-lg font-semibold text-ink">
-                  {product.name}
-                </h3>
-                <button
-                  type="button"
-                  onClick={() => setSizeModalOpen(false)}
-                  aria-label="Close"
-                  className="-mr-1 -mt-1 flex h-8 w-8 shrink-0 items-center justify-center rounded-full text-ink/40 transition-colors hover:bg-mustard/10 hover:text-ink"
+        {product.highlights && product.highlights.length > 0 && (
+          <div className="mt-2 grid grid-cols-3 gap-1 py-2">
+            {product.highlights.slice(0, 3).map((highlight) => (
+              <div
+                key={highlight.label}
+                className="flex items-center justify-center gap-1.5"
+              >
+                <span
+                  className={`flex h-6 w-6 shrink-0 items-center justify-center rounded-full ${tone}`}
                 >
-                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                    <path d="M18 6 6 18M6 6l12 12" />
-                  </svg>
-                </button>
+                  <ProductHighlightIcon icon={highlight.icon} />
+                </span>
+                <span className="text-[10px] font-medium leading-tight text-ink/75">
+                  {highlight.label}
+                </span>
               </div>
-              <p className="mt-1 text-sm text-ink/60">Choose a size to add it to your cart.</p>
-
-              <div className="mt-4 flex flex-col gap-2">
-                {product.packSizes.map((pack) => (
-                  <button
-                    key={pack.size}
-                    type="button"
-                    onClick={(event) => handleAddSize(pack, event)}
-                    className="flex items-center justify-between rounded-xl border border-mustard/20 px-4 py-3 text-left transition-colors hover:border-terracotta/40 hover:bg-mustard/5"
-                  >
-                    <span className="text-sm font-semibold text-ink">{pack.size}</span>
-                    <span className="flex items-center gap-3">
-                      <span className="font-serif text-sm font-semibold text-terracotta-dark">
-                        {formatPrice(pack.price)}
-                      </span>
-                      <span
-                        className={`rounded-full px-3 py-1 text-xs font-semibold transition-colors ${
-                          justAddedSize === pack.size
-                            ? "bg-mustard text-ink"
-                            : "bg-terracotta text-cream"
-                        }`}
-                      >
-                        {justAddedSize === pack.size ? "Added ✓" : "Add"}
-                      </span>
-                    </span>
-                  </button>
-                ))}
-              </div>
-
-              <p className="mt-4 text-xs text-ink/50">
-                You can adjust quantities anytime from your cart.
-              </p>
-            </div>
+            ))}
           </div>
-        </>,
-        document.body,
-      )}
+        )}
+
+        <div className="mt-2">
+          <p className="flex items-baseline gap-1.5 text-[11px] font-semibold uppercase tracking-wide text-ink">
+            Select Size
+            <span className="font-normal normal-case tracking-normal text-ink/45">
+              Inclusive of all taxes
+            </span>
+          </p>
+          <div
+            className={`mt-1.5 flex flex-nowrap gap-1.5 ${
+              showAllSizes
+                ? "overflow-x-auto [-ms-overflow-style:none] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
+                : "overflow-hidden"
+            }`}
+          >
+            {visibleSizes.map((pack, index) => {
+              const selected = index === activeSizeIndex;
+              return (
+                <button
+                  key={pack.size}
+                  type="button"
+                  onClick={() => setActiveSizeIndex(index)}
+                  className={`shrink-0 basis-[30%] overflow-hidden rounded-lg border transition-colors ${
+                    selected
+                      ? "border-leaf-dark"
+                      : "border-mustard/20 hover:border-terracotta/40"
+                  }`}
+                >
+                  <div
+                    className={`py-1 text-center text-[10px] font-semibold uppercase tracking-wide ${
+                      selected ? "bg-leaf-dark text-cream" : "bg-ink text-cream"
+                    }`}
+                  >
+                    {pack.size}
+                  </div>
+                  <div className="bg-white py-1 text-center">
+                    <span className="font-serif text-sm font-bold text-leaf-dark">
+                      {formatPrice(pack.price)}
+                    </span>
+                  </div>
+                </button>
+              );
+            })}
+            {!showAllSizes && hiddenSizeCount > 0 && (
+              <button
+                type="button"
+                onClick={() => setShowAllSizes(true)}
+                className="flex shrink-0 basis-[30%] items-center justify-center gap-1 rounded-lg border border-mustard/20 px-1 py-2 text-[11px] font-semibold text-ink/70 transition-colors hover:border-terracotta/40"
+              >
+                +{hiddenSizeCount} more
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round">
+                  <path d="M6 9l6 6 6-6" />
+                </svg>
+              </button>
+            )}
+          </div>
+        </div>
+
+        <div className="mt-auto flex gap-2 pt-3">
+          <Link
+            href={detailHref}
+            className="flex flex-1 items-center justify-center rounded-xl border border-ink/15 px-3 py-2 text-xs font-bold uppercase tracking-wide text-ink transition-colors hover:border-leaf-dark hover:text-leaf-dark"
+          >
+            View Details
+          </Link>
+          <button
+            type="button"
+            onClick={handleAddToCart}
+            aria-label={`Add ${product.name} (${selectedPack.size}) to cart`}
+            className="flex flex-[1.3] items-center justify-center gap-1.5 rounded-xl bg-leaf-dark px-3 py-2 text-xs font-bold uppercase tracking-wide text-cream transition-colors hover:bg-leaf"
+          >
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
+              <path d="M6 6h15l-1.5 9h-12z" />
+              <path d="M6 6 5 3H2" />
+              <circle cx="9.5" cy="20" r="1.3" />
+              <circle cx="17.5" cy="20" r="1.3" />
+              <path d="M12 9v4M10 11h4" />
+            </svg>
+            Add to Cart
+          </button>
+        </div>
+      </div>
     </div>
   );
 }

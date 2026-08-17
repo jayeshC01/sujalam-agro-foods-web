@@ -8,6 +8,11 @@ export type NutritionRow = {
   value: string;
 };
 
+export type ProductHighlight = {
+  icon: "flame" | "leaf" | "droplet" | "heart" | "shield" | "star";
+  label: string;
+};
+
 export type Product = {
   slug: string;
   name: string;
@@ -33,6 +38,10 @@ export type Product = {
   imageCount?: number;
   /** Real product photos. When set, shown instead of the placeholder bottle illustration; the first is used as the card thumbnail, and the detail-page gallery lets you switch between all of them. */
   images?: string[];
+  /** Short "style" line shown under the product name on the catalog card (e.g. "Wood Pressed • Kacchi Ghani"). Falls back to a line derived from extractionMethod when unset. */
+  tagline?: string;
+  /** Up to 3 short icon + label callouts shown on the catalog card (e.g. "Fiery Tadka King"). */
+  highlights?: ProductHighlight[];
   /** Bulleted "Modern Uses & Wellness" list shown below Key Benefits. */
   modernUses?: string[];
   /** "Nutritional Snapshot (Per 1 Tbsp / 14g)" table rows shown below Modern Uses. */
@@ -67,6 +76,12 @@ export const PRODUCTS: Product[] = [
     images: [
       "/images/catalog/mustard-oil.jpg",
       "/images/catalog/mustard-oil-comparison.jpg",
+    ],
+    tagline: "Wood Pressed • Kacchi Ghani",
+    highlights: [
+      { icon: "droplet", label: "Bold & Pungent" },
+      { icon: "leaf", label: "Traditional Ghani" },
+      { icon: "flame", label: "High Smoke Point" },
     ],
     shelfLifeMonths: DEFAULT_SHELF_LIFE_MONTHS,
     extractionMethod: "Traditional Wood-Pressed (Kacchi Ghani)",
@@ -123,6 +138,11 @@ export const PRODUCTS: Product[] = [
     images: [
       "/images/catalog/groundnut-oil.jpg",
       "/images/catalog/groundnut-oil-comparison.jpg",
+    ],
+    highlights: [
+      { icon: "leaf", label: "Naturally Nutty" },
+      { icon: "droplet", label: "Mild & Versatile" },
+      { icon: "heart", label: "Perfect for Everyday" },
     ],
     shelfLifeMonths: DEFAULT_SHELF_LIFE_MONTHS,
     extractionMethod: "Traditional Wood-Pressed (Kacchi Ghani)",
@@ -182,6 +202,11 @@ export const PRODUCTS: Product[] = [
     images: [
       "/images/catalog/coconut-oil.jpg",
       "/images/catalog/coconut-oil-comparison.jpg",
+    ],
+    highlights: [
+      { icon: "leaf", label: "Naturally Fragrant" },
+      { icon: "droplet", label: "Rich & Smooth" },
+      { icon: "star", label: "Versatile Use" },
     ],
     shelfLifeMonths: DEFAULT_SHELF_LIFE_MONTHS,
     extractionMethod: "Traditional Wood-Pressed (Kacchi Ghani)",
@@ -246,6 +271,11 @@ export const PRODUCTS: Product[] = [
       "/images/catalog/sesame-oil.jpg",
       "/images/catalog/sesame-oil-comparison.jpg",
     ],
+    highlights: [
+      { icon: "leaf", label: "Nutty & Aromatic" },
+      { icon: "shield", label: "Traditional Choice" },
+      { icon: "heart", label: "Great for South Indian" },
+    ],
     shelfLifeMonths: DEFAULT_SHELF_LIFE_MONTHS,
     extractionMethod: "Traditional Wood-Pressed (Kacchi Ghani)",
     usage: "South Indian Cooking, Ayurvedic Massage, and Skincare.",
@@ -304,6 +334,11 @@ export const PRODUCTS: Product[] = [
     images: [
       "/images/catalog/safflower-oil.jpg",
       "/images/catalog/safflower-oil-comparison.jpg",
+    ],
+    highlights: [
+      { icon: "droplet", label: "Light & Mild" },
+      { icon: "leaf", label: "Neutral Flavour" },
+      { icon: "heart", label: "Good for Heart" },
     ],
     shelfLifeMonths: DEFAULT_SHELF_LIFE_MONTHS,
     extractionMethod: "Traditional Wood-Pressed (Kacchi Ghani)",
@@ -364,6 +399,11 @@ export const PRODUCTS: Product[] = [
       "/images/catalog/almond-oil.jpg",
       "/images/catalog/almond-oil-comparison.jpg",
     ],
+    highlights: [
+      { icon: "droplet", label: "Rich & Nourishing" },
+      { icon: "leaf", label: "Naturally Aromatic" },
+      { icon: "star", label: "Premium Quality" },
+    ],
     shelfLifeMonths: DEFAULT_SHELF_LIFE_MONTHS,
     extractionMethod: "Traditional Wood-Pressed (Kacchi Ghani)",
     usage: "Gourmet Cooking, Baking, Skincare, and Hair Nourishment.",
@@ -421,6 +461,11 @@ export const PRODUCTS: Product[] = [
       "/images/catalog/sunflower-oil.jpg",
       "/images/catalog/sunflower-oil-comparison.jpg",
     ],
+    highlights: [
+      { icon: "droplet", label: "Light & Neutral" },
+      { icon: "star", label: "Rich in Vitamin E" },
+      { icon: "heart", label: "Goodness in Every Drop" },
+    ],
     shelfLifeMonths: DEFAULT_SHELF_LIFE_MONTHS,
     extractionMethod: "Traditional Wood-Pressed (Kacchi Ghani)",
     usage: "Everyday Cooking, Deep Frying, and Baking.",
@@ -477,6 +522,11 @@ export const PRODUCTS: Product[] = [
       "Strictly External: 100% pure, safely processed for external, cosmetic, and ritual applications only—not for consumption.",
     ],
     images: ["/images/catalog/castor-oil.jpg"],
+    highlights: [
+      { icon: "leaf", label: "Traditional Use" },
+      { icon: "droplet", label: "Pure & Natural" },
+      { icon: "shield", label: "External Use Only" },
+    ],
     shelfLifeMonths: DEFAULT_SHELF_LIFE_MONTHS,
     extractionMethod: "100% Cold-Pressed",
     usage: "Skincare, Hair Care, and Ayurvedic Massage (External Use Only).",
@@ -511,6 +561,11 @@ export const PRODUCTS: Product[] = [
       "Strictly External: 100% pure, safely processed for skincare, massage, and ritual applications only—not for consumption.",
     ],
     images: ["/images/catalog/mohata-oil.jpg"],
+    highlights: [
+      { icon: "droplet", label: "Rich in Omega 3" },
+      { icon: "heart", label: "Heart Friendly" },
+      { icon: "leaf", label: "Nourishes Skin & Hair" },
+    ],
     shelfLifeMonths: DEFAULT_SHELF_LIFE_MONTHS,
     extractionMethod: "100% Cold-Pressed",
     usage: "Skincare, Therapeutic Massage, and Soap Making (External Use Only).",
@@ -543,6 +598,11 @@ export const PRODUCTS: Product[] = [
       "Strictly for Rituals: Crafted safely for lamp lighting and spiritual use only—strictly not for consumption or cosmetic use.",
     ],
     images: ["/images/catalog/diva-oil.jpg"],
+    highlights: [
+      { icon: "star", label: "Promotes Positivity" },
+      { icon: "shield", label: "Traditionally Trusted" },
+      { icon: "flame", label: "Auspicious Pooja Oil" },
+    ],
     shelfLifeMonths: DEFAULT_SHELF_LIFE_MONTHS,
     extractionMethod: "Traditional Cold-Pressed Blend",
     usage: "Pooja, Diya Lighting, and Festive Rituals (Not for Consumption).",
@@ -568,4 +628,15 @@ export function formatPrice(price: number) {
 
 export function getProductBySlug(slug: string) {
   return PRODUCTS.find((product) => product.slug === slug);
+}
+
+export function getProductTagline(product: Product) {
+  if (product.tagline) return product.tagline;
+  if (product.extractionMethod.includes("Wood-Pressed")) {
+    return "Wood Pressed • Kacchi Ghani";
+  }
+  if (product.extractionMethod.includes("Cold-Pressed")) {
+    return "100% Cold-Pressed • Pure";
+  }
+  return product.extractionMethod;
 }
