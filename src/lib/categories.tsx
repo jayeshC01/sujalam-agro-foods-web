@@ -9,17 +9,6 @@ export type Category = {
   image?: string;
 };
 
-const iconProps = {
-  width: 26,
-  height: 26,
-  viewBox: "0 0 24 24",
-  fill: "none",
-  stroke: "currentColor",
-  strokeWidth: 1.6,
-  strokeLinecap: "round" as const,
-  strokeLinejoin: "round" as const,
-};
-
 export const CATEGORIES: Category[] = [
   {
     slug: "edible-oil",
@@ -29,10 +18,12 @@ export const CATEGORIES: Category[] = [
     accent: "bg-mustard/15 text-mustard-light",
     image: "/images/categories/edible-oil.png",
     icon: (
-      <svg {...iconProps}>
-        <path d="M12 3c2 2.5 5 6.2 5 9.5A5 5 0 0 1 7 12.5C7 9.2 10 5.5 12 3Z" />
-        <path d="M9.5 13.5c.5 1.5 1.8 2.5 2.5 2.5" />
-      </svg>
+      // eslint-disable-next-line @next/next/no-img-element
+      <img
+        src="/images/icons/edible-oil-icon.png"
+        alt=""
+        className="h-full w-full object-contain"
+      />
     ),
   },
   {
@@ -43,10 +34,12 @@ export const CATEGORIES: Category[] = [
     accent: "bg-terracotta/15 text-terracotta",
     image: "/images/categories/non-edible-oil.png",
     icon: (
-      <svg {...iconProps}>
-        <path d="M12 2.5 8 8a5.5 5.5 0 1 0 8 0l-4-5.5Z" />
-        <path d="M9.5 14a2.5 2.5 0 0 0 2.5 2.5" />
-      </svg>
+      // eslint-disable-next-line @next/next/no-img-element
+      <img
+        src="/images/icons/non-edible-oil-icon.png"
+        alt=""
+        className="h-full w-full object-contain"
+      />
     ),
   },
 ];

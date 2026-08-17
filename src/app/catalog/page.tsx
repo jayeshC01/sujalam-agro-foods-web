@@ -13,17 +13,6 @@ export const metadata: Metadata = {
     "Browse Sujalam Agro Foods' full range of pure, wood-pressed edible and non-edible oils — crafted the traditional kacchi ghani way.",
 };
 
-const filterIconProps = {
-  width: 16,
-  height: 16,
-  viewBox: "0 0 24 24",
-  fill: "none",
-  stroke: "currentColor",
-  strokeWidth: 1.6,
-  strokeLinecap: "round" as const,
-  strokeLinejoin: "round" as const,
-};
-
 type CatalogPageProps = {
   searchParams: Promise<{ category?: string }>;
 };
@@ -127,38 +116,82 @@ export default async function CatalogPage({ searchParams }: CatalogPageProps) {
           </div>
         </section>
 
-        <div className="mx-auto flex max-w-6xl justify-center px-6 pt-6">
-          <div className="inline-flex flex-wrap items-center gap-1 rounded-full border border-mustard/15 bg-white p-1.5 shadow-sm">
+        <div className="mx-auto max-w-6xl px-6 pt-6">
+          {/* Mobile: three separate rounded-rectangle filter buttons (icon
+              + label side by side) — All Products full-width on top,
+              Edible/Non-Edible Oils side by side below it. */}
+          <div className="flex flex-col gap-3 sm:hidden">
             <Link
               href="/catalog"
-              className={`inline-flex items-center gap-2 rounded-full px-4 py-2 text-sm font-semibold transition-colors ${
+              className={`flex items-center justify-center gap-2 rounded-2xl border px-4 py-3 text-sm font-semibold shadow-sm transition-colors ${
                 !selected
-                  ? "bg-leaf-dark text-cream"
-                  : "text-ink/70 hover:bg-mustard/10"
+                  ? "border-leaf-dark bg-leaf-dark text-cream"
+                  : "border-mustard/15 bg-white text-ink/70"
               }`}
             >
-              <svg {...filterIconProps}>
-                <path d="M12 20c0-6 3-9 7-11-1 5-3 8-7 11Z" />
-                <path d="M12 20c0-6-3-9-7-11 1 5 3 8 7 11Z" />
-              </svg>
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img
+                src="/images/icons/all-products-icon.png"
+                alt=""
+                className="h-6 w-6 object-contain"
+              />
               All Products
             </Link>
-            {CATEGORIES.map((item) => (
+            <div className="flex items-stretch justify-center gap-2">
+              {CATEGORIES.map((item) => {
+                const isActive = selected?.slug === item.slug;
+                return (
+                  <Link
+                    key={item.slug}
+                    href={`/catalog?category=${item.slug}`}
+                    className={`flex items-center justify-center gap-1.5 whitespace-nowrap rounded-2xl border px-3 py-3 text-sm font-semibold shadow-sm transition-colors ${
+                      isActive
+                        ? "border-leaf-dark bg-leaf-dark text-cream"
+                        : "border-mustard/15 bg-white text-ink/70"
+                    }`}
+                  >
+                    <span className="h-5 w-5 shrink-0">{item.icon}</span>
+                    {item.name}
+                  </Link>
+                );
+              })}
+            </div>
+          </div>
+
+          {/* Tablet and up: single connected pill row. */}
+          <div className="hidden justify-center sm:flex">
+            <div className="inline-flex flex-wrap items-center gap-1 rounded-full border border-mustard/15 bg-white p-1.5 shadow-sm">
               <Link
-                key={item.slug}
-                href={`/catalog?category=${item.slug}`}
+                href="/catalog"
                 className={`inline-flex items-center gap-2 rounded-full px-4 py-2 text-sm font-semibold transition-colors ${
-                  selected?.slug === item.slug
+                  !selected
                     ? "bg-leaf-dark text-cream"
                     : "text-ink/70 hover:bg-mustard/10"
                 }`}
               >
-                <span className="h-4 w-4 [&>svg]:h-4 [&>svg]:w-4">
-                  {item.icon}
-                </span>
-                {item.name}
+                {/* eslint-disable-next-line @next/next/no-img-element */}
+                <img
+                  src="/images/icons/all-products-icon.png"
+                  alt=""
+                  className="h-6 w-6 object-contain"
+                />
+                All Products
               </Link>
-            ))}
+              {CATEGORIES.map((item) => (
+                <Link
+                  key={item.slug}
+                  href={`/catalog?category=${item.slug}`}
+                  className={`inline-flex items-center gap-2 rounded-full px-4 py-2 text-sm font-semibold transition-colors ${
+                    selected?.slug === item.slug
+                      ? "bg-leaf-dark text-cream"
+                      : "text-ink/70 hover:bg-mustard/10"
+                  }`}
+                >
+                  <span className="h-6 w-6">{item.icon}</span>
+                  {item.name}
+                </Link>
+              ))}
+            </div>
           </div>
         </div>
 
