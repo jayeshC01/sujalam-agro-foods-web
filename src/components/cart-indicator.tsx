@@ -24,7 +24,7 @@ export function CartIndicator() {
       id="cart-indicator"
       href="/cart"
       aria-label="View cart"
-      className={`relative inline-flex h-10 w-10 shrink-0 items-center justify-center rounded-full border border-mustard/20 text-ink/70 transition-colors hover:border-terracotta/40 hover:text-terracotta-dark ${
+      className={`relative inline-flex h-10 w-10 shrink-0 items-center justify-center rounded-full border border-gold/30 text-gold transition-colors hover:border-gold hover:text-gold-light ${
         bump ? "animate-cart-bump" : ""
       }`}
     >
@@ -44,7 +44,7 @@ export function CartIndicator() {
         <circle cx="17.5" cy="20" r="1.3" />
       </svg>
       {itemCount > 0 && (
-        <span className="absolute -right-1.5 -top-1.5 flex h-5 w-5 items-center justify-center rounded-full bg-terracotta text-[10px] font-bold text-cream">
+        <span className="absolute -right-1.5 -top-1.5 flex h-5 w-5 items-center justify-center rounded-full bg-gold text-[10px] font-bold text-leaf-dark">
           {itemCount > 9 ? "9+" : itemCount}
         </span>
       )}

@@ -81,13 +81,13 @@ export function Hero() {
           <div className="mt-6 flex flex-wrap items-center justify-center gap-3 sm:justify-start">
             <Link
               href="/catalog"
-              className="rounded-full bg-leaf px-6 py-2.5 text-sm font-semibold text-cream shadow-md shadow-leaf/20 transition-transform hover:-translate-y-0.5 hover:bg-leaf-dark"
+              className="rounded-full bg-leaf-dark px-6 py-2.5 text-sm font-semibold text-cream shadow-md shadow-leaf-dark/30 transition-transform hover:-translate-y-0.5 hover:bg-leaf"
             >
               Browse the Catalog
             </Link>
             <Link
               href="/contact"
-              className="rounded-full bg-leaf px-6 py-2.5 text-sm font-semibold text-cream shadow-md shadow-leaf/20 transition-transform hover:-translate-y-0.5 hover:bg-leaf-dark"
+              className="rounded-full bg-leaf-dark px-6 py-2.5 text-sm font-semibold text-cream shadow-md shadow-leaf-dark/30 transition-transform hover:-translate-y-0.5 hover:bg-leaf"
             >
               Get in Touch
             </Link>

@@ -16,7 +16,7 @@ export function MobileNav({ links }: { links: NavLink[] }) {
         onClick={() => setOpen((value) => !value)}
         aria-expanded={open}
         aria-label="Toggle menu"
-        className="flex h-10 w-10 items-center justify-center rounded-full text-ink md:hidden"
+        className="flex h-10 w-10 items-center justify-center rounded-full text-gold md:hidden"
       >
         <svg
           width="22"

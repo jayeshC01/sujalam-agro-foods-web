@@ -77,7 +77,7 @@ export function ProductCard({ product }: { product: Product }) {
           type="button"
           onClick={openSizeModal}
           aria-label={`Add ${product.name} to cart`}
-          className="absolute bottom-0 right-4 z-10 flex h-14 w-14 translate-y-1/2 items-center justify-center rounded-full border-4 border-white bg-terracotta text-cream shadow-lg transition-all hover:scale-105 hover:bg-terracotta-dark active:scale-95"
+          className="absolute bottom-0 right-4 z-10 flex h-14 w-14 translate-y-1/2 items-center justify-center rounded-full border-4 border-white bg-leaf-dark text-cream shadow-lg transition-all hover:scale-105 hover:bg-leaf active:scale-95"
         >
           <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
             <path d="M6 6h15l-1.5 9h-12z" />

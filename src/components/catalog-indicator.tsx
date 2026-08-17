@@ -5,7 +5,7 @@ export function CatalogIndicator({ className = "" }: { className?: string }) {
     <Link
       href="/catalog"
       aria-label="Browse catalog"
-      className={`inline-flex h-10 w-10 shrink-0 items-center justify-center rounded-full border border-mustard/20 text-ink/70 transition-colors hover:border-terracotta/40 hover:text-terracotta-dark ${className}`}
+      className={`inline-flex h-10 w-10 shrink-0 items-center justify-center rounded-full border border-gold/30 text-gold transition-colors hover:border-gold hover:text-gold-light ${className}`}
     >
       <svg
         width="19"
