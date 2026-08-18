@@ -11,7 +11,7 @@ export function CatalogCtaLink({
     <Link
       href="/catalog"
       onClick={onClick}
-      className={`rounded-full bg-terracotta px-5 py-2.5 text-sm font-semibold text-cream shadow-sm transition-colors hover:bg-terracotta-dark ${className}`}
+      className={`rounded-full bg-[#143524] px-5 py-2.5 text-sm font-semibold text-cream shadow-sm transition-colors hover:bg-leaf-dark ${className}`}
     >
       Explore Catalog
     </Link>
