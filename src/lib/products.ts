@@ -507,11 +507,11 @@ export const PRODUCTS: Product[] = [
     description:
       "Extracted through a pure, cold-pressing method, our Castor (Erand) Oil is a thick, deeply nourishing oil designed for topical and wellness applications. Rich in beneficial fatty acids, it is the ultimate natural remedy for hair vitality, skin hydration, and traditional massage. (Strictly not for consumption).",
     packSizes: [
-      { size: "100 ml", price: 26 },
-      { size: "200 ml", price: 52 },
-      { size: "500 ml", price: 140 },
-      { size: "1 L", price: 250 },
-      { size: "5 L", price: 1200 },
+      { size: "100 ml", price: 110 },
+      { size: "200 ml", price: 210 },
+      { size: "500 ml", price: 410 },
+      { size: "1 L", price: 800 },
+      { size: "5 L", price: 4000 },
     ],
     benefits: [
       "Intense Hydration: Deeply moisturizes severely dry, cracked skin and effectively locks in moisture.",
