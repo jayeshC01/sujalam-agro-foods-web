@@ -1,8 +1,21 @@
 "use client";
 
+import Image from "next/image";
 import Link from "next/link";
 import { useRef, useState } from "react";
 import { ProductImage } from "@/components/product-image";
+
+function PureBadge() {
+  return (
+    <Image
+      src="/images/badges/pure-badge.png"
+      alt="100% Pure, No Preservatives"
+      width={85}
+      height={85}
+      className="absolute right-[15px] top-[15px] z-10 h-[85px] w-[85px] rounded-full"
+    />
+  );
+}
 
 export function ProductCardGallery({
   images,
@@ -20,8 +33,9 @@ export function ProductCardGallery({
 
   if (!images || images.length === 0) {
     return (
-      <Link href={href} className="block">
+      <Link href={href} className="relative block">
         <ProductImage tone={tone} alt={alt} />
+        <PureBadge />
       </Link>
     );
   }
@@ -52,10 +66,11 @@ export function ProductCardGallery({
           <Link
             key={src}
             href={href}
-            className="w-full shrink-0 snap-center"
+            className="relative w-full shrink-0 snap-center"
             tabIndex={index === active ? 0 : -1}
           >
             <ProductImage tone={tone} image={src} alt={alt} />
+            {index === 0 && <PureBadge />}
           </Link>
         ))}
       </div>
