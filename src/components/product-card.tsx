@@ -57,7 +57,7 @@ export function ProductCard({ product }: { product: Product }) {
   }, []);
 
   return (
-    <div className="group relative flex flex-col overflow-hidden rounded-2xl border border-mustard/15 bg-white shadow-sm transition-all hover:-translate-y-1 hover:border-terracotta/30 hover:shadow-lg">
+    <div className="group relative mx-auto flex w-full max-w-[350px] flex-col overflow-hidden rounded-2xl border border-mustard/15 bg-white shadow-sm transition-all hover:-translate-y-1 hover:border-terracotta/30 hover:shadow-lg">
       {showAddedToast && (
         <div className="pointer-events-none absolute inset-x-0 top-3 z-20 flex justify-center">
           <span className="flex items-center gap-1.5 rounded-full bg-leaf-dark px-3 py-1.5 text-xs font-semibold text-cream shadow-lg">

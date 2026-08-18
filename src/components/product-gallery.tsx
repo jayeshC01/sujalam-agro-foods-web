@@ -25,7 +25,7 @@ export function ProductGallery({
         <ProductImage tone={tone} size="lg" image={images[active]} alt={alt} />
 
         {images.length > 1 && (
-          <div className="mt-4 flex gap-3">
+          <div className="mt-4 flex justify-center gap-3">
             {images.map((src, index) => (
               <button
                 key={src}
@@ -35,7 +35,7 @@ export function ProductGallery({
                 aria-current={active === index}
                 className={`h-16 w-16 shrink-0 overflow-hidden rounded-xl transition-all sm:h-20 sm:w-20 ${
                   active === index
-                    ? "ring-2 ring-terracotta ring-offset-2 ring-offset-cream"
+                    ? "ring-2 ring-leaf-dark ring-offset-2 ring-offset-cream"
                     : "opacity-60 hover:opacity-100"
                 }`}
               >
@@ -62,7 +62,7 @@ export function ProductGallery({
             aria-current={active === index}
             className={`h-16 w-16 shrink-0 overflow-hidden rounded-xl transition-all sm:h-20 sm:w-20 ${
               active === index
-                ? "ring-2 ring-terracotta ring-offset-2 ring-offset-cream"
+                ? "ring-2 ring-leaf-dark ring-offset-2 ring-offset-cream"
                 : "opacity-60 hover:opacity-100"
             }`}
           >

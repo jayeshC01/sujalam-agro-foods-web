@@ -35,38 +35,32 @@ beforeEach(() => {
 describe("AddToCartPanel", () => {
   it("defaults to the first pack size and quantity 1", () => {
     renderPanel();
-    expect(screen.getByText("500 ml · ₹180")).toHaveClass("bg-terracotta");
-    expect(screen.getByText("Subtotal:").parentElement).toHaveTextContent(
-      "Subtotal: ₹180",
-    );
+    expect(screen.getByText("500 ml")).toHaveClass("bg-leaf-dark");
+    expect(screen.getByText("Subtotal: ₹180")).toBeInTheDocument();
   });
 
   it("updates the subtotal when a different pack size is selected", async () => {
     const user = userEvent.setup();
     renderPanel();
-    await user.click(screen.getByText("1 L · ₹350"));
-    expect(screen.getByText("Subtotal:").parentElement).toHaveTextContent(
-      "Subtotal: ₹350",
-    );
+    await user.click(screen.getByText("1 L"));
+    expect(screen.getByText("Subtotal: ₹350")).toBeInTheDocument();
   });
 
   it("updates the subtotal when quantity increases", async () => {
     const user = userEvent.setup();
     renderPanel();
     await user.click(screen.getByLabelText("Increase quantity"));
-    expect(screen.getByText("Subtotal:").parentElement).toHaveTextContent(
-      "Subtotal: ₹360",
-    );
+    expect(screen.getByText("Subtotal: ₹360")).toBeInTheDocument();
   });
 
   it("adds the selected size and quantity to the cart and shows confirmation", async () => {
     const user = userEvent.setup();
     renderPanel();
-    await user.click(screen.getByText("1 L · ₹350"));
+    await user.click(screen.getByText("1 L"));
     await user.click(screen.getByLabelText("Increase quantity"));
     await user.click(screen.getByText("Add to Cart"));
 
-    expect(screen.getByText("Added to Cart ✓")).toBeInTheDocument();
+    expect(screen.getByText("Added ✓")).toBeInTheDocument();
     const stored = JSON.parse(window.localStorage.getItem("sujalam-cart") ?? "[]");
     expect(stored).toEqual([
       { slug: "test-oil", packSize: "1 L", price: 350, quantity: 2 },

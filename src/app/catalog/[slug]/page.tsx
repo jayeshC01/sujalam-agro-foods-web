@@ -4,7 +4,7 @@ import { notFound } from "next/navigation";
 import { SiteFooter } from "@/components/site-footer";
 import { SiteHeader } from "@/components/site-header";
 import { ProductGallery } from "@/components/product-gallery";
-import { PackSizeGrid } from "@/components/pack-size-grid";
+import { ProductHighlightIcon } from "@/components/product-highlight-icon";
 import { AddToCartPanel } from "@/components/add-to-cart-panel";
 import { TrustBadges } from "@/components/trust-badges";
 import { CATEGORIES } from "@/lib/categories";
@@ -94,16 +94,19 @@ export default async function ProductDetailPage({
     <>
       <SiteHeader />
       <main className="flex-1">
-        <section className="mx-auto max-w-6xl px-6 py-16">
-          <Link
-            href="/catalog"
-            className="text-sm font-semibold text-terracotta-dark hover:underline"
-          >
-            ← Back to Catalog
-          </Link>
-
-          <div className="mt-8 grid gap-12 md:grid-cols-2 md:items-start">
-            <div className="md:sticky md:top-24">
+        <div className="sticky top-[73px] z-40 bg-cream/95 backdrop-blur-sm">
+          <div className="mx-auto max-w-6xl px-6 py-2">
+            <Link
+              href="/catalog"
+              className="-m-2 inline-block p-2 text-sm font-semibold text-terracotta-dark hover:underline"
+            >
+              ← Back to Catalog
+            </Link>
+          </div>
+        </div>
+        <section className="mx-auto max-w-6xl px-6 pb-16 pt-2">
+          <div className="grid gap-12 md:grid-cols-2 md:items-start">
+            <div className="md:sticky md:top-[105px]">
               <ProductGallery
                 tone={tone}
                 imageCount={product.imageCount ?? 3}
@@ -146,53 +149,110 @@ export default async function ProductDetailPage({
               </h1>
               <p className="mt-4 text-ink/70">{product.description}</p>
 
-              <h2 className="mt-8 text-sm font-semibold uppercase tracking-wide text-ink/50">
-                Available Packing &amp; Pricing
-              </h2>
-              <div className="mt-3">
-                <PackSizeGrid packSizes={product.packSizes} />
-              </div>
+              {product.highlights && product.highlights.length > 0 && (
+                <div className="mt-4 grid grid-cols-3 gap-1 py-2">
+                  {product.highlights.slice(0, 3).map((highlight) => (
+                    <div
+                      key={highlight.label}
+                      className="flex items-center justify-center gap-1.5"
+                    >
+                      <span
+                        className={`flex h-6 w-6 shrink-0 items-center justify-center rounded-full ${tone}`}
+                      >
+                        <ProductHighlightIcon icon={highlight.icon} />
+                      </span>
+                      <span className="text-base font-medium leading-tight text-ink/75">
+                        {highlight.label}
+                      </span>
+                    </div>
+                  ))}
+                </div>
+              )}
 
               <AddToCartPanel product={product} />
 
-              <Link
-                href={{ pathname: "/contact", query: { product: product.name } }}
-                className="mt-4 inline-block rounded-full border border-mustard/30 px-7 py-3.5 text-sm font-semibold text-terracotta-dark transition-colors hover:bg-mustard/10"
-              >
-                Enquire About This Product
-              </Link>
-
               <TrustBadges />
+            </div>
+          </div>
 
-              <div className="mt-8 rounded-2xl border border-mustard/20 bg-cream-dark p-6">
-                <h2 className="text-sm font-semibold uppercase tracking-wide text-ink/50">
-                  Specifications
-                </h2>
-                <dl className="mt-4 divide-y divide-mustard/15">
-                  {specs.map((spec) => (
-                    <div
-                      key={spec.label}
-                      className="flex items-center justify-between gap-4 py-3 text-sm"
-                    >
-                      <dt className="text-ink/55">{spec.label}</dt>
-                      <dd className="text-right font-semibold text-ink">
-                        {spec.value}
-                      </dd>
-                    </div>
-                  ))}
-                </dl>
-              </div>
+          <div className="mt-5">
+            <span className="text-xs font-semibold uppercase tracking-[0.25em] text-terracotta-dark">
+              At a Glance
+            </span>
 
-              {!product.edible && (
-                <div className="mt-4 rounded-xl border border-terracotta/30 bg-terracotta/10 px-4 py-3 text-sm font-medium text-terracotta-dark">
-                  For external / ritual use only. Not for consumption.
+            <div className="mt-6 grid gap-12 md:grid-cols-2 md:items-start">
+              {product.nutritionalSnapshot && (
+                <div>
+                  <h3 className="text-sm font-semibold uppercase tracking-wide text-ink">
+                    Nutritional Snapshot (Per 1 Tbsp / 14g)
+                  </h3>
+                  <div className="mt-4 overflow-hidden rounded-2xl border border-leaf-dark/30">
+                    <table className="w-full border-collapse text-left text-sm">
+                      <thead>
+                        <tr className="bg-cream-dark">
+                          <th className="px-4 py-3 font-semibold text-ink/70">
+                            Nutrient Profile
+                          </th>
+                          <th className="px-4 py-3 font-semibold text-ink/70">
+                            Details
+                          </th>
+                        </tr>
+                      </thead>
+                      <tbody className="divide-y divide-leaf-dark/20">
+                        {product.nutritionalSnapshot.map((row) => (
+                          <tr key={row.label} className="bg-white">
+                            <td className="w-1/3 px-4 py-3 align-top font-semibold text-ink">
+                              {row.label}
+                            </td>
+                            <td className="px-4 py-3 text-ink/75">
+                              {row.value}
+                            </td>
+                          </tr>
+                        ))}
+                      </tbody>
+                    </table>
+                  </div>
+                  <p className="mt-4 text-xs italic text-ink/45">
+                    Nutritional values are approximate and based on standard 1
+                    Tbsp (14g) servings. Benefits are based on general
+                    nutrition information and are not intended as medical
+                    advice. Always fit oils into your daily macro and caloric
+                    goals.
+                  </p>
                 </div>
               )}
+
+              <div className={product.nutritionalSnapshot ? "" : "md:col-span-2"}>
+                <h3 className="text-sm font-semibold uppercase tracking-wide text-ink">
+                  Specifications
+                </h3>
+                <div className="mt-4 rounded-2xl border border-leaf-dark/30 bg-cream-dark p-6">
+                  <dl className="divide-y divide-leaf-dark/20">
+                    {specs.map((spec) => (
+                      <div
+                        key={spec.label}
+                        className="flex items-center justify-between gap-4 py-3 text-sm"
+                      >
+                        <dt className="text-ink/55">{spec.label}</dt>
+                        <dd className="text-right font-semibold text-ink">
+                          {spec.value}
+                        </dd>
+                      </div>
+                    ))}
+                  </dl>
+                </div>
+
+                {!product.edible && (
+                  <div className="mt-4 rounded-xl border border-leaf-dark/30 bg-terracotta/10 px-4 py-3 text-sm font-medium text-terracotta-dark">
+                    For external / ritual use only. Not for consumption.
+                  </div>
+                )}
+              </div>
             </div>
           </div>
 
           {product.benefits && (
-            <div className="mt-16">
+            <div className="mt-5">
               <span className="text-xs font-semibold uppercase tracking-[0.25em] text-terracotta-dark">
                 Why You&rsquo;ll Love It
               </span>
@@ -206,7 +266,7 @@ export default async function ProductDetailPage({
                   return (
                     <li
                       key={benefit}
-                      className="flex items-start gap-3 rounded-xl border border-mustard/15 bg-white p-4 text-sm text-ink/75"
+                      className="flex items-start gap-3 rounded-xl border border-leaf-dark/30 bg-white p-4 text-sm text-ink/75"
                     >
                       <span
                         aria-hidden
@@ -234,7 +294,7 @@ export default async function ProductDetailPage({
           )}
 
           {product.modernUses && (
-            <div className="mt-16">
+            <div className="mt-5">
               <span className="text-xs font-semibold uppercase tracking-[0.25em] text-terracotta-dark">
                 Beyond the Kitchen
               </span>
@@ -266,50 +326,6 @@ export default async function ProductDetailPage({
                   );
                 })}
               </ul>
-            </div>
-          )}
-
-          {product.nutritionalSnapshot && (
-            <div className="mt-16">
-              <span className="text-xs font-semibold uppercase tracking-[0.25em] text-terracotta-dark">
-                At a Glance
-              </span>
-              <h2 className="mt-3 font-serif text-2xl font-semibold text-ink">
-                Nutritional Snapshot (Per 1 Tbsp / 14g)
-              </h2>
-              <div className="mt-6 overflow-hidden rounded-2xl border border-mustard/20">
-                <table className="w-full border-collapse text-left text-sm">
-                  <thead>
-                    <tr className="bg-cream-dark">
-                      <th className="px-4 py-3 font-semibold text-ink/70">
-                        Nutrient Profile
-                      </th>
-                      <th className="px-4 py-3 font-semibold text-ink/70">
-                        Details
-                      </th>
-                    </tr>
-                  </thead>
-                  <tbody className="divide-y divide-mustard/15">
-                    {product.nutritionalSnapshot.map((row) => (
-                      <tr key={row.label} className="bg-white">
-                        <td className="w-1/3 px-4 py-3 align-top font-semibold text-ink">
-                          {row.label}
-                        </td>
-                        <td className="px-4 py-3 text-ink/75">
-                          {row.value}
-                        </td>
-                      </tr>
-                    ))}
-                  </tbody>
-                </table>
-              </div>
-              <p className="mt-4 text-xs italic text-ink/45">
-                Nutritional values are approximate and based on standard 1
-                Tbsp (14g) servings. Benefits are based on general
-                nutrition information and are not intended as medical
-                advice. Always fit oils into your daily macro and caloric
-                goals.
-              </p>
             </div>
           )}
         </section>
