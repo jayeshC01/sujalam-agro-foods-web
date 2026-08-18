@@ -219,150 +219,104 @@ export function SiteFooter() {
 
       {/* Tablet-only layout (iPad and similar): sm–lg */}
       <div className="relative mx-auto hidden max-w-6xl px-8 py-12 sm:block lg:hidden">
-        <div
-          aria-hidden
-          className="pointer-events-none absolute inset-x-0 -top-[3.9%] h-[94%]"
-        >
-          <Image
-            src="/images/footer-vine.png"
-            alt=""
-            fill
-            sizes="850px"
-            className="object-fill"
-          />
-        </div>
-
         <div className="relative">
-          <div className="flex items-center gap-3">
-            <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full bg-mustard text-ink">
-              <svg
-                width="20"
-                height="20"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                strokeWidth="1.8"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-              >
-                <path d="M12 21c-4.5 0-7-3.5-7-8 0-4 3-7.5 7-11 4 3.5 7 7 7 11 0 4.5-2.5 8-7 8Z" />
-                <path d="M12 21v-6" />
-              </svg>
-            </span>
-            <span className="font-serif text-xl font-semibold text-white">
-              Sujalam Agro Foods
-            </span>
-          </div>
-          <p className="mt-3 text-sm text-[#A6BBAA]">
-            Kacchi Ghani: Pure Tradition, Modern Purity.
-          </p>
-
-          <div className="mt-12 grid grid-cols-2 gap-x-10 gap-y-14">
+          <div className="grid grid-cols-3 gap-x-10 gap-y-14">
             <div>
-              <h3 className="relative -top-2 text-sm font-bold uppercase tracking-wide text-[#E5A72B]">
-                Explore Sujalam
-              </h3>
-
-              <div className="mt-6 grid grid-cols-2 gap-x-6 gap-y-6">
-                <div>
-                  <h4 className="flex items-center gap-1.5 text-xs font-semibold uppercase tracking-wide text-[#E5A72B]/90">
-                    <svg {...contactIconProps} width={13} height={13} className="shrink-0">
-                      <path d="M12 3.5s5.5 6.8 5.5 10.8a5.5 5.5 0 1 1-11 0C6.5 10.3 12 3.5 12 3.5Z" />
-                    </svg>
-                    Discover Oils
-                  </h4>
-                  <ul className="mt-3 space-y-2.5 text-sm">
-                    {CATEGORIES.map((category) => (
-                      <li key={category.slug}>
-                        <Link
-                          href={`/catalog?category=${category.slug}`}
-                          className="transition-colors hover:text-[#E5A72B]"
-                        >
-                          {category.name.replace(/\s*Oils?$/i, "")}
-                        </Link>
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-                <div>
-                  <h4 className="flex items-center gap-1.5 text-xs font-semibold uppercase tracking-wide text-[#E5A72B]/90">
-                    <svg {...contactIconProps} width={13} height={13} className="shrink-0">
-                      <path d="M5 19c9 0 13-6.5 13-15-9.5 0-14.5 4.5-14.5 13 0 1.1.4 2 1.5 2Z" />
-                      <path d="M6 18c2-4.5 5.5-8.5 11-11.5" />
-                    </svg>
-                    Company Insights
-                  </h4>
-                  <ul className="mt-3 space-y-2.5 text-sm">
-                    <li>
-                      <Link
-                        href={`/#${SECTION_IDS.ourStory}`}
-                        className="transition-colors hover:text-[#E5A72B]"
-                      >
-                        Our Story
-                      </Link>
-                    </li>
-                    <li>
-                      <Link
-                        href="/contact"
-                        className="transition-colors hover:text-[#E5A72B]"
-                      >
-                        Contact Us
-                      </Link>
-                    </li>
-                    <li>
-                      <Link
-                        href="/policies/privacy-policy"
-                        className="transition-colors hover:text-[#E5A72B]"
-                      >
-                        Privacy Policy
-                      </Link>
-                    </li>
-                    <li>
-                      <Link
-                        href="/policies/terms-of-service"
-                        className="transition-colors hover:text-[#E5A72B]"
-                      >
-                        Terms of Service
-                      </Link>
-                    </li>
-                  </ul>
-                </div>
+              <div className="flex items-center gap-3">
+                <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full bg-mustard text-ink">
+                  <svg
+                    width="20"
+                    height="20"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    strokeWidth="1.8"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                  >
+                    <path d="M12 21c-4.5 0-7-3.5-7-8 0-4 3-7.5 7-11 4 3.5 7 7 7 11 0 4.5-2.5 8-7 8Z" />
+                    <path d="M12 21v-6" />
+                  </svg>
+                </span>
+                <span className="font-serif text-xl font-semibold text-white">
+                  Sujalam Agro Foods
+                </span>
               </div>
+              <p className="mt-3 text-sm text-[#A6BBAA]">
+                Kacchi Ghani: Pure Tradition, Modern Purity.
+              </p>
+              <p className="mt-3 text-sm leading-relaxed text-[#A6BBAA]">
+                {BRAND_DESCRIPTION}
+              </p>
             </div>
 
-            <div>
-              <h3 className="flex items-center gap-2 text-sm font-bold uppercase tracking-wide text-[#E5A72B]">
+            <div className="pt-[14px]">
+              <h3 className="flex items-center gap-1.5 text-sm font-bold uppercase tracking-wide text-[#E5A72B]">
                 <svg {...contactIconProps} width={15} height={15} className="shrink-0">
-                  <path d="M12 3l7 3v5c0 5-3.5 8.5-7 10-3.5-1.5-7-5-7-10V6l7-3Z" />
-                  <path d="m9 12 2 2 4-4" />
+                  <path d="M12 3.5s5.5 6.8 5.5 10.8a5.5 5.5 0 1 1-11 0C6.5 10.3 12 3.5 12 3.5Z" />
                 </svg>
-                Our Verified Promise
+                Discover Oils
               </h3>
-              <div className="mt-6 grid grid-cols-3 gap-x-4 gap-y-7">
-                {CERTIFICATIONS.map((cert) => (
-                  <div key={cert.name} className="flex flex-col items-center gap-2 text-center">
-                    <span className="flex h-14 w-14 shrink-0 items-center justify-center overflow-hidden rounded-full bg-cream p-2 shadow-sm">
-                      <Image
-                        src={cert.logo}
-                        alt={cert.name}
-                        width={56}
-                        height={56}
-                        className="h-full w-full object-contain"
-                      />
-                    </span>
-                    <span>
-                      <span className="block text-xs leading-tight text-[#A6BBAA]">
-                        {cert.name.split(":")[0]}
-                      </span>
-                      <span className="block text-[10px] leading-tight text-[#A6BBAA]/60">
-                        {cert.detail}
-                      </span>
-                    </span>
-                  </div>
+              <ul className="mt-5 space-y-2.5 text-sm">
+                {CATEGORIES.map((category) => (
+                  <li key={category.slug}>
+                    <Link
+                      href={`/catalog?category=${category.slug}`}
+                      className="transition-colors hover:text-[#E5A72B]"
+                    >
+                      {category.name.replace(/\s*Oils?$/i, "")}
+                    </Link>
+                  </li>
                 ))}
-              </div>
+              </ul>
             </div>
 
+            <div className="pt-[14px]">
+              <h3 className="flex items-center gap-1.5 text-sm font-bold uppercase tracking-wide text-[#E5A72B]">
+                <svg {...contactIconProps} width={15} height={15} className="shrink-0">
+                  <path d="M5 19c9 0 13-6.5 13-15-9.5 0-14.5 4.5-14.5 13 0 1.1.4 2 1.5 2Z" />
+                  <path d="M6 18c2-4.5 5.5-8.5 11-11.5" />
+                </svg>
+                Company Insights
+              </h3>
+              <ul className="mt-5 space-y-2.5 text-sm">
+                <li>
+                  <Link
+                    href={`/#${SECTION_IDS.ourStory}`}
+                    className="transition-colors hover:text-[#E5A72B]"
+                  >
+                    Our Story
+                  </Link>
+                </li>
+                <li>
+                  <Link
+                    href="/contact"
+                    className="transition-colors hover:text-[#E5A72B]"
+                  >
+                    Contact Us
+                  </Link>
+                </li>
+                <li>
+                  <Link
+                    href="/policies/privacy-policy"
+                    className="transition-colors hover:text-[#E5A72B]"
+                  >
+                    Privacy Policy
+                  </Link>
+                </li>
+                <li>
+                  <Link
+                    href="/policies/terms-of-service"
+                    className="transition-colors hover:text-[#E5A72B]"
+                  >
+                    Terms of Service
+                  </Link>
+                </li>
+              </ul>
+            </div>
+          </div>
+
+          <div className="mt-[30px] grid grid-cols-2 gap-x-10 gap-y-14">
             <div>
               <h3 className="text-sm font-bold uppercase tracking-wide text-[#E5A72B]">
                 Get in Touch
@@ -429,10 +383,37 @@ export function SiteFooter() {
               </a>
             </div>
 
-            <div className="mt-24">
-              <p className="text-sm leading-relaxed text-[#A6BBAA]">
-                {BRAND_DESCRIPTION}
-              </p>
+            <div>
+              <h3 className="flex items-center gap-2 text-sm font-bold uppercase tracking-wide text-[#E5A72B]">
+                <svg {...contactIconProps} width={15} height={15} className="shrink-0">
+                  <path d="M12 3l7 3v5c0 5-3.5 8.5-7 10-3.5-1.5-7-5-7-10V6l7-3Z" />
+                  <path d="m9 12 2 2 4-4" />
+                </svg>
+                Our Verified Promise
+              </h3>
+              <div className="mt-6 grid grid-cols-3 gap-x-4 gap-y-7">
+                {CERTIFICATIONS.map((cert) => (
+                  <div key={cert.name} className="flex flex-col items-center gap-2 text-center">
+                    <span className="flex h-14 w-14 shrink-0 items-center justify-center overflow-hidden rounded-full bg-cream p-2 shadow-sm">
+                      <Image
+                        src={cert.logo}
+                        alt={cert.name}
+                        width={56}
+                        height={56}
+                        className="h-full w-full object-contain"
+                      />
+                    </span>
+                    <span>
+                      <span className="block text-xs leading-tight text-[#A6BBAA]">
+                        {cert.name.split(":")[0]}
+                      </span>
+                      <span className="block text-[10px] leading-tight text-[#A6BBAA]/60">
+                        {cert.detail}
+                      </span>
+                    </span>
+                  </div>
+                ))}
+              </div>
             </div>
           </div>
         </div>
