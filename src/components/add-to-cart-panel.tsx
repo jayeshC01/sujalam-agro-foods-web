@@ -1,16 +1,21 @@
 "use client";
 
 import Link from "next/link";
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { QuantityStepper } from "@/components/quantity-stepper";
+import { CartIcon } from "@/components/common/cart-icon";
+import { PackSizeChip } from "@/components/common/pack-size-chip";
 import { useCart } from "@/lib/cart-context";
 import { formatPrice, type Product } from "@/lib/products";
+
+const ADDED_DURATION_MS = 2000;
 
 export function AddToCartPanel({ product }: { product: Product }) {
   const { addItem } = useCart();
   const [selectedSize, setSelectedSize] = useState(product.packSizes[0].size);
   const [quantity, setQuantity] = useState(1);
   const [added, setAdded] = useState(false);
+  const addedTimeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null);
 
   const selectedPack =
     product.packSizes.find((pack) => pack.size === selectedSize) ??
@@ -21,9 +26,18 @@ export function AddToCartPanel({ product }: { product: Product }) {
       { slug: product.slug, packSize: selectedPack.size, price: selectedPack.price },
       quantity,
     );
+    if (addedTimeoutRef.current) clearTimeout(addedTimeoutRef.current);
     setAdded(true);
-    setTimeout(() => setAdded(false), 2000);
+    addedTimeoutRef.current = setTimeout(() => {
+      setAdded(false);
+    }, ADDED_DURATION_MS);
   }
+
+  useEffect(() => {
+    return () => {
+      if (addedTimeoutRef.current) clearTimeout(addedTimeoutRef.current);
+    };
+  }, []);
 
   return (
     <div className="mt-6">
@@ -44,18 +58,7 @@ export function AddToCartPanel({ product }: { product: Product }) {
                   : "border-mustard/20 hover:border-leaf-dark/40"
               }`}
             >
-              <div
-                className={`py-1 text-center text-[10px] font-semibold uppercase tracking-wide ${
-                  selected ? "bg-leaf-dark text-cream" : "bg-ink text-cream"
-                }`}
-              >
-                {pack.size}
-              </div>
-              <div className="bg-white py-1 text-center">
-                <span className="font-serif text-sm font-bold text-leaf-dark">
-                  {formatPrice(pack.price)}
-                </span>
-              </div>
+              <PackSizeChip pack={pack} selected={selected} />
             </button>
           );
         })}
@@ -88,12 +91,7 @@ export function AddToCartPanel({ product }: { product: Product }) {
           onClick={handleAddToCart}
           className="inline-flex items-center justify-center gap-2 rounded-full bg-leaf-dark px-4 py-3.5 text-sm font-semibold text-cream shadow-lg shadow-leaf-dark/20 transition-transform hover:-translate-y-0.5 hover:bg-leaf"
         >
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
-            <path d="M6 6h15l-1.5 9h-12z" />
-            <path d="M6 6 5 3H2" />
-            <circle cx="9.5" cy="20" r="1.3" />
-            <circle cx="17.5" cy="20" r="1.3" />
-          </svg>
+          <CartIcon size={16} />
           {added ? "Added ✓" : "Add to Cart"}
         </button>
       </div>

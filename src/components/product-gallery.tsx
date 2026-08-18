@@ -52,7 +52,7 @@ export function ProductGallery({
     <div>
       <ProductImage tone={tone} size="lg" variant={variants[active]} />
 
-      <div className="mt-4 flex gap-3">
+      <div className="mt-4 flex justify-center gap-3">
         {variants.map((variant, index) => (
           <button
             key={variant}

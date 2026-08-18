@@ -2,9 +2,11 @@
 
 import Link from "next/link";
 import { useEffect, useRef, useState } from "react";
-import { formatPrice, getProductTagline, type Product } from "@/lib/products";
+import { getProductTagline, type Product } from "@/lib/products";
 import { ProductCardGallery } from "@/components/product-card-gallery";
 import { ProductHighlightIcon } from "@/components/product-highlight-icon";
+import { CartIcon } from "@/components/common/cart-icon";
+import { PackSizeChip } from "@/components/common/pack-size-chip";
 import { useCart } from "@/lib/cart-context";
 import { flyToCart } from "@/lib/fly-to-cart";
 
@@ -138,18 +140,7 @@ export function ProductCard({ product }: { product: Product }) {
                       : "border-mustard/20 hover:border-terracotta/40"
                   }`}
                 >
-                  <div
-                    className={`py-1 text-center text-[10px] font-semibold uppercase tracking-wide ${
-                      selected ? "bg-leaf-dark text-cream" : "bg-ink text-cream"
-                    }`}
-                  >
-                    {pack.size}
-                  </div>
-                  <div className="bg-white py-1 text-center">
-                    <span className="font-serif text-sm font-bold text-leaf-dark">
-                      {formatPrice(pack.price)}
-                    </span>
-                  </div>
+                  <PackSizeChip pack={pack} selected={selected} />
                 </button>
               );
             })}
@@ -181,13 +172,7 @@ export function ProductCard({ product }: { product: Product }) {
             aria-label={`Add ${product.name} (${selectedPack.size}) to cart`}
             className="flex flex-[1.3] items-center justify-center gap-1.5 rounded-xl bg-leaf-dark px-3 py-2 text-xs font-bold uppercase tracking-wide text-cream transition-colors hover:bg-leaf"
           >
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
-              <path d="M6 6h15l-1.5 9h-12z" />
-              <path d="M6 6 5 3H2" />
-              <circle cx="9.5" cy="20" r="1.3" />
-              <circle cx="17.5" cy="20" r="1.3" />
-              <path d="M12 9v4M10 11h4" />
-            </svg>
+            <CartIcon size={14} withPlus />
             Add to Cart
           </button>
         </div>

@@ -123,6 +123,10 @@ export default async function ProductDetailPage({
     <>
       <SiteHeader />
       <main className="flex-1">
+        {/* Header is 73px tall (see site-header.tsx); this bar adds
+            py-2 (16px) + a text-sm line (20px) = 36px, so its bottom
+            sits at 73 + 36 = 109px. The gallery's sticky offset below
+            must match that or its top edge clips under this bar. */}
         <div className="sticky top-[73px] z-40 bg-cream/95 backdrop-blur-sm">
           <div className="mx-auto max-w-6xl px-6 py-2">
             <Link
@@ -135,7 +139,7 @@ export default async function ProductDetailPage({
         </div>
         <section className="mx-auto max-w-6xl px-6 pb-16 pt-2">
           <div className="grid gap-12 md:grid-cols-2 md:items-start">
-            <div className="md:sticky md:top-[105px]">
+            <div className="md:sticky md:top-[109px]">
               <ProductGallery
                 tone={tone}
                 imageCount={product.imageCount ?? 3}
