@@ -7,7 +7,6 @@ import { ProductGallery } from "@/components/product-gallery";
 import { ProductHighlightIcon } from "@/components/product-highlight-icon";
 import { AddToCartPanel } from "@/components/add-to-cart-panel";
 import { TrustBadges } from "@/components/trust-badges";
-import { CATEGORIES } from "@/lib/categories";
 import { PRODUCTS, getProductBySlug } from "@/lib/products";
 
 const TONE_BY_CATEGORY: Record<string, string> = {
@@ -58,7 +57,6 @@ export default async function ProductDetailPage({
     notFound();
   }
 
-  const category = CATEGORIES.find((item) => item.slug === product.category);
   const tone =
     TONE_BY_CATEGORY[product.category] ?? "bg-mustard/10 text-mustard-light";
 
@@ -89,6 +87,37 @@ export default async function ProductDetailPage({
     },
     { label: "Best For", value: product.usage },
   ];
+
+  const hasNutritionalSnapshot = Boolean(product.nutritionalSnapshot?.length);
+
+  const specificationsCore = (
+    <>
+      <h3 className="text-sm font-semibold uppercase tracking-wide text-ink">
+        Specifications
+      </h3>
+      <div className="mt-4 rounded-2xl border border-leaf-dark/30 bg-cream-dark p-6">
+        <dl className="divide-y divide-leaf-dark/20">
+          {specs.map((spec) => (
+            <div
+              key={spec.label}
+              className="flex items-center justify-between gap-4 py-3 text-sm"
+            >
+              <dt className="text-ink/55">{spec.label}</dt>
+              <dd className="text-right font-semibold text-ink">
+                {spec.value}
+              </dd>
+            </div>
+          ))}
+        </dl>
+      </div>
+
+      {!product.edible && (
+        <div className="mt-4 rounded-xl border border-leaf-dark/30 bg-terracotta/10 px-4 py-3 text-sm font-medium text-terracotta-dark">
+          For external / ritual use only. Not for consumption.
+        </div>
+      )}
+    </>
+  );
 
   return (
     <>
@@ -132,12 +161,11 @@ export default async function ProductDetailPage({
               </span>
 
               <div className="mt-3 flex flex-wrap items-center gap-2">
-                {category && (
+                {product.edible ? (
                   <span className="rounded-full bg-mustard/15 px-3 py-1 text-xs font-semibold uppercase tracking-wide text-mustard-light">
-                    {category.name}
+                    Edible
                   </span>
-                )}
-                {!product.edible && (
+                ) : (
                   <span className="rounded-full bg-terracotta/15 px-3 py-1 text-xs font-semibold uppercase tracking-wide text-terracotta-dark">
                     Non-Edible
                   </span>
@@ -172,16 +200,25 @@ export default async function ProductDetailPage({
               <AddToCartPanel product={product} />
 
               <TrustBadges />
+
+              {!hasNutritionalSnapshot && (
+                <div className="mt-5">
+                  <span className="text-xs font-semibold uppercase tracking-[0.25em] text-terracotta-dark">
+                    At a Glance
+                  </span>
+                  <div className="mt-4">{specificationsCore}</div>
+                </div>
+              )}
             </div>
           </div>
 
-          <div className="mt-5">
-            <span className="text-xs font-semibold uppercase tracking-[0.25em] text-terracotta-dark">
-              At a Glance
-            </span>
+          {hasNutritionalSnapshot && (
+            <div className="mt-5">
+              <span className="text-xs font-semibold uppercase tracking-[0.25em] text-terracotta-dark">
+                At a Glance
+              </span>
 
-            <div className="mt-6 grid gap-12 md:grid-cols-2 md:items-start">
-              {product.nutritionalSnapshot && (
+              <div className="mt-6 grid gap-12 md:grid-cols-2 md:items-start">
                 <div>
                   <h3 className="text-sm font-semibold uppercase tracking-wide text-ink">
                     Nutritional Snapshot (Per 1 Tbsp / 14g)
@@ -199,7 +236,7 @@ export default async function ProductDetailPage({
                         </tr>
                       </thead>
                       <tbody className="divide-y divide-leaf-dark/20">
-                        {product.nutritionalSnapshot.map((row) => (
+                        {product.nutritionalSnapshot!.map((row) => (
                           <tr key={row.label} className="bg-white">
                             <td className="w-1/3 px-4 py-3 align-top font-semibold text-ink">
                               {row.label}
@@ -220,36 +257,11 @@ export default async function ProductDetailPage({
                     goals.
                   </p>
                 </div>
-              )}
 
-              <div className={product.nutritionalSnapshot ? "" : "md:col-span-2"}>
-                <h3 className="text-sm font-semibold uppercase tracking-wide text-ink">
-                  Specifications
-                </h3>
-                <div className="mt-4 rounded-2xl border border-leaf-dark/30 bg-cream-dark p-6">
-                  <dl className="divide-y divide-leaf-dark/20">
-                    {specs.map((spec) => (
-                      <div
-                        key={spec.label}
-                        className="flex items-center justify-between gap-4 py-3 text-sm"
-                      >
-                        <dt className="text-ink/55">{spec.label}</dt>
-                        <dd className="text-right font-semibold text-ink">
-                          {spec.value}
-                        </dd>
-                      </div>
-                    ))}
-                  </dl>
-                </div>
-
-                {!product.edible && (
-                  <div className="mt-4 rounded-xl border border-leaf-dark/30 bg-terracotta/10 px-4 py-3 text-sm font-medium text-terracotta-dark">
-                    For external / ritual use only. Not for consumption.
-                  </div>
-                )}
+                <div>{specificationsCore}</div>
               </div>
             </div>
-          </div>
+          )}
 
           {product.benefits && (
             <div className="mt-5">
