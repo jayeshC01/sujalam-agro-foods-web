@@ -1,55 +1,84 @@
-const iconProps = {
-  width: 18,
-  height: 18,
-  viewBox: "0 0 24 24",
-  fill: "none",
-  stroke: "currentColor",
-  strokeWidth: 1.8,
-  strokeLinecap: "round" as const,
-  strokeLinejoin: "round" as const,
-};
+import Image from "next/image";
 
 const TRUST_POINTS = [
   {
-    title: "7-Day Returns",
-    icon: (
-      <svg {...iconProps}>
-        <path d="M4 4v6h6" />
-        <path d="M4.5 15a8 8 0 1 0 2-9.5L4 10" />
-      </svg>
-    ),
+    image: "/images/badges/badge-replacement.png",
+    title: "3-Day Replacement",
+    subtitle: "Not satisfied? We've got you covered.",
   },
   {
-    title: "70+ Quality Checks",
-    icon: (
-      <svg {...iconProps}>
-        <path d="M12 3.5 19 6.5V12c0 4.5-3 7.5-7 8.5-4-1-7-4-7-8.5V6.5l7-3Z" />
-        <path d="M9 12l2 2 4-4" />
-      </svg>
-    ),
+    image: "/images/badges/badge-quality-checked.png",
+    title: "Quality Checked",
+    subtitle: "Carefully tested & packed for your safety.",
   },
   {
-    title: "360° Customer Support",
-    icon: (
-      <svg {...iconProps}>
-        <path d="M4.5 13v-1a7.5 7.5 0 0 1 15 0v1" />
-        <rect x="3" y="13" width="4" height="6" rx="1.5" />
-        <rect x="17" y="13" width="4" height="6" rx="1.5" />
-        <path d="M19.5 19.2a3.8 3.8 0 0 1-3.8 3.8h-2" />
-      </svg>
-    ),
+    image: "/images/badges/badge-support.png",
+    title: "24/7 Support",
+    subtitle: "We're here for you, anytime, always.",
   },
 ];
 
+function TrustIcon({ src, title, size }: { src: string; title: string; size: number }) {
+  return (
+    <span
+      className="flex shrink-0 items-center justify-center overflow-hidden rounded-full bg-mustard/10"
+      style={{ width: size, height: size }}
+    >
+      <Image
+        src={src}
+        alt=""
+        aria-hidden
+        width={size}
+        height={size}
+        className="h-[85%] w-[85%] rounded-full object-cover"
+        title={title}
+      />
+    </span>
+  );
+}
+
 export function TrustBadges() {
   return (
-    <div className="mt-6 flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
-      {TRUST_POINTS.map((point) => (
-        <div key={point.title} className="flex items-center gap-2.5 text-ink/60">
-          {point.icon}
-          <span className="text-xs font-medium">{point.title}</span>
+    <>
+      {/* Mobile: boxed card, 3 columns separated by dividers */}
+      <div className="mt-6 rounded-2xl border border-mustard/15 bg-[#fbf3e6] px-2 py-5 sm:hidden">
+        <div className="grid grid-cols-3">
+          {TRUST_POINTS.map((point, index) => (
+            <div
+              key={point.title}
+              className={`flex flex-col items-center gap-2 px-2 text-center ${
+                index > 0 ? "border-l border-mustard/20" : ""
+              }`}
+            >
+              <TrustIcon src={point.image} title={point.title} size={56} />
+              <p className="text-xs font-bold leading-tight text-leaf-dark">
+                {point.title}
+              </p>
+              <p className="text-[11px] leading-tight text-ink/55">
+                {point.subtitle}
+              </p>
+            </div>
+          ))}
         </div>
-      ))}
-    </div>
+      </div>
+
+      {/* Tablet and up: horizontal sequence — icon, text, divider, repeat */}
+      <div className="mt-6 hidden items-center sm:flex">
+        {TRUST_POINTS.map((point, index) => (
+          <div key={point.title} className="flex flex-1 items-center pr-6">
+            {index > 0 && <span className="mr-6 h-10 w-px shrink-0 bg-mustard/20" />}
+            <div className="flex items-center gap-3">
+              <TrustIcon src={point.image} title={point.title} size={44} />
+              <div>
+                <p className="text-sm font-bold leading-tight text-leaf-dark">
+                  {point.title}
+                </p>
+                <p className="text-xs leading-tight text-ink/55">{point.subtitle}</p>
+              </div>
+            </div>
+          </div>
+        ))}
+      </div>
+    </>
   );
 }
