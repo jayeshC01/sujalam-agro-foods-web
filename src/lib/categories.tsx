@@ -16,7 +16,7 @@ export const CATEGORIES: Category[] = [
     description:
       "Pure, wood-pressed mustard, groundnut, coconut, sesame, safflower, almond, and sunflower oils crafted for wholesome daily cooking.",
     accent: "bg-mustard/15 text-mustard-light",
-    image: "/images/categories/edible-oil.png",
+    image: "/images/categories/edible-oil-v2.png",
     icon: (
       // eslint-disable-next-line @next/next/no-img-element
       <img
@@ -32,7 +32,7 @@ export const CATEGORIES: Category[] = [
     description:
       "Pure castor and mahua oils for natural wellness and skincare, alongside our traditional diya blend for auspicious pooja.",
     accent: "bg-terracotta/15 text-terracotta",
-    image: "/images/categories/non-edible-oil.png",
+    image: "/images/categories/non-edible-oil-v2.png",
     icon: (
       // eslint-disable-next-line @next/next/no-img-element
       <img
