@@ -28,88 +28,81 @@ export default async function CatalogPage({ searchParams }: CatalogPageProps) {
     <>
       <SiteHeader />
       <main className="flex-1">
-        <section className="relative h-[350px] w-full overflow-hidden bg-[#fae9cf]">
-          {/* Wide layout: fixed-width decorative strip on the far left +
-              flexible cream spacer (holds the text) + fixed-width ingredient
-              photo on the far right, always shown at its full, uncropped
-              width. The spacer is the only flexible part, so it absorbs the
-              narrowing viewport first; the text only starts wrapping once
-              the spacer itself has nothing left to give. Only kicks in at
-              lg+ — below that (including tablets/iPads) there isn't enough
-              room for this layout, so the overlay layout below is used
-              instead. */}
-          <div className="hidden h-full lg:flex">
-            <div className="relative h-full w-[80px] shrink-0 xl:w-[106px]">
-              <Image
-                src="/images/catalog-hero-strip.jpg"
-                alt=""
-                aria-hidden
-                fill
-                sizes="106px"
-                className="object-cover"
-              />
-            </div>
-            <div className="min-w-0 flex-1 overflow-hidden">
-              <div className="mx-auto flex h-full max-w-6xl items-center px-6">
-                <div className="min-w-0">
-                  <nav className="flex flex-wrap items-center gap-1.5 text-xs text-ink/50">
-                    <Link href="/" className="hover:text-terracotta-dark">
-                      Home
-                    </Link>
-                    <span>›</span>
-                    <span>Catalog</span>
-                  </nav>
-                  <h1 className="mt-3 break-words font-serif text-4xl font-semibold tracking-tight text-leaf-dark lg:text-5xl">
-                    {selected ? selected.name : "Our Full Catalog"}
-                  </h1>
-                  <p className="mt-2 break-words text-base text-ink/70 lg:text-lg">
-                    Pure, wood-pressed oils{selected ? "" : " —"} crafted the
-                    traditional way.
-                  </p>
-                </div>
-              </div>
-            </div>
-            <div className="relative h-full w-[632px] shrink-0">
-              <Image
-                src="/images/catalog-hero.jpg"
-                alt="Wood-pressed oil ingredients — peanuts, coconut, mustard flower, and oil press"
-                fill
-                priority
-                sizes="632px"
-                className="object-cover"
-              />
+        {/* Mobile (below sm): full-bleed portrait photo with the content
+            overlaid on top, faded via a cream gradient (opaque at the
+            bottom, mostly clear at the top) for legibility — the site's
+            original catalog-hero treatment, kept for phones where there
+            isn't room for the side-by-side layout below. */}
+        <section className="relative h-[350px] w-full overflow-hidden sm:hidden">
+          <Image
+            src="/images/catalog-hero-mobile.png"
+            alt="Wood-pressed oil ingredients — mustard, coconut, peanuts, and oil press"
+            fill
+            priority
+            sizes="100vw"
+            className="object-cover object-center"
+          />
+          <div className="absolute inset-0 bg-gradient-to-t from-[#fce4c4] via-[#fce4c4]/70 to-[#fce4c4]/25" />
+          <div className="absolute inset-0 flex items-center justify-center px-6 text-center">
+            <div>
+              <nav className="flex items-center justify-center gap-1.5 text-sm text-black">
+                <Link href="/" className="hover:text-terracotta-dark">
+                  Home
+                </Link>
+                <span>›</span>
+                <span>Catalog</span>
+              </nav>
+              <h1 className="mt-3 font-serif text-4xl font-semibold tracking-tight text-leaf-dark">
+                Our Full Catalog
+              </h1>
+              <p className="mt-2 text-lg text-black">
+                Pure, wood-pressed oils — crafted the traditional way.
+              </p>
             </div>
           </div>
+        </section>
 
-          {/* Overlay layout (phones through tablets/iPads, below lg): the
-              side-by-side layout above has no room to breathe here, so
-              instead show the photo full-bleed and overlay the text on its
-              blank upper band, with a gradient fade for legibility. */}
-          <div className="relative h-full lg:hidden">
-            <Image
-              src="/images/catalog-hero.jpg"
-              alt="Wood-pressed oil ingredients — peanuts, coconut, mustard flower, and oil press"
-              fill
-              priority
-              sizes="100vw"
-              className="object-cover"
-            />
-            <div className="absolute inset-0 bg-gradient-to-t from-[#fae9cf] via-[#fae9cf]/70 to-[#fae9cf]/25" />
-            <div className="absolute inset-0 flex items-center justify-center px-6 text-center">
-              <div>
-                <nav className="flex items-center justify-center gap-1.5 text-sm text-black">
+        {/* sm and up: fixed-width decorative photo pinned to the right,
+            object-contain never crops the source image — it always renders
+            complete, scaled to fit. The source has a wide blank/cream band
+            on its left (~55-60% of its own width) at every scale, so the
+            text below — capped to roughly that same fraction of the
+            viewport — always sits over cream, never over the bottles,
+            regardless of viewport width. The section background is a
+            top-to-bottom gradient sampled directly from the image's own
+            (nearly flat) cream backdrop, so the fill beside the image,
+            where object-contain can't stretch it edge-to-edge, is
+            indistinguishable from the photo. */}
+        <section
+          className="relative hidden h-[320px] w-full overflow-hidden sm:block lg:h-[400px]"
+          style={{
+            background:
+              "linear-gradient(to bottom, #fde7c4 0%, #fee4bf 20%, #fcdfb5 50%, #f8d8ae 70%, #f8dcb7 100%)",
+          }}
+        >
+          <Image
+            src="/images/catalog-hero-v2.png"
+            alt="Wood-pressed oil ingredients — mustard, coconut, peanuts, and oil press"
+            fill
+            priority
+            sizes="100vw"
+            className="object-contain object-right"
+          />
+          <div className="absolute inset-0 flex items-center">
+            <div className="mx-auto w-full max-w-6xl px-6">
+              <div className="max-w-[min(55vw,26rem)]">
+                <nav className="flex flex-wrap items-center gap-1.5 text-xs text-ink/50">
                   <Link href="/" className="hover:text-terracotta-dark">
                     Home
                   </Link>
                   <span>›</span>
                   <span>Catalog</span>
                 </nav>
-                <h1 className="mt-3 font-serif text-4xl font-semibold tracking-tight text-leaf-dark sm:text-5xl">
-                  {selected ? selected.name : "Our Full Catalog"}
+                <h1 className="mt-3 break-words font-serif text-4xl font-semibold tracking-tight text-leaf-dark lg:text-5xl">
+                  Our Full Catalog
                 </h1>
-                <p className="mt-2 text-lg text-black sm:text-xl">
-                  Pure, wood-pressed oils{selected ? "" : " —"} crafted the
-                  traditional way.
+                <p className="mt-2 break-words text-base text-ink/70 lg:text-lg">
+                  Pure, wood-pressed oils — crafted the traditional way.
                 </p>
               </div>
             </div>
