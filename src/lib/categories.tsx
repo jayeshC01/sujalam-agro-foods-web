@@ -30,7 +30,7 @@ export const CATEGORIES: Category[] = [
     slug: "non-edible-oil",
     name: "Non-Edible Oils",
     description:
-      "Pure castor and mahua oils for natural wellness and skincare, alongside our traditional diya blend for auspicious pooja.",
+      "Pure castor oil for natural wellness and skincare, alongside our traditional diya blend for auspicious pooja.",
     accent: "bg-terracotta/15 text-terracotta",
     image: "/images/categories/non-edible-oil-v2.png",
     icon: (

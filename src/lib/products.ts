@@ -542,10 +542,10 @@ export const PRODUCTS: Product[] = [
   {
     slug: "mohata-oil",
     name: "Mohata Oil",
-    category: "non-edible-oil",
-    edible: false,
+    category: "edible-oil",
+    edible: true,
     description:
-      "Extracted through a pure, cold-pressing method, our Mohata (Mahua) Oil is a time-honored botanical oil revered for its therapeutic properties. Rich in natural emollients, it is an exceptional choice for traditional body massage, skin nourishment, and artisanal soap making. (Strictly not for consumption).",
+      "Extracted through a pure, cold-pressing method, our Mohata (Mahua) Oil is a time-honored botanical oil valued in traditional kitchens for its distinct flavor, alongside body massage and skin nourishment.",
     packSizes: [
       { size: "100 ml", price: 150 },
       { size: "200 ml", price: 300 },
@@ -558,7 +558,7 @@ export const PRODUCTS: Product[] = [
       "Hair Vitality: Nourishes the scalp and hair follicles, promoting a natural, healthy shine and supporting hair strength.",
       "Age-Defying Antioxidants: Packed with natural antioxidants that help protect the skin and reduce the visible signs of aging.",
       "Artisanal Crafter’s Choice: A highly valued, traditional base ingredient for crafting natural, handmade soaps and body-care products.",
-      "Strictly External: 100% pure, safely processed for skincare, massage, and ritual applications only—not for consumption.",
+      "Traditional Kitchen Staple: Cold-pressed for a distinct, earthy flavor prized in regional cooking.",
     ],
     images: ["/images/catalog/mohata-oil.jpg"],
     highlights: [
@@ -568,7 +568,7 @@ export const PRODUCTS: Product[] = [
     ],
     shelfLifeMonths: DEFAULT_SHELF_LIFE_MONTHS,
     extractionMethod: "100% Cold-Pressed",
-    usage: "Skincare, Therapeutic Massage, and Soap Making (External Use Only).",
+    usage: "Cooking, Skincare, and Therapeutic Massage.",
     preservativesNote: "100% Natural – None Added",
     storageNote: "Store in a cool, dry place, away from direct sunlight.",
     badges: [

@@ -90,7 +90,7 @@ export default function TermsOfServicePage() {
               </h2>
               <p className="mt-3">
                 Products marked &ldquo;Non-Edible&rdquo; on our catalog
-                (such as castor, mohata, and diya oil) are intended for
+                (such as castor and diya oil) are intended for
                 external, cosmetic, or ritual use only and must never be
                 consumed. We are not responsible for misuse of these
                 products.

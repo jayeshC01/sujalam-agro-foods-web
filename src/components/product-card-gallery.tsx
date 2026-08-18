@@ -10,9 +10,9 @@ function PureBadge() {
     <Image
       src="/images/badges/pure-badge.png"
       alt="100% Pure, No Preservatives"
-      width={85}
-      height={85}
-      className="absolute right-[15px] top-[15px] z-10 h-[85px] w-[85px] rounded-full"
+      width={90}
+      height={90}
+      className="absolute right-[15px] top-[15px] z-10 h-[90px] w-[90px] object-contain"
     />
   );
 }
