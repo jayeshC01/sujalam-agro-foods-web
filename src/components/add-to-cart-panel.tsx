@@ -168,10 +168,10 @@ export function AddToCartPanel({ product }: { product: Product }) {
                     </span>
                   </span>
                   <span className="flex min-w-0 flex-col items-start leading-tight">
-                    <span className="whitespace-nowrap text-sm font-semibold text-ink">
+                    <span className="w-full overflow-hidden text-ellipsis whitespace-nowrap text-sm font-semibold text-ink">
                       {itemCount} {itemCount === 1 ? "Item" : "Items"} in cart
                     </span>
-                    <span className="whitespace-nowrap text-xs font-semibold text-terracotta-dark">
+                    <span className="w-full overflow-hidden text-ellipsis whitespace-nowrap text-xs font-semibold text-terracotta-dark">
                       View cart ›
                     </span>
                   </span>
