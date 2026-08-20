@@ -77,6 +77,10 @@ export function ProductCardGallery({
 
       {hasMultiple && (
         <>
+          <div className="pointer-events-none absolute left-2 top-2 z-10 rounded-full bg-ink/70 px-2 py-0.5 text-[10px] font-semibold text-white backdrop-blur-sm">
+            {active + 1}/{images.length}
+          </div>
+
           <button
             type="button"
             aria-label="Previous image"
@@ -100,18 +104,20 @@ export function ProductCardGallery({
             </svg>
           </button>
 
-          <div className="pointer-events-none absolute inset-x-0 bottom-2 flex justify-center gap-1.5">
-            {images.map((_, index) => (
-              <button
-                key={index}
-                type="button"
-                aria-label={`Show image ${index + 1}`}
-                onClick={() => scrollToIndex(index)}
-                className={`pointer-events-auto h-1.5 rounded-full shadow-sm transition-all ${
-                  index === active ? "w-4 bg-blue-500" : "w-1.5 bg-blue-500/40"
-                }`}
-              />
-            ))}
+          <div className="pointer-events-none absolute inset-x-0 bottom-2 flex justify-center">
+            <div className="pointer-events-auto flex items-center gap-1.5 rounded-full bg-white/95 px-2.5 py-1.5 shadow-md">
+              {images.map((_, index) => (
+                <button
+                  key={index}
+                  type="button"
+                  aria-label={`Show image ${index + 1}`}
+                  onClick={() => scrollToIndex(index)}
+                  className={`h-1.5 w-1.5 rounded-full transition-colors ${
+                    index === active ? "bg-leaf-dark" : "bg-ink/20"
+                  }`}
+                />
+              ))}
+            </div>
           </div>
         </>
       )}
