@@ -5,7 +5,7 @@ import { CATEGORIES } from "@/lib/categories";
 const STATS = [
   {
     label: `${CATEGORIES.length} Premium Ranges`,
-    image: "/images/badges/badge-premium-ranges.png",
+    image: "/images/badges/badge-premium-ranges_v2.png",
   },
   {
     label: "Zero Preservatives Added",
